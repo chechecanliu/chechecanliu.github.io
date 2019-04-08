@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="linux 学习">
+<meta name="keywords" content="tag1,tag2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/linux/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="linux 学习">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/vim-commands.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/vi-vim-cheat-sheet-sch.gif">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/lvm-arch.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/lvm.gif">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/fork-and-exec.gif">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/selinux_1.gif">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/boot_loader.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/boot_loader_initrd.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/linux/image/TCP.png">
+<meta property="og:updated_time" content="2019-04-08T16:00:54.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux">
+<meta name="twitter:description" content="linux 学习">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/08/linux/image/vim-commands.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/04/08/linux/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>linux | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-08 10:03:30 / Modified: 16:00:54" itemprop="dateCreated datePublished" datetime="2019-04-08T10:03:30+00:00">2019-04-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分类名/" itemprop="url" rel="index"><span itemprop="name">分类名</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="linux-学习"><a href="#linux-学习" class="headerlink" title="linux 学习"></a>linux 学习</h1><a id="more"></a>
+<h2 id="硬盘"><a href="#硬盘" class="headerlink" title="硬盘"></a>硬盘</h2><h3 id="Linux中的档名"><a href="#Linux中的档名" class="headerlink" title="Linux中的档名"></a>Linux中的档名</h3><table>
+<thead>
+<tr>
+<th>装置</th>
+<th>装置在Linux内的档名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IDE硬盘机</td>
+<td>/dev/hd[a-d]</td>
+</tr>
+<tr>
+<td>SCSI/SATA/U盘硬盘机</td>
+<td>/dev/sd[a-p]</td>
+</tr>
+<tr>
+<td>U盘快闪碟</td>
+<td>/dev/sd<a href="与SATA相同">a-p</a></td>
+</tr>
+<tr>
+<td>软盘机</td>
+<td>/dev/fd[0-1]</td>
+</tr>
+<tr>
+<td>打印机</td>
+<td>25针: /dev/lp[0-2]U盘: /dev/usb/lp[0-15]</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>U盘: /dev/usb/mouse[0-15]PS2: /dev/psaux</td>
+</tr>
+<tr>
+<td>当前CDROM/DVDROM</td>
+<td>/dev/cdrom</td>
+</tr>
+<tr>
+<td>当前的鼠标</td>
+<td>/dev/mouse</td>
+</tr>
+<tr>
+<td>磁带机</td>
+<td>IDE: /dev/ht0SCSI: /dev/st0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p><code>uname -sr</code> 系统核心版本</p>
+<p><code>date</code> 当前日期 date<br>    查看时区<br>    <code>date +&quot;%Z %z&quot;</code><br>    <code>date -R</code><br>    <code>datetimetcl | grep &quot;Timezone&quot;</code><br>    <code>cat /etc/timezone</code><br><code>cal</code> 日历<br><code>bc</code> 计算器 默认整数 scale=3 保留三位有效数字 quit退出<br><code>exit</code> 退出 ctrl+d<br><code>man [command]</code> 查找命令用法/ [command] –help 相似</p>
+<p><strong>关机</strong><br><code>sync</code>&gt;<code>shutdown</code> or <code>reboot</code> 注意 shutdown 加时间只会结束服务,加上-h会在结束服务后立刻关机 shutdown会发提示关机命令给所有在线用户  </p>
+<p><code>cat</code> &lt;&lt; EOF(定义结束符)<br>first<br>second<br>EOF</p>
+<p><code>useradd [username]</code> 增加用户<br><code>passwd [username]</code> 修改口令/不加口令则该自己<br><code>chage -d 0 [username]</code> 强制用户登陆一次之后改密码<br><code>echo &quot;password&quot; | passwd --stdin [username]</code> 用命令给用户改密码不用两次输入  </p>
+<p><code>which [command]</code> 命令在哪儿  </p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Determining-IP-information-for-eth0…failed-错误解决"><a href="#Determining-IP-information-for-eth0…failed-错误解决" class="headerlink" title="Determining IP information for eth0…failed 错误解决"></a>Determining IP information for eth0…failed 错误解决</h3><p>VMware dhcp服务没有开  </p>
+<p><code>uname -r</code> 内核版本<br><code>lsb_release -a</code>  LSB(Linux Standard Base) and Distribution   information</p>
+<h2 id="linux-安装"><a href="#linux-安装" class="headerlink" title="linux 安装"></a>linux 安装</h2><p><strong>basic server 安装时默认没有开启eth0网卡</strong><br>将eth0中的onboot设置改为yes <code>/etc/sysconfig/network-scripts/ifcfg-eth0</code>中的设置更改 更改完成后 <code>service network restart</code><br>单次更改可以改为<code>ifup eth0</code>  </p>
+<p>centos7中取消<code>ifconfig</code>命令 可安装<code>net-tools</code> 或者使用<code>ip addr</code>  </p>
+<h2 id="linux-文件"><a href="#linux-文件" class="headerlink" title="linux 文件"></a>linux 文件</h2><h3 id="文件权限-rwxr-xr-x"><a href="#文件权限-rwxr-xr-x" class="headerlink" title="文件权限 -rwxr-xr-x"></a>文件权限 -rwxr-xr-x</h3><p>含义</p>
+<blockquote>
+<p>第一个当为[ d ]则是目录<br>当为[ - ]则是文件<br>若是[ l ]则表示为连结档(link file);<br>若是[ b ]则表示为装置文件里面的可供储存的接口设备(可随机存取装置);<br>若是[ c ]则表示为装置文件里面的串行端口设备,例如键盘、鼠标(一次性读取装置).<br>rwx 读写运行权限<br>第一组文件拥有者 第二组同组权限 第三组其他人权限<br>rwx对文件来说是针对内容来讲,r可以读取内容,w可以改写内容,x是可执行文件<br>rwx对文件夹来说,r可读取文件列表,w可增删文件,x可进入文件  </p>
+</blockquote>
+<h3 id="切换文件用户和用户组"><a href="#切换文件用户和用户组" class="headerlink" title="切换文件用户和用户组"></a>切换文件用户和用户组</h3><p><code>chgrp [-R] GROUP FILE</code><br><code>chown [-R] OWNER:GROUP FILE</code><br><code>chmode [[u/g/o/a] [+/-/=] [rwx]] file</code> 例子 chmod  u=rwx,go=rx  .bashrc 与chmod 755 .bashrc一样 chmod  a+w  .bashrc 增加可写权限 chmod 4775 filename 其中4位的第一位表示SUID4/SGID2/SBIT1<br>要开放目录给任何人浏览时,应该至少也要给予r及x的权限,但w权限不可随便给;  </p>
+<h3 id="root-www-tmp"><a href="#root-www-tmp" class="headerlink" title="[root@www tmp]#"></a><code>[root@www tmp]#</code></h3><p>输入命令为#是root,输入命令$其他</p>
+<h3 id="Filesystem-Hierarchy-Standard-FHS-标准"><a href="#Filesystem-Hierarchy-Standard-FHS-标准" class="headerlink" title="Filesystem Hierarchy Standard(FHS)标准"></a>Filesystem Hierarchy Standard(FHS)标准</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>可分享的(shareable)</th>
+<th>不可分享的(unshareable)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不变的(static)</td>
+<td>/usr  (软件放置处)</td>
+<td>/etc  (配置文件)</td>
+</tr>
+<tr>
+<td></td>
+<td>/opt  (第三方协力软件)</td>
+<td>/boot  (开机与核心档)</td>
+</tr>
+<tr>
+<td>可变动的(variable)</td>
+<td>/var/mail  (使用者邮件信箱)</td>
+<td>/var/run  (程序相关)</td>
+</tr>
+<tr>
+<td></td>
+<td>/var/spool/news  (新闻组)</td>
+<td>/var/lock  (程序相关)</td>
+</tr>
+</tbody>
+</table>
+<p>FHS针对目录树架构仅定义出三层目录底下应该放置什么数据而已,分别是底下这三个目录的定义:<br><code>/</code>(root, 根目录):与开机系统有关;<br><code>/usr</code>(unix software resource):与软件安装/执行有关;<br><code>/var</code>(variable):与系统运作过程有关.  </p>
+<p><strong><code>/</code></strong> 目录下<br><code>/bin</code> 可执行文件目录,单人维护使用<br><code>/boot</code> 开机文件目录<br><code>/dev</code> 设备device<br><code>/etc</code> 配置(et cetra 法语 相当于英语and so on 等等) 其中比较重要/etc/inittab,/etc/init.d,/etc/modprobe.conf,/etc/X11/,/etc/fstab,/etc/sysconfig/<br><code>/home</code> 家目录home directory<br><code>/lib</code> 系统函数库<br><code>/media</code> 可移除设备 /media/floppy, /media/cdrom<br><code>/mnt</code> 暂时挂载<br><code>/opt</code>  第三方协力软件放置的目录<br><code>/root</code> root家目录<br><code>/sbin</code> root命令,开机使用 其他放置在/usr/sbin/(服务器应用)和 /usr/local/sbin/(本机自行安装软件产生目录)中<br><code>/srv</code> 服务器启动后的数据目录如/srv/www<br><code>/tmp</code> 使用者或者程序临时纺织文件的地方  </p>
+<p><strong><code>其他</code></strong><br><code>/lost+found</code> ext2/3/4 会产生的目录,系统错误时一些遗失的片段放在此<br><code>/proc</code> 虚拟文件系统,放置在内存中 不占硬盘容量 如系统核心、行程信息(process)、周边装置的状态及网络状态<br><code>/sys</code> 虚拟的文件系统 记录与核心相关的信息  </p>
+<p>不可与根目录分开<code>/etc</code> <code>/bin</code> <code>/dev</code> <code>/lib</code> <code>/sbin</code>  </p>
+<p><strong><code>/usr</code></strong> 目录下(unix software resource)Unix操作系统软件资源 类似于’C:\Windows\ + C:\Program files\’<br><code>/usr/X11R6</code> x window system重要数据11版第6次<br><code>/usr/bin/</code> 绝大部分用户指令<br><code>/usr/include</code> c/c++等语言的include文件<br><code>/usr/lib</code> 函数库<br><code>/usr/local</code> 本机自行安装的软件建议放置此目录<br><code>/usr/sbin</code> 非系统正常运作所需要的指令<br><code>/usr/share</code> 共享文件的地方<br><code>/usr/src</code> 源码放置的目录  </p>
+<p><strong><code>/var</code></strong> 目录含义variable 可变动 主要是常态性变动的文件 如缓存 登录档 软件产生的文件<br><code>/var/cache</code> 暂存档<br><code>/var/lib</code> 程序执行过程中使用的数据文件 如/var/lib/mysql/<br><code>/var/lock</code> 锁定的文件<br><code>/var/log</code> 登录文件放置的目录<br><code>/var/mail</code> 电子邮件<br><code>/var/run/</code> 存放pid<br><code>/var/spool</code> 队列数据  </p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><code>.</code> 代表此层目录<br><code>..</code> 代表上一层目录<br><code>-</code> 代表前一个工作目录<br><code>~</code> 代表『目前使用者身份』所在的家目录<br><code>~account</code> 代表 account 这个使用者的家目录(account是个帐号名称)  </p>
+<p><code>cd</code> 变换目录 change directory<br><code>pwd</code> 显示当前目录 print working directory pwd -P 显示真实路径 非链接<br><code>mkdir</code> 创建新目录 -p自动建父目录 -m指定权限<br><code>rmdir</code> 删除空目录 -p上一级空目录也删<br>为了安全不建议将.即当前目录加入PATH  </p>
+<h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><p><code>ls [-aAdfFhilnrRSt] 目录名称</code> 文件与目录检视<br><code>cp [-adfilprsu] 来源档(source) 目标档(destination)</code> 复制 cp -l 硬连接 -s 软连接 i-node<br><code>rm [-fir] 文件或目录</code> 删除目录<br><code>mv [-fiu] source destination</code><br><code>basename /a/b/c/123</code> 查看路径文件名,返回123<br><code>dirname /a/b/c/123</code> 查看路径目录,返回/a/b/c  </p>
+<h3 id="文件内容查阅"><a href="#文件内容查阅" class="headerlink" title="文件内容查阅"></a>文件内容查阅</h3><p><code>cat</code>  由第一行开始显示文件内容  cat -n 行号  -b 不显示空白行<br><code>tac</code>  从最后一行开始显示,可以看出 tac 是 cat 的倒著写!<br><code>nl</code>   显示的时候,顺道输出行号! 更多行号设置更能<br><code>more</code> 一页一页的显示文件内容<br><code>less</code> 与 more 类似,但是比 more 更好的是,他可以往前翻页!<br><code>head</code> 只看头几行<br><code>tail</code> 只看尾巴几行<br><code>od</code>   以二进位的方式读取文件内容! od -t xCc filename ASCII 与字节的对照表  </p>
+<p><code>touch [-acdmt] 文件 修改文档时间</code> -a 仅accesstime -c仅修改时间不创建 -d 修改为其他时间 -m mtime -t 修改时间[YYMMDDhhmm]<br>modification time(mtime):内容更改时间<br>status time(ctime):状态(属性权限)更改时间<br>access time(atime):内容获取时间  </p>
+<p><code>umask</code> 文件默认权限 文档默认666 文件夹默认777 减去umask值为默认权限 umask 002 修改默认权限  在/etc/bashrc中设置默认值  </p>
+<h3 id="隐藏属性"><a href="#隐藏属性" class="headerlink" title="隐藏属性"></a>隐藏属性</h3><p><code>chattr</code> 修改文件的隐藏属性 +i不能删除改名修改 +a只能增加不能删除修改<br><code>lsattr</code> 显示文件的隐藏属性  </p>
+<h3 id="特殊权限"><a href="#特殊权限" class="headerlink" title="特殊权限"></a>特殊权限</h3><p><code>SUID</code>, <code>SGID</code>, <code>SBIT</code><br>SUID Set UID 运行期间取得拥有者权限<br>SUID 仅可用在binary program 上, 不能够用在 shell script 上面!和目录上<br>SBIT Sticky Bit 尽可用于目录,创建者和root用户可对目录内文件有删除更名移动的权限<br>SUID 4/ SGID 2/ SBIT 1   chmod 4775 filename<br>大写ST表示没有此权限,因为拥有者用户没有此权限  </p>
+<p><code>file filename</code> 观察文件类型  </p>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p><code>which [-a] command</code> 命令路径在PATH中找<br><code>type command</code> 命令类型<br><code>whereis [-bmsu] 文件或目录名</code> -b binary类型-m manual路径下文件 -s source 来源文件 -u不在以上找<br><code>find [PATH] [option] [action]</code> 搜寻硬盘<br>时间相关find /tmm -mtime +4/-4/4 含义 +4 大于5天,-4小于四天,4 4-5天 -newer filename  比filename新的文件<br>用户相关find /home -user lau 找出lau的文件 参数有-uid -gid -user -group  -nouser -nogroup<br>文件权限与名称相关 -name -size -type [f,b,c,d,l,s,p] -perm mode/+mode/-mode<br>额外功能 find / -perm +7000 -exec ls -l {} \; 执行额外的命令 -print 打印到萤幕上默认 -a 合并 -o 或者<br><code>locate [-ir] keyword</code> 查找 -i 忽略大小写 -r 正则写法 从数据库中查找 updatedb 更新数据库  </p>
+<h2 id="硬盘与文件系统"><a href="#硬盘与文件系统" class="headerlink" title="硬盘与文件系统"></a>硬盘与文件系统</h2><p><code>dumpe2fs 装置名称</code> 列出文件系统信息 -h 仅superblock数据 -b 仅坏道<br><code>du [-ahskm] 文件或目录名称</code> 所有的文件数据容量  -S 减少目录汇总<br><code>df [-ahikHTm] [目录或文件名]</code> 目前挂载的装置 常用-h -a -i  </p>
+<p><code>superblock</code>:记录此 filesystem 的整体信息,包括inode/block的总量、使用量、剩余量, 以及文件系统的格式与相关信息等;<br><code>inode</code>:记录文件的属性,一个文件占用一个inode,同时记录此文件的数据所在的 block 号码; CentOS5 128Bytes  CentOS6默认256Byte<br><code>block</code>:实际记录文件的内容,若文件太大时,会占用多个 block . 1k 2k 4k  </p>
+<p><code>索引式文件系统(indexed allocation)</code>.  </p>
+<p>目录的inode存属性,block存文件名和对应的inode,ls -li 可查看文件名inode号码,目录至少占用一个block不够了再加<br>文件的inode存属性,block存内容  </p>
+<p><strong>读取文件步骤</strong><br>/etc/passwd 读取步骤 先找/的inode 通过挂载点信息找,同时读权限; 然后找/的block找出etc/的inode号码;etc/的block找到passwd的inode;passwd的inode相关权限和block位置;passwd的block读取内容  </p>
+<p><strong>写入文件步骤</strong><br>先确定是否在新增目录有wx权限;根据inode bitmap查找空inode,写权限;根据block bitmap找空block,数据写入block,升级inode的block;将inode和block的数据同步到inode bitmap和block bitmap,并更新superblock  </p>
+<p><strong>不一致状态</strong><br>写入过程中断电等情况,使用e2fsck程序检查,同时ext3以后增加日志系统,避免全盘扫描  </p>
+<p><strong>挂载后才可使用</strong><br>linux通过VFS(Virtual Filesystem Switch)管理文件系统  </p>
+<h3 id="硬连接与软连接"><a href="#硬连接与软连接" class="headerlink" title="硬连接与软连接"></a>硬连接与软连接</h3><p>在inode级别连接是硬链接可以通过ls -li查看<br>软连接是通过存路径的方式  </p>
+<h3 id="硬盘分区相关命令"><a href="#硬盘分区相关命令" class="headerlink" title="硬盘分区相关命令"></a>硬盘分区相关命令</h3><p><code>fdisk 装置名称</code> 进行分区 其中m列出命令 p打印更改后的分割表 n增加分区 d删除 w写入 q不保存退出 fdisk无法处理2T以上的数据,可以使用parted命令<br><code>mkfs [-t 文件系统格式] 装置文件名</code> 磁盘格式化命令<br><code>mke2fs [-b block大小] [-i block大小] [-L 标头] [-cj] 装置</code> 详细配置格式化信息  </p>
+<h3 id="磁盘检验"><a href="#磁盘检验" class="headerlink" title="磁盘检验"></a>磁盘检验</h3><p><code>fsck [-t 文件系统] [-ACay] 装置名称</code> 检查文件系统是否出错 filesystem check<br><code>badblocks -[svw] 装置名称</code> 检查坏道  </p>
+<h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><p><code>mount -a</code> 依照配置文件 /etc/fstab 的数据将所有未挂载的磁盘都挂载上来<br><code>mount -l</code> 显示Label 名称<br><code>mount [-t 文件系统] [-L Label名] [-o 额外选项] [-n]  装置文件名  挂载点</code><br><code>mount -o remount,rw,auto /</code> 重新挂载根目录<br><code>umount [-fn] 装置文件名或挂载点</code> 卸载  </p>
+<p><code>e2label 装置名称  新的Label名称 修改label名</code><br><code>tune2fs [-jlL] 装置代号</code> 修改设备信息 -l类似 dumpe2fs -h 的功能 -j带日志 -L修改label  </p>
+<p><code>/etc/fstab</code> 启动时的挂载信息 Device/Mount point/filesystem/parameters/dump/fsck<br><code>/etc/mtab</code> 实际挂载情况  </p>
+<h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><p><code>compress</code> 非常老的压缩程序  默认档名*.Z<br><code>compress [-rcv] 文件或目录</code>  &lt;==这里是压缩  -r连同目录压缩  -c压缩输出到荧幕 -v显示变化  压缩时会删除源文件  compress -c man.config &gt; man.config.back.Z 此种方式可保留源文件<br><code>uncompress 文件.Z</code>           &lt;==这里是解压缩  </p>
+<p><code>gzip</code>压缩  使用广泛  默认档名*.gz<br><code>gzip [-cdtv#] 档名</code>  -c输出银幕,配合重定向  -d解压缩 -t检查一致性  -v输入过程  -#等级 -1最快压缩比差 -9最高<br><code>zcat 档名.gz</code>  查看文件列表  zcat类似cat不过只能看文件列表  </p>
+<p><code>bzip2</code> 压缩比高  默认档名*.bz2<br><code>bzip2 [-cdkzv#] 档名</code>  -k保留源文件 -z压缩  bupzip2 等于 bzip2 -d 解压缩<br><code>bzcat 档名.bz2</code>  </p>
+<p><code>tar</code> 打包命令 可以把一堆文件打包成一个  默认档名<em>.tar 压缩后</em>.tar.gz *.tar.bz2<br><code>tar [-j|-z] [cv] [-f 创建的档名] filename...</code> &lt;==打包与压缩<br><code>tar [-j|-z] [tv] [-f 创建的档名]</code>             &lt;==察看档名<br><code>tar [-j|-z] [xv] [-f 创建的档名] [-C 目录]</code>   &lt;==解压缩<br>tar 参数 -c创建打包文件create -t查看文件list -x解压缩解打包extract -j压缩bzip2 -z压缩gzip -v显示过程 -f filename 紧跟要处理的档名 -C directory紧跟目录 -p保留权限属性 -P保留绝对路径 默认相对路径 最好不要用-P –exclude=FILE 不打包文件<br>例子</p>
+<blockquote>
+<p>压　缩:tar -jcv -f filename.tar.bz2 要被压缩的文件或目录名称<br>查　询:tar -jtv -f filename.tar.bz2<br>解压缩:tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录<br>单一文件  tar -jxv -f 打包档.tar.bz2 待解开档名<br>tarfile  tar包未压缩<br>tarball  tar包压缩  </p>
+</blockquote>
+<h3 id="dump完整备份"><a href="#dump完整备份" class="headerlink" title="dump完整备份"></a>dump完整备份</h3><p><code>dump [-Suvj] [-level] [-f 备份档] 待备份数据</code> 参数-S需要多少空间 -u记录到/etc/dumpupdates中 -v 显示过程 -j 加入bzip2支持 -level等级 -f 文件名<br><code>dump -W</code> 列出/etc/fstab中的是否有备份  </p>
+<h3 id="restore-还原备份"><a href="#restore-还原备份" class="headerlink" title="restore 还原备份"></a>restore 还原备份</h3><p><code>restore -t [-f dumpfile] [-h]</code>        &lt;==用来察看 dump 档<br><code>restore -C [-f dumpfile] [-D 挂载点]</code> &lt;==比较dump与实际文件<br><code>restore -i [-f dumpfile]</code>             &lt;==进入互动模式<br><code>restore -r [-f dumpfile]</code>             &lt;==还原整个文件系统<br>参数 -t 查看dump数据 -C比较 -i互动模式 -r还原 -h显示inode与label -f要处理的文件 -D挂载点与-C联用  </p>
+<p><code>mkisofs</code>:创建映像档<br><code>cdrecord</code>:光盘烧录工具  </p>
+<p><code>dd</code> 备份整颗 partition 或 整颗 disk  tar备份数据<br><code>dd if=&quot;input_file&quot; of=&quot;output_file&quot; bs=&quot;block_size&quot; count=&quot;number&quot;</code><br>例子</p>
+<blockquote>
+<p>将 /etc/passwd 备份到 /tmp/passwd.back 当中<br>dd if=/etc/passwd of=/tmp/passwd.back<br>将自己的磁碟之第一个磁区备份下来<br>dd if=/dev/hdc of=/tmp/mbr.back bs=512 count=1  </p>
+</blockquote>
+<p><code>cpio</code> 为相当优秀的备份命令</p>
+<h2 id="vim编辑器"><a href="#vim编辑器" class="headerlink" title="vim编辑器"></a>vim编辑器</h2><p><strong><code>三种模式</code></strong> 一般模式,编辑模式,指令行模式(:/?)  </p>
+<p><code>一般模式</code>:移动删除复制粘贴<br><code>编辑模式</code>:输入替换文字<br><code>指令行模式</code>:读取存储搜索等  </p>
+<p>一般模式–&gt;编辑模式i/o/a/R 返回esc<br>一般模式–&gt;指令行模式:/? 返回esc<br>编辑模式与指令行模式不可切换  </p>
+<h3 id="指令图片"><a href="#指令图片" class="headerlink" title="指令图片"></a>指令图片</h3><p>以命令为导向<br><img src="image/vim-commands.jpg" alt="指令1"></p>
+<p>以键盘为导向<br><img src="image/vi-vim-cheat-sheet-sch.gif" alt="指令2"></p>
+<h3 id="特殊"><a href="#特殊" class="headerlink" title="特殊"></a>特殊</h3><p><code>替换</code> :n1,n2s/old/new/g 其中n2可以是$表示最后<br><code>区块选择</code> v字符选择 V行选择 ctrl+v区块选择 y复制 d删除<br><code>多档案</code> :n 下一个档案 :N上一个档案 :files所有的档案<br><code>多窗口</code> :sp 分成两个 :sp filename 分两个 ctrl+w +j/↓ 下一个窗口 ctrl+w +k/↑上一个窗口 ctrl+w +q离开<br><code>vim环境设定与记录</code> ~/.vimrc  ~/.viminfo<br>例子</p>
+<blockquote>
+<p>vim ~/.vimrc<br>“这个档案的双引号(“) 是批注<br>set hlsearch            “高亮度反白<br>set backspace=2         “可随时用退格键删除<br>set autoindent          “自动缩排<br>set ruler               “可显示最后一行的状态<br>set showmode            “左下角那一行的状态<br>set nu                  “可以在每一行的最前面显示行号啦!<br>set bg=dark             “显示不同的底色色调<br>syntax on               “进行语法检验,颜色显示.  </p>
+</blockquote>
+<p><code>换行符</code><br>linux/unix \n LF  $<br>windows \r\n CRLF  ^M$<br>Carriage-Return Line-Feed \r=return \n=newline  </p>
+<p><code>dos2unix [-kn] file [newfile]</code>  -k保留mtime -n 保留旧文档 dos2unix -n old new<br><code>unix2dos [-kn] file [newfile]</code><br><code>iconv  --list</code><br><code>iconv -f 原本编码 -t 新编码 filename [-o newfile]</code>  </p>
+<p><code>vim中使用tr</code>替换 %s/.*/\=tr(submatch(0), ‘ABCD’, ‘PQRS’) 将A换成P B换成Q C换成R D换成S</p>
+<h2 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h2><p>shell 是壳程序,用来操作内核,从而控制硬件<br><code>shell好处</code>:文件接口大家都一样,远程管理文字接口快,配合shell scripts,好用<br><code>shell版本众多</code>,linux支持的shell可以在/etc/shells中查看,最常用的是bash<br>passwd文件中账户最后一个字段就是登录之后默认的shell类型  </p>
+<h3 id="bash优点"><a href="#bash优点" class="headerlink" title="bash优点"></a>bash优点</h3><p>记忆功能↑↓键可找命令,tab补全命令 补全文件名,配置别名alias,前后台控制,程序化脚本,通配符  </p>
+<h3 id="内建命令"><a href="#内建命令" class="headerlink" title="内建命令"></a>内建命令</h3><p>type  查看命令类型  type [-tpa] name 参数 -t简短类型(file alias builtin) -p外部命令显示 -a所有(包括PATH和alias) 类似于which<br>\ 转移字符 下达命令长的时候可使用  </p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>MAIL HOME PATH 等方便操作与编程<br><code>读取变量</code> echo $MAIL/${MAIL}  {}的作用主要是界定<br><code>赋值</code> myname=lautumn 前后不要加空格,开头不能是数字,有空格可用””或’’或转义,单引号变量原样输出,双引号可加变量,\为转义符号,『`命令`』或 『$(命令)』可用来获取命令结果,”$变量” 或 ${变量} 再赋值可拼接,<code>export</code> 变量 可转为环境变量,一般为大写字母,<code>unset</code>取消配置<br>例子</p>
+<blockquote>
+<p>经常去此目录,可设为变量<br>work=”/cluster/server/work/taiwan_2005/003/“<br>cd $work  </p>
+</blockquote>
+<p><strong><code>查询变量</code></strong><br><code>env</code> 查询环境变量  HOME SHELL HISTSIZE MAIL PATH LANG<br><code>set</code> 所有变量(包括自定义)  PS1  提示字符的配置 ,$ 本shell的PID,?上一个命令的回传值,成功0,OSTYPE, HOSTTYPE, MACHTYPE:(主机硬件与核心的等级)<br><code>export</code> 自定义变量转成环境变量  可被子程序使用<br><code>locale</code>  语系变量  locale -a 查询所有 locale 显示当前  修改默认语系/etc/sysconfig/i18n  </p>
+<p><code>read</code> 让用户输入变量的值  <code>read [-pt] variable</code>  参数-p 提示字符 -t等待秒数<br><code>declare [-aixr] variable</code>  宣告变量的类型,和typeset一样  参数-a数组,-i整型,-x设成环境变量,-r设成只读不能unset和更改  例子 declare -i sum=100+300+500 这样才会计算  </p>
+<p><code>声明数组</code>  循环取值中有意义<br>var[1]=’samll man’<br>var[2]=’big man’<br>var[3]=’nice man’<br>echo “${var[1]}, ${var[2]}, ${var[3]}”</p>
+<p><code>ulimit</code>设置文件系统大小<br>ulimit [-SHacdfltu] [配额]  参数-H严格设置 -S警告设置 -a列出所有限制 -c出错将内存写入文件 -f最大文件容量 -d最大断裂内存 -l锁定内存量 -t最大cpu秒数 -u最大程序数  </p>
+<h3 id="变量内容修改"><a href="#变量内容修改" class="headerlink" title="变量内容修改"></a>变量内容修改</h3><p>${var#word}     左到右最短删除<br>${var##word}    左到右最长删除<br>${var%word}     右到左最短删除<br>${var%%word}    右到左最长删除<br>${var/old/new}  第一个被取代<br>${var//old/new} 所有的被取代</p>
+<h3 id="判断是否当前有值-然后赋值"><a href="#判断是否当前有值-然后赋值" class="headerlink" title="判断是否当前有值,然后赋值"></a>判断是否当前有值,然后赋值</h3><p>var=${str-expr} 无配置var=expr 有配置 var=$str<br>var=${str+expr} 无配置var=$str(空) 有配置 var=expr<br>var=${str=expr} 无配置str=var=expr 有配置 var=$str<br>var=${str?expr} 无配置expr输出stderr,可用作提示 有配置 var=$str<br>如果var=${str:-expr} 则判断配置是否为空,如果为空则相当于无配置  </p>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>alias lm=’ls -al | more’<br>alias 显示所有别名<br>unalias lm  </p>
+<h3 id="历史命令-history"><a href="#历史命令-history" class="headerlink" title="历史命令 history"></a>历史命令 history</h3><p><code>history [n]</code> 最近几行<br><code>history [-c]</code> 清除当前shell命令<br><code>history [-raw] histfiles</code> 参数 -r读取histfiles 默认~/.bash_history -a新增的写入histfiles -w写入histfiles中<br>history 结合! 命令<br><code>!66</code> 运行第66条命令<br><code>!!</code> 运行上一条命令<br><code>!al</code> 运行最近以al开头的命令  </p>
+<h3 id="命令搜索顺序"><a href="#命令搜索顺序" class="headerlink" title="命令搜索顺序"></a>命令搜索顺序</h3><ol>
+<li>绝对相对路径运行</li>
+<li>alias命令</li>
+<li>bash内建命令</li>
+<li>PATH命令  </li>
+</ol>
+<h3 id="进站信息"><a href="#进站信息" class="headerlink" title="进站信息"></a>进站信息</h3><p><code>/etc/issue</code> 登录之前提示  可在man mingetty中查看转义字符的意义<br><code>/etc/issue.net</code> 远程登录提示 在/etc/ssh/sshd_config中修改Banner为Banner /etc/issue.net<br><code>/etc/motd</code> 登录之后提示  message of today  </p>
+<h3 id="环境配置文件"><a href="#环境配置文件" class="headerlink" title="环境配置文件"></a>环境配置文件</h3><p><code>login shell</code>  先读取/etc/profile,然后读取~/.bash_profile 或 ~/.bash_login 或 ~/.profile个人配置  其中profile会配置PATH MAIL USER HOSTNAME HISTSIZE 还会读取/etc/inputrc /etc/profile.d/*.sh /etc/sysconfig/i18n的内容; ~/.bash_profile  会读取~/.bashrc,而 ~/.bashrc读取/etc/bashrc  </p>
+<p>source 配置文件名 source ~/.bashrc  .  ~/.bashrc命令相同  </p>
+<p><code>non-login shell</code> 只会读取~/.bashrc,由.bashrc读取/etc/bashrc centos特有  </p>
+<h3 id="其他配置文件"><a href="#其他配置文件" class="headerlink" title="其他配置文件"></a>其他配置文件</h3><p><code>/etc/man.config</code> 主要的是MANPATH这个变量<br><code>~/.bash_history</code> 记录历史数据<br><code>~/.bash_logout</code> 注销后系统执行  </p>
+<p><code>stty -a</code>终端机所有配置  stty erase ^h 删除键改为ctrl+h<br><code>set</code> 配置终端环境  <code>set [-uvCHhmBx]</code> 默认himBH  参数-u显示错误信息 -v显示原始内容 -x显示命令内容 -h记录命令 -H交互时显示历史命令 -m工作管理 -B[]作用 -C &gt;若存在不覆盖 -i交互 echo $- 查看当前模式  </p>
+<p><code>/etc/inputrc</code> 配置的是热键</p>
+<h3 id="shell常用快捷键"><a href="#shell常用快捷键" class="headerlink" title="shell常用快捷键"></a>shell常用快捷键</h3><p><code>ctrl+w</code> 删除一个单词<br><code>ctrl+u</code> 删除当前所有<br><code>ctrl+k</code> 删除之后所有<br><code>ctrl+a</code> 移动到开头<br><code>ctrl+e</code> 移动到结尾<br><code>ctrl+左</code> 移动到前一个单词<br><code>ctrl+右</code> 移动到后一个单词<br><code>ctrl+r</code> 查找命令,反向查找  怕过的话可进行修改正向查找  “\C-f”: forward-search-history 加入/etc/inputrc末尾重启或打开新shell即可<br><code>ctrl+s</code> 暂停输出<br><code>ctrl+q</code> 恢复输出<br><code>ctrl+z</code> 暂停目前命令<br><code>ctrl+c</code> 中止命令<br><code>ctrl+d</code> 输入结束符  </p>
+<p>快速删除密码 <code>ctrl+u</code> 或者 <code>esc+backspace</code>  </p>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>*任意多 ?一个 [a-d]a-d中的一个 [^ac]非ac</p>
+<p><strong><code>特殊符号</code></strong><br><code>#</code>注释 <code>\</code>转义 <code>|</code>管道 <code>;</code>命令分隔 <code>~</code>家目录 <code>$</code>取值 <code>&amp;</code>背景工作 <code>!</code>逻辑非 <code>/</code>目录分隔符 <code>&gt;</code> <code>&gt;&gt;</code>输出导向 <code>&lt;</code> <code>&lt;&lt;</code>输入导向 <code>&#39;&#39;</code>不置换变量 <code>&quot;&quot;</code>置换变量 <code>`</code> <code>取命令值或</code>$()<code></code>()<code>子shell开始结束</code>{}`命令区块组合  </p>
+<p><code>导向</code><br>标准输入　　(stdin) :代码为 0 ,使用 &lt; 或 &lt;&lt; ;<br>标准输出　　(stdout):代码为 1 ,使用 &gt; 或 &gt;&gt; ;<br>标准错误输出(stderr):代码为 2 ,使用 2&gt; 或 2&gt;&gt; ;  </p>
+<p><code>/dev/null</code> 垃圾桶<br>find /home -name .bashrc &gt; list 2&gt;&amp;1<br>find /home -name .bashrc &amp;&gt; list<br>find /home -name .bashrc &gt; list 2&gt; list  &lt;==错误 这样会错乱</p>
+<p>cat &gt; catfile &lt; ~/.bashrc 将.bashrc内容复制到catfile中<br>cat &gt; catfile &lt;&lt; “eof”  定义结束符为eof  </p>
+<p><code>&amp;&amp;</code> 命令短路与 <code>c1&amp;&amp;c2</code> c1正确执行c2 c1错误不执行<br><code>||</code> 命令短路或 <code>c1||c2</code> 相反<br><code>c1&amp;&amp;c2||c3</code> 一般c2 c3肯定能执行,c1正确c2执行,c3不执行  c1错误c3执行<br><code>c1||c2&amp;&amp;c3</code> c1错误c2执行,c3执行  </p>
+<p><code>管道命令</code><br>ls -al /etc | less  </p>
+<p><code>cut</code>  分隔<br>cut -d’分隔字符’ -f fields<br>cut -c 字符区间  </p>
+<p><code>grep</code>  过滤<br>grep [-acinv] [–color=auto] ‘搜寻字符串’ filename 参数 -a binary以text方式搜索 -c计算次数 -i忽略大小写 -n行号 -v取非 –color=auto 显示颜色  </p>
+<p><code>sort</code> <code>wc</code> <code>uniq</code>排序命令<br>sort [-fbMnrtuk] [file or stdin] 参数 -f忽略大小写 -b忽略最前面空格 -M以月份排序 -n数字排序(默认文本) -r倒序 -u过滤相同 -t分隔符 -k指定区间<br>cat /etc/passwd | sort -t ‘:’ -k 3<br>last | cut -d ‘ ‘ -f1 | sort  </p>
+<p>uniq [-ic] 去重 -i忽略大小写 -c计数<br>wc [-lwm] 统计 -l仅行 -w仅单词 -m字符数  </p>
+<p><code>tee</code> 双向重定向 -a累加<br>last | tee last.list | cut -d “ “ -f1 一份显示过滤一份记录到last.list  </p>
+<p><code>tr</code> <code>col</code> <code>join</code> <code>paste</code> <code>expand</code>字符转换</p>
+<p><code>tr [-ds] SET1 ...</code> 替换或删除文字 -d删除 -s替换<br>last | tr ‘[a-z]’ ‘[A-Z]’<br>cat /etc/passwd | tr -d ‘:’  </p>
+<p><code>col [-xb]</code> 参数-x tab转空格,-b去除转义字符  cat -A会显示转义字符<br>man col | col -b &gt; /root/col.man  </p>
+<p><code>join [-ti12] file1 file2</code> 合并内容 -t分隔符 -i忽略大小写 -1 第一个文件字段 -2 第二个文件字段  join之前要先排序,否则会丢失内容<br>join -t ‘:’ -1 4 /etc/passwd -2 3 /etc/group  </p>
+<p><code>paste [-d] file1 file2 ...</code> 将相同行贴在一起<br><code>expand [-t] file</code> 将tab转空格 参数一个tab多少个空格 grep ‘^MANPATH’ /etc/man.config | head -n 3 | expand -t 6 - | cat -A  </p>
+<p><code>split</code> 分割文件<br><code>split [-bl] file PREFIX</code>  参数-b大小 后加单位b k m等 -l行数为单位<br>cd /tmp; split -b 300k /etc/termcap termcap<br><code>xargs</code> 参数转换<br><code>xargs [-0epn] command</code> 参数 -0 还原特殊字符 -e到哪儿截止 -p询问 -n每次参数个数<br>cut -d’:’ -f1 /etc/passwd | xargs -p -n 5 finger<br>cut -d’:’ -f1 /etc/passwd | xargs -p -e’lp’ finger<br>find /sbin -perm +7000 | xargs ls -l  </p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>通配符和正则表达式不同 bash中是通配符 区别 如*在bash中表示任意多字符,正则中表示前一字符任意次<br>支持正则的工具有vi grep awk sed等<br>cp ls中仅支持通配符而已</p>
+<h3 id="grep过滤字符串-以行为单位"><a href="#grep过滤字符串-以行为单位" class="headerlink" title="grep过滤字符串 以行为单位"></a>grep过滤字符串 以行为单位</h3><p>grep [-A] [-B] [–color=auto] ‘搜寻字串’ filename 参数-n显示行数当前行: 前后行- -A后几行-B前几行  –color颜色  -v排除  -i忽略大小写<br>dmesg | grep -n –color=auto ‘eth’<br>正则 [list]表集合 [a-z]表范围 [^z]排除z  ^the the在行首 the$ the在行尾 <code>\.</code>转义字符. ^$表示空白行 .表示任意字符 *重复任意次 <code>\{1,10\}</code>重复次数需加转义  </p>
+<h3 id="sed-比grep增加替换功能-stream-editor"><a href="#sed-比grep增加替换功能-stream-editor" class="headerlink" title="sed 比grep增加替换功能 stream editor"></a>sed 比grep增加替换功能 stream editor</h3><p>sed [-nefr] [动作] 参数 -n静默模式 -e编辑模式(单一动作默认) -f写入文件 -r延伸正则 -i直接改内容 n1,n2 function 在n1到n2内操作 function有 a新增 c取代 d删除 i插入 p打印 s取代 如:1,20s/old/new/g  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> nl /etc/passwd | sed <span class="string">'2,5d'</span> <span class="comment">#删除2,5行  </span></span></span><br><span class="line">nl /etc/passwd | sed '2a drink tea'  #第二行之后添加  </span><br><span class="line">nl /etc/passwd | sed '2i drink tea'  #第二行之前添加  </span><br><span class="line">nl /etc/passwd | sed '2,5c No 2-5 number'  #2-5行替换为No 2-5 number</span><br><span class="line">nl /etc/passwd | sed -n '5,7p' #仅列出5-7行</span><br><span class="line">ifconfig eth0 | grep 'inet addr' | sed 's/^.*addr://g' | sed 's/Bcast.*$//g' #替换为空,即删除</span><br><span class="line">cat /etc/man.config | grep 'MAN'| sed 's/#.*$//g' | sed '/^$/d' #删除空格与注释</span><br><span class="line">cat /etc/man.config | grep 'MAN'| sed -e 's/#.*$//g' -e '/^$/d' #删除空格与注释</span><br><span class="line">sed -i 's/\.$/\!/g' regular_express.txt #直接修改文件</span><br><span class="line">sed -i '$a # This is a test' regular_express.txt #在最后一行加入内容</span><br></pre></td></tr></table></figure>
+<h3 id="egrep-或-grep-E"><a href="#egrep-或-grep-E" class="headerlink" title="egrep 或 grep -E"></a>egrep 或 grep -E</h3><p>延伸正则 +一个以上 ?零个或一个 |两个取一个()分组()+分组至少一个  </p>
+<h3 id="文件格式化与数据处理"><a href="#文件格式化与数据处理" class="headerlink" title="文件格式化与数据处理"></a>文件格式化与数据处理</h3><p><code>printf</code> 格式化打印<br>printf ‘列印格式’ 实际内容 转义字符 \a警告声 \b删除键 \f清除 \n换行 \r回车 \t制表符 \v垂直制表符 \xNN字节转换 如\x41是A %ns字符串 %ni数字 %n.mf小数 其中n是位数大于0右对齐 小于0左对齐 m为小数点位数</p>
+<p><code>awk</code> 数据处理工具<br><code>awk &#39;条件类型1{动作1} 条件类型2{动作2} ...&#39; filename</code><br>NF 总列数 NR第几行 FS分隔符 OFS输出分隔符<br>awk 逻辑运算符 &gt; &lt; &gt;= &lt;= == !=  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">last -n 5 | awk '&#123;print $1 "\t" $3&#125;' #以空格分 打印1和3列</span><br><span class="line">last -n 5| awk '&#123;print $1 "\t lines: " NR "\t columns: " NF&#125;' #查看当前行数与当前行列数</span><br><span class="line">cat /etc/passwd | awk '&#123;FS=":"&#125; $3 &lt; 10 &#123;print $1 "\t " $3&#125;' #第一行不变</span><br><span class="line">cat /etc/passwd | awk 'BEGIN &#123;FS=":"&#125; $3 &lt; 10 &#123;print $1 "\t " $3&#125;' #先执行BEGIN</span><br><span class="line"></span><br><span class="line">cat pay.txt</span><br><span class="line">Name    1st     2nd     3th</span><br><span class="line">VBird   23000   24000   25000</span><br><span class="line">DMTsai  21000   20000   23000</span><br><span class="line">Bird2   43000   42000   41000</span><br><span class="line"></span><br><span class="line">cat pay.txt | awk 'NR==1&#123;printf "%10s %10s %10s %10s %10s\n",$1,$2,$3,$4,"Total" &#125;</span><br><span class="line"><span class="meta">NR&gt;</span><span class="bash">=2&#123;total = <span class="variable">$2</span> + <span class="variable">$3</span> + <span class="variable">$4</span></span></span><br><span class="line">printf "%10s %10d %10d %10d %10.2f\n", $1, $2, $3, $4, total&#125;' #第一行添加Total,其余行计算</span><br><span class="line"></span><br><span class="line">cat pay.txt | awk '&#123;if(NR==1) printf "%10s %10s %10s %10s %10s\n",$1,$2,$3,$4,"Total"&#125;</span><br><span class="line"><span class="meta">NR&gt;</span><span class="bash">=2&#123;total = <span class="variable">$2</span> + <span class="variable">$3</span> + <span class="variable">$4</span></span></span><br><span class="line">printf "%10s %10d %10d %10d %10.2f\n", $1, $2, $3, $4, total&#125;' #功能相同判断在动作内</span><br></pre></td></tr></table></figure>
+<p><code>diff</code>比较文件差异,同一文件新旧版本<br><code>diff [-bBi] from-file to-file</code> 参数 -b忽略空白差异 -B忽略空白行差异 -i忽略大小写  也可比较目录 diff /etc/rc3.d/ /etc/rc5.d/  </p>
+<p><code>cmp file1 file2</code> 可比较二进制文件 以位组为单位 diff以行为单位  </p>
+<p><code>patch</code> 升级还原文件<br><code>patch -pN &lt; patch_file</code>    &lt;==升级 -p为取消几层目录<br><code>patch -R -pN &lt; patch_file</code> &lt;==还原 -R为还原</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">diff -Naur passwd.old passwd.new &gt; passwd.patch #制作patch文件</span><br><span class="line">patch -p0 &lt; passwd.patch #升级</span><br><span class="line">patch -R -p0 &lt; passwd.patch #还原</span><br></pre></td></tr></table></figure>
+<p><code>pr</code>加标题与页面 如 pr /etc/man.config  </p>
+<h2 id="shell-脚本"><a href="#shell-脚本" class="headerlink" title="shell 脚本"></a>shell 脚本</h2><p>shell script 用在系统管理上面是很好的一项工具,但是用在处理大量数值运算上, 就不够好了,因为 Shell scripts 的速度较慢,且使用的 CPU 资源较多,造成主机资源的分配不良  </p>
+<p>shell script 从上到下,从左到右执行;多个空白被忽略;空白行忽略;遇到enter开始执行;<code>\(enter)</code>换行;#注释</p>
+<p><code>下达命令方式</code> 直接下达(绝对、相对、PATH); bash程序运行 <code>sh shell.sh</code> 或 <code>bash shell.sh</code>  </p>
+<h3 id="Hello-World程序"><a href="#Hello-World程序" class="headerlink" title="Hello World程序"></a>Hello World程序</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">       This program shows <span class="string">"Hello World!"</span> <span class="keyword">in</span> your screen.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/23    VBird    First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line">echo -e "Hello World! \a \n"</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+<p>备注:第一行<code>#!/bin/bash</code>声明使用的shell名称;注释相关内容;声明环境变量;主要程序;定义回传值</p>
+<h3 id="务必加注释"><a href="#务必加注释" class="headerlink" title="务必加注释"></a>务必加注释</h3><p>功能;版本;作者;历史记录;版权;特殊命令;环境变量  </p>
+<h3 id="对谈式脚本"><a href="#对谈式脚本" class="headerlink" title="对谈式脚本"></a>对谈式脚本</h3><p>使用read -p ‘prompt’ var</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> User inputs his first name and last name.  Program shows his full name.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/23 VBird First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">read -p "Please input your first name: " firstname  # 提示使用者输入</span><br><span class="line">read -p "Please input your last name:  " lastname   # 提示使用者输入</span><br><span class="line">echo -e "\nYour full name is: $firstname $lastname" # 结果由萤幕输出</span><br></pre></td></tr></table></figure>
+<h3 id="数值加减"><a href="#数值加减" class="headerlink" title="数值加减"></a>数值加减</h3><p>declare -i total=20+50 或者 var=$((运算内容))  </p>
+<h3 id="运行方式差异"><a href="#运行方式差异" class="headerlink" title="运行方式差异"></a>运行方式差异</h3><ul>
+<li>source shell.sh 或者 . shell.sh会把变量内容传回到父shell中</li>
+<li>sh shell.sh 或 -bash shell.sh不会影响父shell变量 export 下传 source 上传  </li>
+</ul>
+<h3 id="test-条件判断"><a href="#test-条件判断" class="headerlink" title="test 条件判断"></a>test 条件判断</h3><p><code>test -e /dmtsai</code> 该命令不会有任何输出,需利用返回值<br><code>test -e /dmtsai &amp;&amp; echo &quot;exist&quot; || echo &quot;Not exist&quot;</code><br><code>类型参数</code> -e存在 -f 文件 -d目录 -b block装置 -c character装置 -S  socket文件 -p pipe文件 -L连接<br><code>权限参数</code> -r可读 -w写 -x执行 -uSUID -gSGID -kStricky_bit -s非空<br><code>比较参数</code> test file1 -nt file2 参数-nt是否新 -ot是否旧 -ef是否为hard link<br><code>整数判断</code> -eq相等 -ne不等 -gt大于 -lt小于 -ge大于等于 -le小于等于<br><code>字符串</code> -z是否为0 -n是否非零 str1=str2相等 str1!=str2不等于<br><code>多重判断</code> -a和and -o或or !取反  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> User input a filename, program will check the flowing:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 1.) exist? 2.) file/directory? 3.) file permissions</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/25 VBird First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 1. 让使用者输入档名,并且判断使用者是否真的有输入字串？</span></span><br><span class="line">echo -e "Please input a filename, I will check the filename's type and \</span><br><span class="line">permission. \n\n"</span><br><span class="line">read -p "Input a filename : " filename</span><br><span class="line">test -z $filename &amp;&amp; echo "You MUST input a filename." &amp;&amp; exit 0</span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 判断文件是否存在？若不存在则显示信息并结束脚本</span></span><br><span class="line">test ! -e $filename &amp;&amp; echo "The filename '$filename' DO NOT exist" &amp;&amp; exit 0</span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 开始判断文件类型与属性</span></span><br><span class="line">test -f $filename &amp;&amp; filetype="regulare file"</span><br><span class="line">test -d $filename &amp;&amp; filetype="directory"</span><br><span class="line">test -r $filename &amp;&amp; perm="readable"</span><br><span class="line">test -w $filename &amp;&amp; perm="$perm writable"</span><br><span class="line">test -x $filename &amp;&amp; perm="$perm executable"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 4. 开始输出资讯!</span></span><br><span class="line">echo "The filename: $filename is a $filetype"</span><br><span class="line">echo "And the permissions are : $perm"</span><br></pre></td></tr></table></figure>
+<h3 id="判断符号-常常用在if判断中"><a href="#判断符号-常常用在if判断中" class="headerlink" title="判断符号[] 常常用在if判断中"></a>判断符号[] 常常用在if判断中</h3><p>参数和test一样 [ -z “$HOME” ] ; echo $? 注意[ ]中前后要有空格 参数和判断符号之间也要有  -a -o连接两个表达式  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name="VBird Tsai"</span><br><span class="line">[ $name == "VBird" ] #用法错误,因为判断式会变成[ VBird Tsai == "VBird" ] 变成三个数据了</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">  This program shows the user<span class="string">'s choice</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/25 VBird First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">read -p "Please input(Y/N): " yn</span><br><span class="line">[ "$yn" == "Y" -o "$yn" == "y" ] &amp;&amp; echo "OK, continue" &amp;&amp; exit 0</span><br><span class="line">[ "$yn" == "N" -o "$yn" == "n" ] &amp;&amp; echo "Oh, interrupt!" &amp;&amp; exit 0</span><br><span class="line">echo "I don't know what your choice is" &amp;&amp; exit 0</span><br></pre></td></tr></table></figure>
+<p>shell中的形参 $0命令 $1 第一个参数 $2 第二个参数 …<br>$# 参数格式 $@ <code>&quot;$1&quot; &quot;$2&quot; &quot;$3&quot; &quot;$4&quot;</code> $* <code>&quot;$1 $2 $3 $4&quot;</code> 一般使用$@ shift n左侧移除n个变量,默认1  </p>
+<h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if [ 条件判断式一 ]; then</span><br><span class="line"> 当条件判断式一成立时,可以进行的命令工作内容；</span><br><span class="line">elif [ 条件判断式二 ]; then</span><br><span class="line"> 当条件判断式二成立时,可以进行的命令工作内容；</span><br><span class="line">else</span><br><span class="line"> 当条件判断式一与二均不成立时,可以进行的命令工作内容；</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">       This program shows the user<span class="string">'s choice</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/25    VBird   First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">read -p "Please input(Y/N): " yn</span><br><span class="line"></span><br><span class="line">if [ "$yn" == "Y" ] || [ "$yn" == "y" ]; then</span><br><span class="line"> echo "OK, continue"</span><br><span class="line">elif [ "$yn" == "N" -o "$yn" == "n" ]; then</span><br><span class="line"> echo "Oh, interrupt!"</span><br><span class="line">else</span><br><span class="line"> echo "I don't know what your choice is"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h3><p>很多系统服务都这样写,后接参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">case  $变量名称 in   &lt;==关键字为 case ,还有变量前有钱字号</span><br><span class="line">  "第一个变量内容")   &lt;==每个变量内容建议用双引号括起来,关键字则为小括号 )</span><br><span class="line">    程序段</span><br><span class="line">    ;;            &lt;==每个类别结尾使用两个连续的分号来处理!</span><br><span class="line">  "第二个变量内容")</span><br><span class="line">    程序段</span><br><span class="line">    ;;</span><br><span class="line">  *)                  &lt;==最后一个变量内容都会用 * 来代表所有其他值</span><br><span class="line">    不包含第一个变量内容与第二个变量内容的其他程序运行段</span><br><span class="line">    exit 1</span><br><span class="line">    ;;</span><br><span class="line">esac                  &lt;==最终的 case 结尾!『反过来写』思考一下!</span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     Show <span class="string">"Hello"</span> from <span class="variable">$1</span>.... by using <span class="keyword">case</span> .... <span class="keyword">esac</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/29    VBird    First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">case $1 in</span><br><span class="line">  "hello")</span><br><span class="line">    echo "Hello, how are you ?"</span><br><span class="line">    ;;</span><br><span class="line">  "")</span><br><span class="line">    echo "You MUST input parameters, ex&gt; &#123;$0 someword&#125;"</span><br><span class="line">    ;;</span><br><span class="line">  *)   # 其实就相当於万用字节,0~无穷多个任意字节之意!</span><br><span class="line">    echo "Usage $0 &#123;hello&#125;"</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<h3 id="function函数"><a href="#function函数" class="headerlink" title="function函数"></a>function函数</h3><p>变量与shell类似 函数名$0 变量$1 $2 …</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function fname() &#123; #function可不写</span><br><span class="line">    程序段</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">    Use <span class="keyword">function</span> to repeat information.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/29    VBird    First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">function printit()&#123;</span><br><span class="line">    echo "Your choice is $1"   # 这个 $1 必须要参考底下命令的下达</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">echo "This program will print your selection !"</span><br><span class="line">case $1 in</span><br><span class="line">  "one")</span><br><span class="line">    printit 1  # 请注意, printit 命令后面还有接参数!</span><br><span class="line">    ;;</span><br><span class="line">  "two")</span><br><span class="line">    printit 2</span><br><span class="line">    ;;</span><br><span class="line">  "three")</span><br><span class="line">    printit 3</span><br><span class="line">    ;;</span><br><span class="line">  *)</span><br><span class="line">    echo "Usage $0 &#123;one|two|three&#125;"</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<h3 id="while循环-条件不成立终止-unitl条件成立终止"><a href="#while循环-条件不成立终止-unitl条件成立终止" class="headerlink" title="while循环 条件不成立终止 unitl条件成立终止"></a>while循环 条件不成立终止 unitl条件成立终止</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">while</span>循环</span></span><br><span class="line">while [ condition ]  &lt;==中括号内的状态就是判断式</span><br><span class="line">do            &lt;==do 是回圈的开始!</span><br><span class="line">    程序段落</span><br><span class="line">done          &lt;==done 是回圈的结束</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">until循环</span></span><br><span class="line">until [ condition ]</span><br><span class="line">do</span><br><span class="line">    程序段落</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">    Repeat question until user input correct answer.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/29    VBird    First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">while [ "$yn" != "yes" -a "$yn" != "YES" ] #相当于until [ "$yn" == "yes" -o "$yn" == "YES" ]</span><br><span class="line">do</span><br><span class="line">    read -p "Please input yes/YES to stop this program: " yn</span><br><span class="line">done</span><br><span class="line">echo "OK! you input the correct answer."</span><br></pre></td></tr></table></figure>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="keyword">for</span> <span class="keyword">in</span> 其中<span class="keyword">in</span>后的参数可以是dog cat elephant写好的;也可以是命令产生的如$(cut -d <span class="string">':'</span> -f1 /etc/passwd) ;也可以是序列 $(seq 1 100) 或$(1..100)</span></span><br><span class="line">for var in con1 con2 con3 ...</span><br><span class="line">do</span><br><span class="line">    程序段</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="keyword">for</span>(;;)</span></span><br><span class="line">for(( 初始值; 限制值; 运行步阶 ))</span><br><span class="line">do</span><br><span class="line">    程序段</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     Using <span class="keyword">for</span> .... loop to <span class="built_in">print</span> 3 animals</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/29    VBird    First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">for animal in dog cat elephant</span><br><span class="line">do</span><br><span class="line">    echo "There are $&#123;animal&#125;s.... "</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Program:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     Try <span class="keyword">do</span> calculate 1+2+....+<span class="variable">$&#123;your_input&#125;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/08/29    VBird    First release</span></span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">read -p "Please input a number, I will count for 1+2+...+your_input: " nu</span><br><span class="line"></span><br><span class="line">s=0</span><br><span class="line">for(( i=1; i&lt;=$nu; i=i+1 ))</span><br><span class="line">do</span><br><span class="line">    s=$(($s+$i))</span><br><span class="line">done</span><br><span class="line">echo "The result of '1+2+3+...+$nu' is ==&gt; $s"</span><br></pre></td></tr></table></figure>
+<h3 id="bug调试"><a href="#bug调试" class="headerlink" title="bug调试"></a>bug调试</h3><p><code>sh [-nvx] scripts.sh</code> 参数 -n仅检查语法问题 -v将内容先输出到荧幕 -x将使用到的输出到荧幕命令前会有+号,调试常用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打印ascii码表  </span></span><br><span class="line">alias ascii="awk 'BEGIN&#123;H=19;for(n=0;n&lt;H;n++)&#123;for(m=0;m&lt;=4;m++)&#123;if(n==0)&#123;h=h\"\x1b[1;31mC \x1b[37m:\x1b[36mOct\x1b[37m:\x1b[35mHex\x1b[37m:\x1b[33mDec\x1b[m  \";l=l\"================\"&#125;c=32+n+m*H;p=p sprintf(\"\x1b[1;31m%c \x1b[37m:\x1b[36m%03o\x1b[37m:\x1b[35m%2Xh\x1b[37m:\x1b[33m%-3d\x1b[m  \",c,c,c,c)&#125;if(n==0)print h\"\n\"l;print p;p=\"\"&#125;&#125;'"</span><br></pre></td></tr></table></figure>
+<h2 id="账号管理"><a href="#账号管理" class="headerlink" title="账号管理"></a>账号管理</h2><p>输入账号的过程</p>
+<ol>
+<li>先找/etc/passwd中是否有帐号,有则读出UID/GID,其中GID在/etc/group中,同时还有家目录与shell配置</li>
+<li>核对口令,在/etc/shadow中</li>
+<li>如果正确则shell掌控</li>
+</ol>
+<p>/etc/passwd 中的数据说明<br>head -n 1 /etc/passwd<br>root:x:0:0:root:/root:/bin/bash<br>账户名称:口令:UID:GID:用户信息栏:家目录:shell</p>
+<ol>
+<li>帐号名称:用来查找UID</li>
+<li>口令:早期在此,后因安全放入/etc/shadow所以为x</li>
+<li>UID:user id 其中0系统管理员 1-499系统帐号,一般不可登录 500-65535一般使用者(早已超过此限制)</li>
+<li>GID:group id在/etc/group中</li>
+<li>用户信息说明栏:解释帐号,可用finger查看chfn修改</li>
+<li>家目录:登录之后的家目录</li>
+<li>shell:用于沟通的shell</li>
+</ol>
+<p>/etc/shadow 中的数据说明<br>head -n 1 /etc/shadow<br>root:$1$/30QpE5e$y9N/D0bh6rAACBEz.hqo00:14126:0:99999:7:::<br>帐户名称:口令:最近改动日期:不可变动日期:需变更日期:警告日期:宽限日期:失效日期:保留</p>
+<ol>
+<li>帐号名称:与/etc/group对应</li>
+<li>口令:加密后的密码$1$表示加密类型,其中MD5加密,$2$Blowfish,$5$SHA-256,$6$SHA-512,!!表示过期,*代表锁定,/30QpE5e为加密盐</li>
+<li>最近改动日期:和1970/01/01相比的天数</li>
+<li>不可变动日期:改动之后多久不能再改</li>
+<li>需变更日期:改动之后多久需要再改</li>
+<li>警告日期:变更前警告</li>
+<li>宽限日期:变更日期多久之后还能用,但登陆之后要求更改</li>
+<li>失效日期:强制失效,可用在收费系统中</li>
+<li>保留:暂时没有功能</li>
+</ol>
+<p>例子<br>dmtsai:$1$vyUuj.eX$omt6lKJvMcIZHx4H7RI1V.:14299:5:60:7:5:14419:<br>用户为dmtasi;加密类型为MD5,加密盐vyUuj.eX,之后是密码密文;最近一次修改密码日期2009/02/24(1970/01/01 +14299天);之后5天不可修改(2009/03/01);需变更日期14299+60=14359即2009/04/25;警告日期7天2009/04/19-2009/04/25,即14299-60-7;如果2009/04/25没有改密码,2009/04/30之前还可登录主机,不过强制改密码,如果改了变动日期就重新计算;不论怎么改14419之后就过期</p>
+<p>群组<br>/etc/group 中的数据说明<br>head -n 1 /etc/group<br>root:x:0:root<br>组名:群组口名:GID:支持的帐号</p>
+<ol>
+<li>组名:群组名称</li>
+<li>群组口名:群组的口令,移到/etc/gshadow</li>
+<li>GID:group id</li>
+<li>支持的帐号:群组支持的帐号,多个逗号分隔,如root,dmtasi</li>
+</ol>
+<p>有效群组<br>由于一个帐号可以加入多个群组,所以当前的群组为有效群组<br>/etc/passwd中的GID为初始群组,可以使用<code>usermod -G users dmtasi</code>配置次要群组,这样/etc/group的users就增加了demasi<br><code>groups</code>可查看当前用户加入的群组,其中第一个是有效群组,touch txt的时候创建txt的group,可以使用newgrp切换,如<code>newgrp users</code></p>
+<p>/etc/gshadow 中的数据说明<br>head -n 1 /etc/gshadow<br>root:::root<br>组名:群口令:管理员帐号:支持的帐号</p>
+<p>群口令:!开头证明不合法</p>
+<h3 id="帐号管理"><a href="#帐号管理" class="headerlink" title="帐号管理"></a>帐号管理</h3><p>useradd 新增用户<br>useradd [-u UID] [-g 初始群组] [-G 次要群组] [-mM] [-c 说明栏] [-d 家目录绝对路径] [-s shell] 使用者账号名<br>参数:-u后跟UID -g初始化群组/etc/passwd -G支持群组/etc/group -M不创建家目录 -m创建家目录,默认 -c说明栏 -d指定家目录 -r系统帐号,默认无家目录不可登录,在/etc/login.defs配置 -s默认shell -e失效日期 -f/etc/shadow第七个字段,0立刻失效,-1永不失效</p>
+<p>useradd lautumn创建一般帐号</p>
+<ul>
+<li>在 /etc/passwd 里面创建一行与账号相关的数据,包括创建 UID/GID/家目录等；</li>
+<li>在 /etc/shadow 里面将此账号的口令相关参数填入,但是尚未有口令；</li>
+<li>在 /etc/group 里面加入一个与账号名称一模一样的组名；</li>
+<li>在 /home 底下创建一个与账号同名的目录作为用户家目录,且权限为 700</li>
+</ul>
+<p>useradd -r lautumn2创建系统帐号,uid,gid小于500,不会创建家目录</p>
+<p>useradd参考文档 useradd -D显示 GROUP默认群组,HOME路径,INACTIVE口令失效日期-1不失效,EXPIRE帐号失效日期,SHELL默认路径,SKEL家目录参考数据,CREATE_MAIL_SPOOL是否主动创建mail<br>除此文档,还有/etc/login.defs 密码失效日期,uid取值范围,默认家目录的umask,加密类型,是否创建家目录等信息</p>
+<p>passwd 配置密码<br>新创建的用户不配置密码不可使用,<code>passwd lautumn</code>修改lautumn的密码,passwd修改自己的密码<br>passwd [–stdin] 从输入流中读取密码,所有人可用<br>passwd [-l] [-u] [–stdin] [-S] [-n 日数] [-x 日数] [-w 日数] [-i 日期] 账号 仅root可用 参数-l锁定 -u解锁 -S显示shadow信息 -n多久不可修改 -x多久必改 -w警告天数 -i口令失效天数<br>echo “abc543CC” | passwd –stdin lautumn<br>修改密码 会留在shell历史中~/.bash_history中</p>
+<p>chage修改密码日期  比passwd修改日期详细<br>chage [-ldEImMW] 账号名 参数 -l列出详情 -d 三 修改最近日期 YYYY-MM-DD -E 八 修改帐号失效日期YYYY-MM-DD,-I 七 口令失效日期,-m 四 不可更改日期,-M 五 多久必须更改,-W 六 警告日期<br>chage -d 0 lautumn 可让lautumn第一次登录即要更改密码  </p>
+<p>usermod 账户修改<br>usermod [-cdegGlsuLU] username 参数 -c第五栏说明 -d家目录 -e帐号失效日,第八YYYY-MM-DD -f口令失效日,第七 -g初始群组 -G次要群组 -a与-G可用原基础上添加 -l修改名称第一栏 -sshell路径 -uUID -L冻结 -U解冻  </p>
+<p>userdel 账户删除<br>userdel [-r] username 参数-r连目录也删除 如果要完整删除 可先<code>find / -user username</code>然后删除</p>
+<p>用户功能<br>finger查看信息<br>finger [-s] username 参数 -s仅列出用户的账号、全名、终端机代号与登陆时间等等<br>chfn change finger修改finger信息<br>chfn [-foph] [账号名] 参数-f  ：后面接完整的大名；-o  ：您办公室的房间号码；-p  ：办公室的电话号码；-h  ：家里的电话号码! 一般用不到</p>
+<p>chsh 修改shell<br>chsh [-ls] 参数 -l列出shell -s配置shell</p>
+<p>id 查询UID与GID<br>id [username]</p>
+<p>管理群组<br>group 新增群组<br>groupadd [-g gid] [-r] 组名 参数 –g指定GID -r系统群组</p>
+<p>groupmod 修改群组<br>groupmod [-g gid] [-n group_name] 群组名 参数-g修改GID -n修改名称 不要随意改</p>
+<p>groupdel 删除群组</p>
+<p>gpasswd 群组管理员<br>root用法<br>gpasswd groupname<br>gpasswd [-A user1,…] [-M user3,…] groupname<br>gpasswd [-rR] groupname<br>参数 -A管理员 -M加入用户 -r移除口令 -R口令失效</p>
+<p>管理员用法<br>gpasswd [-ad] user groupname 参数-a添加 -d删除</p>
+<p>权限管理问题<br>如果project目录为gp群组,权限为2770,用户A不是gp中的成员,想看project中的内容,但是不可修改,如果将文件的权限提升2775,则用户B也可查看了,不可做到细部控制<br>权限细部规划 ACL Access Control List 可以针对用户和群组进行细部控制<br>mount -o remount,acl 加入acl功能 也可修改 /etc/fstab 改为default,acl</p>
+<p>setfacl设置<br>getfacl查看</p>
+<p>setfacl [-bkRd] [{-m|-x} acl参数] 目标文件名 参数-m配置参数 -x删除参数 -b移除所有 -k移除默认 -R递归配置 -d配置默认<br>setfacl -m u:vbird1:rx acl_test1 其中u:使用者:权限  </p>
+<p>getfacl filename 查看权限 其中mask为最高权限</p>
+<p>用户身份切换<br>使用一般者操作,避免出错;安全;软件本身限制,如telnet不允许root登录<br>su - [username]  Substitute User替代用户 参数-l - 重新读取参数配置 -c跟command仅执行一次 -m-p使用目前的环境配置<br>sudo [-b] [-u 新使用者账号] 参数-b背景执行 -u切换的使用者,无-u为root  要保证用户有新用户的使用权限,且新用户有执行命令的权限,第一次要输入口令,root不用<br>visudo 修改/etc/sudoers 配置sudo的用户及权限,退出可校验<br>用户群组     登录者来源主机=(可切换身份)   可下达命令<br>root        ALL=(ALL)                   ALL<br>%wheel      ALL=(ALL)                   ALL<br>%wheel      ALL=(ALL)                   NOPASSWD: ALL<br>其中%代表群组,NOPASSWD不需要密码</p>
+<p>限制操作<br>myuser1 ALL=(root)  /usr/bin/passwd<br>可使用root权限运行passwd,但 sudo passwd是修改root密码,可进一步进行限制<br>myuser1 ALL=(root)  !/usr/bin/passwd, /usr/bin/passwd [A-Za-z]*, !/usr/bin/passwd root<br>避免输入错误,修改root密码  </p>
+<p>设置别名<br>User_Alias ADMPW = pro1, pro2, pro3, myuser1, myuser2<br>Cmnd_Alias ADMPWCOM = !/usr/bin/passwd, /usr/bin/passwd [A-Za-z]*, \<br>                      !/usr/bin/passwd root<br>ADMPW   ALL=(root)  ADMPWCOM</p>
+<p>默认时间间隔5分钟,不用输入密码,可在visudo中修改,Defaults env_reset,timestamp_timeout=20修改为20分钟</p>
+<p>sudo 搭配 su 的使用方式,可以用自己的口令变成root,避免root密码泄漏<br>User_Alias  ADMINS = pro1, pro2, pro3, myuser1<br>ADMINS ALL=(root)  /bin/su -</p>
+<p>/sbin/nologin提示语句在/etc/nologin.txt中修改  </p>
+<p>PAM模块(Pluggable Authentication Modules, 嵌入式认证模块)</p>
+<p>passwd呼叫的PAM流程</p>
+<ol>
+<li>用户开始运行 /usr/bin/passwd 这支程序,并输入口令；</li>
+<li>passwd 呼叫 PAM 模块进行验证；</li>
+<li>PAM 模块会到 /etc/pam.d/ 找寻与程序(passwd) 同名的配置文件；</li>
+<li>依据 /etc/pam.d/passwd 内的配置,引用相关的 PAM 模块逐步进行验证分析；</li>
+<li>将验证结果(成功、失败以及其他信息) 回传给 passwd 这支程序；</li>
+<li>passwd 这支程序会根据 PAM 回传的结果决定下一个动作(重新输入新口令或者通过验证!)</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/pam.d/passwd</span><br><span class="line"><span class="meta">#</span><span class="bash">%PAM-1.0  &lt;==PAM版本的说明而已!</span></span><br><span class="line">auth       include      system-auth &lt;==每一行都是一个验证的过程</span><br><span class="line">account    include      system-auth</span><br><span class="line">password   include      system-auth</span><br><span class="line">验证类别   控制标准     PAM 模块与该模块的参数</span><br></pre></td></tr></table></figure>
+<p>密码输入错误的时候反应慢, 是因为pam_unix.so模块防止暴力破解的方式, 可通过man pam_unix查看, 可以修改/etc/pam.d/system-auth 中密码认证阶段auth的pam_unix.so的参数中添加nodelay  </p>
+<p>第一个字段验证类别 有auth认证 account授权 session会话 password口令修改变更<br>有顺序,因为先验证身份,然后授权,配置环境信息,才可修改密码.</p>
+<p>第二个字段验证控制旗标<br>required成功失败均继续 requisite失败中止 sufficient成功中止 optional显示信息</p>
+<p>其他相关文件<br>limits.conf主机使用限制</p>
+<p>/var/log/secure, /var/log/messages PAM 模块会记录在secure中</p>
+<p>用户传递信息<br>w who last lastlog 查询使用者</p>
+<p>对谈 write mesg wall<br>write 使用者账号 [用户所在终端接口] who先查看在线用户,输入信息,使用ctrl+d退出<br>mesg n 不接受信息,但root发的必须接收<br>wall广播,所有在线人收到</p>
+<p>mail邮件<br>离线时可用 mail -s ‘subject’ username 给某人发mail<br>mail查看邮件</p>
+<p>手动新增使用者<br>pwck查看/etc/passwd配置的家目录是否有信息<br>pwconv将/etc/passwd中的口令移到/etc/shadow<br>pwunconv 移回口令并删除/etc/shadow<br>chpasswd修改口令 常用参数-m从输入流中读取</p>
+<p>批量建账号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这支程序主要在帮您创建大量的账号之用,更多的使用方法请参考：</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> http://vbird.dic.ksu.edu.tw/linux_basic/0410accountmanager.php<span class="comment">#manual_amount</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 本程序为鸟哥自行开发,在 CentOS 5.x 上使用没有问题,</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 但不保证绝不会发生错误!使用时,请自行负担风险～</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> History:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2005/09/05    VBird   刚刚才写完,使用看看先～</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2009/03/04    VBird   加入一些语系的修改与说明,修改口令产生方式(用 openssl)</span></span><br><span class="line">export LANG=zh_TW.big5</span><br><span class="line">export PATH=/sbin:/usr/sbin:/bin:/usr/bin</span><br><span class="line">accountfile="user.passwd"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 1. 进行账号相关的输入先!</span></span><br><span class="line">echo ""</span><br><span class="line">echo "例如我们昆山四技的学号为： 4960c001 到 4960c060 ,那么："</span><br><span class="line">echo "账号开头代码为         ：4"</span><br><span class="line">echo "账号层级或年级为       ：960c"</span><br><span class="line">echo "号码数字位数为(001~060)：3"</span><br><span class="line">echo "账号开始号码为         ：1"</span><br><span class="line">echo "账号数量为             ：60"</span><br><span class="line">echo ""</span><br><span class="line">read -p "账号开头代码( Input title name, ex&gt; std )======&gt; " username_start</span><br><span class="line">read -p "账号层级或年级( Input degree, ex&gt; 1 or enter )=&gt; " username_degree</span><br><span class="line">read -p "号码部分的数字位数( Input \# of digital )======&gt; " nu_nu</span><br><span class="line">read -p "起始号码( Input start number, ex&gt; 520 )========&gt; " nu_start</span><br><span class="line">read -p "账号数量( Input amount of users, ex&gt; 100 )=====&gt; " nu_amount</span><br><span class="line">read -p "口令标准 1) 与账号相同 2)随机数自定义 ==============&gt; " pwm</span><br><span class="line">if [ "$username_start" == "" ]; then</span><br><span class="line">        echo "没有输入开头的代码,不给你运行哩!" ; exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span><span class="bash"> 判断数字系统</span></span><br><span class="line">testing0=$(echo $nu_nu     | grep '[^0-9]' )</span><br><span class="line">testing1=$(echo $nu_amount | grep '[^0-9]' )</span><br><span class="line">testing2=$(echo $nu_start  | grep '[^0-9]' )</span><br><span class="line">if [ "$testing0" != "" -o "$testing1" != "" -o "$testing2" != "" ]; then</span><br><span class="line">        echo "输入的号码不对啦!有非为数字的内容!" ; exit 1</span><br><span class="line">fi</span><br><span class="line">if [ "$pwm" != "1" ]; then</span><br><span class="line">        pwm="2"</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 开始输出账号与口令文件!</span></span><br><span class="line">[ -f "$accountfile" ] &amp;&amp; mv $accountfile "$accountfile"$(date +%Y%m%d)</span><br><span class="line">nu_end=$(($nu_start+$nu_amount-1))</span><br><span class="line">for(( i=$nu_start; i&lt;=$nu_end; i++ ))</span><br><span class="line">do</span><br><span class="line">        nu_len=$&#123;#i&#125;</span><br><span class="line">        if [ $nu_nu -lt $nu_len ]; then</span><br><span class="line">                echo "数值的位数($i-&gt;$nu_len)已经比你配置的位数($nu_nu)还大!"</span><br><span class="line">                echo "程序无法继续"</span><br><span class="line">                exit 1</span><br><span class="line">        fi</span><br><span class="line">        nu_diff=$(( $nu_nu - $nu_len ))</span><br><span class="line">        if [ "$nu_diff" != "0" ]; then</span><br><span class="line">                nu_nn=0000000000</span><br><span class="line">                nu_nn=$&#123;nu_nn:1:$nu_diff&#125;</span><br><span class="line">        fi</span><br><span class="line">        account=$&#123;username_start&#125;$&#123;username_degree&#125;$&#123;nu_nn&#125;$&#123;i&#125;</span><br><span class="line">        if [ "$pwm" == "1" ]; then</span><br><span class="line">                password="$account"</span><br><span class="line">        else</span><br><span class="line">                password=$(openssl rand -base64 6)</span><br><span class="line">        fi</span><br><span class="line">        echo "$account":"$password" | tee -a "$accountfile"</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 开始创建账号与口令!</span></span><br><span class="line">cat "$accountfile" | cut -d':' -f1 | xargs -n 1 useradd -m</span><br><span class="line">chpasswd &lt; "$accountfile"</span><br><span class="line">pwconv</span><br><span class="line">echo "OK!创建完成!"</span><br></pre></td></tr></table></figure>
+<p>批量删帐号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">usernames=$(cat user.passwd | cut -d ':' -f 1)</span><br><span class="line">for username in $usernames</span><br><span class="line">do</span><br><span class="line">    echo "userdel -r $username"</span><br><span class="line">    userdel -r $username</span><br></pre></td></tr></table></figure>
+<h2 id="文件系统管理"><a href="#文件系统管理" class="headerlink" title="文件系统管理"></a>文件系统管理</h2><p>Quota磁碟配额<br>由于多人环境,如果一个人用的磁盘太多其他人可用的资源就少了,所以可通过quota进行配置<br>要求:仅能针对filesystem,核心必须支持quota,quota记录文件的变化以前quota.user,quota.group;现在aquota.user,aquota.group;只针对一般使用者<br>可配置的项目 block inode<br>限制级别 soft hard<br>倒计时天数 grace time 到了soft之后,如果过了grace time就不能再增加文件了</p>
+<p>添加系统支持<br>mount -o remount,userquota,grpquota /home 其中/home为单独的文件系统<br>也可修改/etc/fstab ,然后mount -a重新挂载<br>LABEL=/home   /home  ext3   defaults,usrquota,grpquota  1 2</p>
+<p>创建记录文件<br>quotacheck [-avugfM] [/mount_point] 参数-a扫描/etc/mtab 支持的quota的filesystem -u针对使用情况创建aquota.user -g创建aquota.group -v显示过程 -f强制扫描 -M强制读写<br>一般使用 quotacheck -avug 即可</p>
+<p>启动quota服务<br>quotaon [-avug]<br>quotaon [-vug] [/mount_point]</p>
+<p>关闭quota服务<br>quotaoff [-a] 全部关闭<br>quotaoff [-ug] [/mount_point]</p>
+<p>edquota ：编辑帐号/群组的限值与宽限时间<br>edquota [-u username] [-g groupname]<br>edquota -t  &lt;==修改宽限时间<br>edquota -p 范本帐号 -u 新帐号</p>
+<p>显示限制值<br>quota [-uvs] [username]<br>quota [-gvs] [groupname]<br>参数-s 以1024为单位加M</p>
+<p>repquota -a [-vugs]显示所有用户情况</p>
+<p>warnquota ：对超过限额者发出警告信 可配合定时任务执行<br>通过mail发送可修改/etc/warnquota.conf中的模版  不适合/var/spool/mail也在爆表的quota管理中  </p>
+<p>setquota直接配置限额,不用进入edquota的管理界面,时候shell脚本<br>setquota [-u|-g] 名称 block(soft) block(hard) inode(soft) inode(hard) 文件系统<br>setquota -u myquota5 100000 200000 0 0 /home</p>
+<p>RAID磁盘阵列 容错式廉价磁盘阵列(Redundant Arrays of Inexpensive Disks, RAID)<br>RAID-0(等量模式, stripe)：效能最佳,至少两个<br>RAID-1(映射模式, mirror)：完整备份,至少两个<br>RAID 0+1,RAID 1+0 结合两个的有点<br>RAID 3: 一块单独的盘做校验盘,可坏一块,但校验盘的读写频率太高<br>RAID 5：校验值每次取在不同的硬盘,效能与数据备份的均衡考量,可坏一块<br>RAID 6:通过算法校验码分散在两块硬盘,可坏两块</p>
+<table>
+<thead>
+<tr>
+<th>RAID级别</th>
+<th>冗余磁盘</th>
+<th>空间利用率</th>
+<th>性能</th>
+<th>可靠性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0颗</td>
+<td>100%</td>
+<td>最高</td>
+<td>最低</td>
+</tr>
+<tr>
+<td>1</td>
+<td>n/2颗</td>
+<td>50%</td>
+<td>低</td>
+<td>最高</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1颗</td>
+<td>(n-1)/n</td>
+<td>较高</td>
+<td>较低</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1颗</td>
+<td>(n-1)/n</td>
+<td>较高</td>
+<td>较低</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2颗</td>
+<td>(n-2)/n</td>
+<td>较低</td>
+<td>较高</td>
+</tr>
+</tbody>
+</table>
+<p>优点:</p>
+<ul>
+<li>数据安全与可靠性：指的并非资讯安全,而是当硬件(指磁碟) 损毁时,数据是否还能够安全的救援或使用之意；</li>
+<li>读写效能：例如 RAID 0 可以加强读写效能,让你的系统 I/O 部分得以改善；</li>
+<li>容量：可以让多颗磁碟组合起来,故单一文件系统可以有相当大的容量。</li>
+</ul>
+<p>software, hardware RAID<br>硬件磁盘阵列并不会重复消耗原本系统的 I/O 汇流排,性能好,但贵<br>linux下可用mdadm套件模拟RAID</p>
+<p>mdadm<br>mdadm –detail /dev/md0<br>mdadm –create –auto=yes /dev/md[0-9] –raid-devices=N  –level=[015] –spare-devices=N /dev/sdx /dev/hdx…<br>参数 –create ：为创建 RAID –auto=yes ：决定创建后面接的软件磁盘阵列装置,亦即 /dev/md0, /dev/md1… –raid-devices=N ：使用几个磁碟(partition) 作为磁盘阵列的装置 –spare-devices=N ：使用几个磁碟作为备用(spare) 装置 –level=[015] ：配置这组磁盘阵列的等级。支持很多,不过建议只要用 0, 1, 5 即可 –detail ：后面所接的那个磁盘阵列装置的详细资讯</p>
+<p>最好大小一样<br>mdadm –create –auto=yes /dev/md0 –level=5 –raid-devices=4 –spare-devices=1 /dev/hda{6,7,8,9,10}<br>mdadm –detail /dev/md0<br>cat /proc/mdstat<br>mkfs -t ext3 /dev/md0 格式化<br>mkdir /mnt/raid<br>mount /dev/md0 /mnt/raid 挂载<br>df查看</p>
+<p>模拟救援<br>mdadm –manage /dev/md[0-9] [–add 装置] [–remove 装置] [–fail 装置]<br>mdadm –manage /dev/md0 –fail /dev/hda8<br>mdadm –detail /dev/md0<br>cat /proc/mdstat</p>
+<p>移除错误磁盘<br> mdadm –manage /dev/md0 –add /dev/hda11 –remove /dev/hda8</p>
+<p>自动挂载<br>mdadm –detail /dev/md0 | grep -i uuid # 查看uuid<br>vi /etc/mdadm.conf #配置 ARRAY /dev/md0 UUID=7c60c049:57d60814:bd9a77f1:57e49c5b<br>在/etc/fstab中加入md0 /dev/md0    /mnt/raid    ext3    defaults     1 2<br>mount -a挂载 df /mnt/raid 查看</p>
+<p>关闭RAID<br>umount /dev/md0<br>vi /etc/fstab <del>/dev/md0    /mnt/raid     ext3    defaults      1 2</del> 删除<br>mdadm –stop /dev/md0 关闭 –stop /dev/md0<br>cat /proc/mdstat 查看状态<br>vi /etc/mdadm.conf 删除 ~~ARRAY /dev/md0 UUID=7c60c049:57d60814:bd9a77f1:57e49c5b<br>~~</p>
+<p>LVM 逻辑卷轴管理员(Logical Volume Manager)<br>可以弹性调整的filesystem<br>概念<br>Physical Volume, PV, 实体卷轴 system id 8e<br>Volume Group, VG, 卷轴群组<br>Pysical Extend, PE, 实体延伸区块<br>Logical Volume, LV, 逻辑卷轴</p>
+<p>图片示意图<br><img src="image/lvm-arch.png" alt="lvm"><br><img src="image/lvm.gif" alt="lvm"></p>
+<p>默认线性模式(linear)：一个用完一个用;交错模式(triped)：像raid0,一份数据拆成几份  </p>
+<p>pv阶段<br>pvscan<br>pvcreate /dev/hda{6,7,8,9}<br>pvdisplay</p>
+<p>VG阶段<br>vgcreate [-s N[mgt]] VG名称 PV名称 参数-s后面接 PE 的大小(size) ,单位可以是 m, g, t(大小写均可)<br>vgcreate -s 16M vbirdvg /dev/hda{6,7,8}<br>vgscan<br>pvscan<br>vgdisplay<br>vgextend vbirdvg /dev/hda9 添加<br>vgdisplay</p>
+<p>LV阶段<br>lvcreate [-L N[mgt]] [-n LV名称] VG名称 -L跟容量单位 M,G,T,必须是PE的倍数<br>lvcreate [-l N] [-n LV名称] VG名称 -l PE个数,后面接的就是 -n LV,的名称啦!<br>lvcreate -l 356 -n vbirdlv vbirdvg<br>ll /dev/vbirdvg/vbirdlv<br>lvdisplay</p>
+<p>文件系统阶段<br>mkfs -t ext3 /dev/vbirdvg/vbirdlv 格式化<br>mkdir /mnt/lvm<br>mount /dev/vbirdvg/vbirdlv /mnt/lvm 挂载</p>
+<p>放大容量<br>pvcreate /dev/hda10<br>pvscan<br>vgextend vbirdvg /dev/hda10 放大<br>vgdisplay 查看vg<br>lvdisplay 查看lv<br>dumpe2fs /dev/vbirdvg/vbirdlv 查看文件系统信息<br>resize2fs [-f] [device] [size] 修改文件系统大小 参数-f强制 size参数M,G不跟即使全部</p>
+<p>减小容量<br>pvdisplay 查看要减小物理分区的大小<br>pvscan 检查大小<br>resize2fs /dev/vbirdvg/vbirdlv 6900M 查看后重新分配<br>umount /mnt/lvm卸载<br>lvresize -l -89 /dev/vbirdvg/vbirdlv 减小lv容量<br>lvdisplay<br>pvdisplay<br>pvmove /dev/hda6 /dev/hda10<br>vgreduce vbirdvg /dev/hda6 移除hda6<br>pvscan<br>pvremove /dev/hda6 使hda6不在是pv</p>
+<p>还可利用lvm建快照系统</p>
+<p>常用命令<br>| 任务                | PV 阶段   | VG 阶段   | LV 阶段             |<br>|———————|———–|———–|———————|<br>| 搜寻(scan)          | pvscan    | vgscan    | lvscan              |<br>| 创建(create)        | pvcreate  | vgcreate  | lvcreate            |<br>| 列出(display)       | pvdisplay | vgdisplay | lvdisplay           |<br>| 添加(extend)        | 　        | vgextend  | lvextend(lvresize) |<br>| 减少(reduce)        | 　        | vgreduce  | lvreduce(lvresize) |<br>| 删除(remove)        | pvremove  | vgremove  | lvremove            |<br>| 改变容量(resize)    | 　        | 　        | lvresize            |<br>| 改变属性(attribute) | pvchange  | vgchange  | lvchange            |</p>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>两种:at指定时间 cron周期执行  其中at必须启动atd服务,crontab可编辑/etc/crontab来支持,必须启动crond服务  </p>
+<p>常见的任务</p>
+<ul>
+<li>日志的轮替log rorate,不然单个文件大,读写困难</li>
+<li>日志分析logwatch,简化自己审视的工作</li>
+<li>创建locate数据库 一般在/var/lib/mlocate中</li>
+<li>whatis数据库的创建 和man page有关</li>
+<li>RPM软件的日志</li>
+<li>移除缓存文件tmpwatch</li>
+<li>网络服务分析</li>
+</ul>
+<p>at模式 一次执行<br>开启atd服务 /etc/init.d/atd restart<br>自动启动 chkconfig atd on</p>
+<p>可以利用/etc/at.allow 与 /etc/at.deny文件进行管理用户 顺序,先找at.allow仅在此文件中的人有权限,没有此文件则找at.deny不在此文件即可运行,如果两个都不存在则只能root运行 所以默认都有空的at.deny文件,一行一个帐号  添加的命令会加入/var/spool/at/中<br>at [-mldv] TIME TIME 格式有 HH:MM;HH:MM YYYY-MM-DD;HH:MM[am|pm] [Month] [Date]; HH:MM[am|pm] + number [minutes|hours|days|weeks]<br>at -c 工作号码<br>参数 -m 即使没有输出,也以email通知 -l相当于atq 列出当前所有at排程 -d 相当于atrm删除at排程 -v明显的工作列表 -c列出实际内容</p>
+<p>例子<br><code>at now + 5 minutes</code> 五分钟以后执行  输入相关命令 ctrl+d结束  </p>
+<p>at -l 列出所有的at进程<br>at -c 1 查看1号 的详细命令<br>注意:</p>
+<ul>
+<li>其中最好用绝度路径  否则会以当前路径为基础  </li>
+<li>所有的输出为以email的形式发给运行者,可使用&gt;/dev/null删除输出 &gt;/dev/tty1指定终端  </li>
+<li>at离线继续执行任务  即背景运行,退出登录还可继续执行任务 相当于nohup</li>
+</ul>
+<p>atq 查看 atrm 删除 后接工作号码jobnumber<br>batch 系统有空时才执行背景任务  cpu小于0.8 用法与at一样  </p>
+<p>crontab 周期性执行<br>同样可在/etc/cron.allow 与/etc/cron.deny中配置使用者帐号<br>增加crontab命令后,命令会被记录在/var/spool/cron/username中去  最好不要用vi直接编辑 可能会语法错误  </p>
+<p>crontab [-u username] [-l|-e|-r] 参数-u只有root才能执行 -e编辑crontab内容 -l查询crontab内容 -r移除所有内容  </p>
+<p>crontab -e 进入<br><code>0   12  *  *  * mail dmtsai -s &quot;at 12:00&quot; &lt; /home/dmtsai/.bashrc</code><br>分 时 日 月 周 |&lt;==============命令串========================&gt;|<br>其中分钟 0-59 ;小时 0-23 ;日期 1-31 ;月份 1-12 ;周 0-7 周日0或7 ;命令 要执行的命令<br>特殊字符 其中<em>任何时间;,分隔时间3,6代表3和6;-时间范围;/n代表n时间间隔/5代表每五分钟 也可与-连用如0-30/5 0-30分钟内没5分钟执行一次<br>示例<br>`59 23 1 5 </em> mail kiki &lt; /home/dmtsai/lover.txt<code>每年的5月1日23时59分发一封情书</code><em>/5 </em> <em> </em> <em> /home/dmtsai/test.sh<code>每5分钟执行一次test.sh</code>30 16 </em> * 5 mail <a href="mailto:friend@his.server.name" target="_blank" rel="noopener">friend@his.server.name</a> &lt; /home/dmtsai/friend.txt`<br>每周5的下午4:30 发右键给你的朋友  </p>
+<p>/etc/crontab文件<br>crontab -e 使用者cron  /etc/crontab 系统使用 的配置<br>cron的最低侦测限制是分钟 每分钟读取/etc/crontab和/var/spool/cron中的内容<br>/etc/crontab的内容含义  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SHELL=/bin/bash                     #&lt;==使用哪种 shell 介面</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin  #&lt;==运行档搜寻路径</span><br><span class="line">MAILTO=root                         #&lt;==若有额外STDOUT,以 email将数据送给谁</span><br><span class="line">HOME=/                              #&lt;==默认此 shell 的家目录所在</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> run-parts 一个shell脚本可执行目录下的所有可运行文件</span></span><br><span class="line">01  *  *  *  *   root      run-parts /etc/cron.hourly   #&lt;==每小时</span><br><span class="line">02  4  *  *  *   root      run-parts /etc/cron.daily    #&lt;==每天</span><br><span class="line">22  4  *  *  0   root      run-parts /etc/cron.weekly   #&lt;==每周日</span><br><span class="line">42  4  1  *  *   root      run-parts /etc/cron.monthly  #&lt;==每个月 1 号</span><br></pre></td></tr></table></figure>
+<p>使用cron需要注意的问题  </p>
+<ul>
+<li>系统资源分配不均  可分开执行  </li>
+<li>取消不必要的输出项目  导出到/dev/null  </li>
+<li>安全检测  查看日志/var/log/cron看是否有陪自己配置的cron执行过  </li>
+<li>周和日不可同时并存  </li>
+</ul>
+<p>唤醒停机期间的cron任务<br>anacron 会读时间记录档(timestamps) 并非服务 是一个crontab进程  可在/etc/cron<em>/</em>ana*中查看  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/cron.daily/0anacron  </span><br><span class="line">if [ ! -e /var/run/anacron.pid ]; then</span><br><span class="line">    anacron -u cron.daily</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>anacron [-sfn] [job].. 参数-s连续的执行job根据时间戳判断是否进行 -f强制进行 -n立刻进行任务,不延迟<br>anacron -u [job]..   参数-u仅升级时间戳,不进行工作 job 由/etc/anacrontab定义的各项工作  </p>
+<p>/var/spool/anacron/* 中记录了时间戳  </p>
+<p>以anacron -s cron.daily 为例<br>执行步骤  </p>
+<ol>
+<li>由 /etc/anacrontab 分析到 cron.daily 这项工作名称的天数为 1 天;  </li>
+<li>由 /var/spool/anacron/cron.daily 取出最近一次运行 anacron 的时间戳记;  </li>
+<li>由上个步骤与目前的时间比较,若差异天数为 1 天以上(含 1 天),就准备进行命令;  </li>
+<li>若准备进行命令,根据 /etc/anacrontab 的配置,将延迟 65 分钟;  </li>
+<li>延迟时间过后,开始运行后续命令,亦即『 run-parts /etc/cron.daily 』这串命令;  </li>
+<li>运行完毕后, anacron 程序结束</li>
+</ol>
+<p><code>chkconfig --list anacron</code> 查看anacron是否开启  </p>
+<h2 id="程序管理与SElinux"><a href="#程序管理与SElinux" class="headerlink" title="程序管理与SElinux"></a>程序管理与SElinux</h2><h3 id="process程序"><a href="#process程序" class="headerlink" title="process程序"></a>process程序</h3><p>触发任何一个事件时,系统都会将他定义成为一个程序,并且给予这个程序一个 ID ,称为 PID,同时依据启发这个程序的使用者与相关属性关系,给予这个 PID 一组有效的权限配置。<br>process program区别<br>程序(program)：通常为 binary program ,放置在储存媒体中(如硬盘、光盘、软盘、磁带等), 为实体文件的型态存在<br>程序(process)：程序被触发后,运行者的权限与属性、程序的程序码与所需数据等都会被加载内存中, 操作系统并给予这个内存内的单元一个识别码(PID),可以说,程序就是一个正在运行中的程序  </p>
+<h3 id="子程序与父程序"><a href="#子程序与父程序" class="headerlink" title="子程序与父程序"></a>子程序与父程序</h3><p>父程序的环境变量要想让子程序使用,可以用export<br>PPID 表示父程序 可用ps -l查看  </p>
+<h3 id="程序呼叫流程"><a href="#程序呼叫流程" class="headerlink" title="程序呼叫流程"></a>程序呼叫流程</h3><p>在 Linux 的程序呼叫通常称为 fork-and-exec 的流程! 程序都会藉由父程序以复制(fork) 的方式产生一个一模一样的子程序, 然后被复制出来的子程序再以 exec 的方式来运行实际要进行的程序,最终就成为一个子程序的存在。</p>
+<p><img src="image/fork-and-exec.gif" alt="fork-and-exec.gif">  </p>
+<p>一般命令执行完就结束了,如ls rm touch 等  但系统服务或网络服务会常驻内存,即daemon,如crond,atd,syslog;Apache,named,postfix,vsftpd等,网络服务有监听端口  </p>
+<p>工作管理  job control<br>cp file1 file2 &amp; 可放置到背景中运行,运行完毕后会在终端显示完成的消息  </p>
+<ul>
+<li>这些工作所触发的程序必须来自於你 shell 的子程序(只管理自己的 bash)  </li>
+<li>前景：你可以控制与下达命令的这个环境称为前景的工作 (foreground)  </li>
+<li>背景：可以自行运行的工作，你无法使用 [ctrl]+c 终止他，可使用 bg/fg 呼叫该工作  </li>
+<li>背景中『运行』的程序不能等待 terminal/shell 的输入(input)  </li>
+</ul>
+<p>命令加&amp; 放入背景执行<br>将目前工作丢入背景暂停 ctrl+z<br>查看背景工作 jobs<br>jobs [-lrs]  参数-l列出pid -r仅背景run -s仅背景stop</p>
+<p>fg %jobnumber 置入前景运行  如fg %1<br>bg %jobnumber 背景中运行,可将背景中stopped的程序变成running状态  </p>
+<p>管理背景中的工作 kill<br>kill -signal %jobnumber  常用的有-1相当于reload -2中断相当于ctrl+c -9强制结束 -15正常中止<br>kill -l 显示所有的讯号  </p>
+<p>离线管理,离线或注销后依旧进行<br>nohup [命令与参数]   终端前景工作<br>nohup [命令与参数] &amp; 终端背景工作</p>
+<p>程序管理<br>ps aux  &lt;==观察系统所有的程序数据 相当于ps -ef, 但此命令会截断命令,grep时区别较大<br>ps -lA  &lt;==也是能够观察所有系统的数据<br>ps axjf &lt;==连同部分程序树状态<br>参数 -A显示所有的process -a不与terminal有关的process -u有效的使用者  x通常与a联用,显示完整资讯 l详细信息 j工作的格式 -f更完整  </p>
+<p>ps -l<br>F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD<br>4 S     0 13639 13637  0  75   0 -  1287 wait   pts/1    00:00:00 bash<br>4 R     0 13700 13639  0  77   0 -  1101 -      pts/1    00:00:00 ps  </p>
+<p>其中F程序旗标,4为root,1表示此程序仅复制没有运行;S运行状态,R运行,S睡眠,D不可唤醒等待I/O,T停止,Z僵尸状态,程序已终止但不可移除内存; C 为cpu使用率 ; PRI/NI 为priority/nice的缩写 表示cpu的运行顺序,越小越快执行;ADDR/SZ/WCHAN addr程序在内存中的位置 SZ为使用的内存 WCHAN是否正在运行 - 表示正在运行 ; TTY 终端机的位置; TIME使用的CPU时间; CMD触发的命令是什么  </p>
+<p>ps -l<br>F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD<br>4 S     0 13639 13637  0  75   0 -  1287 wait   pts/1    00:00:00 bash<br>bash 的程序属於 UID 为 0 的使用者，状态为睡眠 (sleep)， 之所以为睡眠因为他触发了 ps (状态为 run) 之故。此程序的 PID 为 13639，优先运行顺序为 75 ， 下达 bash 所取得的终端介面为 pts/1 ，运行状态为等待 (wait)  </p>
+<p>查看所有程序 ps aux<br>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND<br>root         1  0.0  0.0   2064   616 ?        Ss   Mar11   0:01 init [5]<br>root         2  0.0  0.0      0     0 ?        S&lt;   Mar11   0:00 [migration/0]<br>root         3  0.0  0.0      0     0 ?        SN   Mar11   0:00 [ksoftirqd/0]  </p>
+<p>其中VSZ占用的虚拟内存量;RSS占用的固定内存;STAT当前状态;START启动时间;TIME使用cpu时间;COMMAND程序命令  </p>
+<p>通常与grep联用  <code>ps aux | egrep &#39;(cron|syslog)&#39;</code></p>
+<p>top动态观察<br>top [-d 数字] | top [-bnp]  参数-d接秒数多久更新一次 -b批量运行 -n进行几次top输出与-b联用 -p指定pid<br>top中的命令 ?显示帮助 P以CPU排序 M以Memory排序 N以PID排序 T以累积CPU时间排序 k给予一个process讯号 r重新定制nice值 q离开top  </p>
+<p>第一行 目前时间 启动到目前的时间 已经登录的人数 平均工作负载 1 5 15<br>第二行 各状态的程序总数<br>第三行 CPU负载 1键切换核心 %wa 代表I/O wait<br>第四行 内存<br>第五行 虚拟内存<br>第六行 输入命令的位置</p>
+<p>下方<br>TIME+ CPU累积使用时间  </p>
+<p>例子 <code>top -d 2 -p $(echo $$)</code>  没隔两秒更新显示一次当前bash的运行状态  </p>
+<p>pstree树状显示程序<br>pstree [-A|U] [-up] 参数 -A 以ASCII字节显示 -U以unicode显示 -p显示PID -u累出process帐号  </p>
+<p>程序的管理<br>kill -signal PID  常用的有1相当于重启 2终端ctrl+c 9强制结束 15中止 17暂停ctrl+z  </p>
+<p>kill -1 $(ps aux|grep ‘syslog’|grep -v ‘grep’|awk ‘{print $2}’)<br>重新启动syslogd服务  </p>
+<p>killall [-iIe] [command name]  以命令名称发送信号 参数 -i互动模式 -e 后面的要一致 -I忽略大小写<br>killall -1 syslogd 如果包含参数 那命令也要包含参数<br>killall -9 httpd 强制中止httpd<br>killall -i -9 bash 每一个会询问一次  </p>
+<p>程序运行顺序<br>Priority 系统算出 可通过Nice 修改  pri值越低越先执行  PRI(new) = PRI(old) + nice 一般来说,但系统可能重新计算  </p>
+<ul>
+<li>nice 值可调整的范围为 -20 ~ 19  </li>
+<li>root 可随意调整自己或他人程序的 Nice 值，且范围为 -20 ~ 19  </li>
+<li>一般使用者仅可调整自己程序的 Nice 值，且范围仅为 0 ~ 19 (避免一般用户抢占系统资源)  </li>
+<li>一般使用者仅可将 nice 值越调越高，例如本来 nice 为 5 ，则未来仅能调整到大於 5  </li>
+</ul>
+<p>一开始用nice命令调整 nice [-n 数字] command 参数-n的范围-20~19<br>之后可用renice调整 renice [number] PID 别忘了加PID</p>
+<p>同样可以在top中修改 r修改</p>
+<p>系统资源查看的其他方法<br>free 内存使用情况  free [-b|-k|-m|-g] [-t] 参数 -b是显示的单位 或者-h -t显示内存与swap的总量  swap用的越少越好<br>uname 查看系统核心资讯 uname [-asrmpi] 参数 -a系统相关 -s核心名称 -r核心版本 -m系统硬件名 -pCPU平台名 -i硬件平台<br>uptime 观察系统的启动时间与工作负载  top中的第一行<br>netstat追踪网络或插槽档 netstat -[atunlp] 参数 -a所有连线监听sockeet -t tcp数据包 -u udp -n显示端口号 -l显示正在监听的服务 -p显示PID<br>netstat<br>Active Internet connections (w/o servers) &lt;==与网络较相关的部分<br>Proto Recv-Q Send-Q Local Address        Foreign Address      State<br>tcp        0    132 192.168.201.110:ssh  192.168.:vrtl-vmf-sa ESTABLISHED<br>Active UNIX domain sockets (w/o servers)  &lt;==与本机的程序自己的相关性(非网络)<br>Proto RefCnt Flags       Type       State         I-Node Path<br>unix  20     [ ]         DGRAM                    9153   /dev/log  </p>
+<p>上方其中Proto ：网络的封包协议; Recv-Q：非由使用者程序连结到此 socket 的复制的总 bytes 数; Send-Q：非由远程主机传送过来的 acknowledged 总 bytes 数; Local Address ：本地端的 IP:port 情况; Foreign Address：远程主机的 IP:port 情况; State ：连线状态，主要有创建(ESTABLISED)及监听(LISTEN)<br>下方其中Proto ：一般就是 unix 啦;RefCnt：连接到此 socket 的程序数量; Flags ：连线的旗标; Type ：socket 存取的类型。主要有确认连线的 STREAM 与不需确认的 DGRAM 两种; State ：若为 CONNECTED 表示多个程序之间已经连线创建; Path ：连接到此 socket 的相关程序的路径！或者是相关数据输出的路径  </p>
+<p>netstat -tlnp 查看已在监听的网络连线及PID  </p>
+<p>dmesg 分析核心的产生信息  配合 more 或less或grep使用<br>vmstat 侦测系统资源变化  </p>
+<p>vmstat [-a] [延迟 [总计侦测次数]] &lt;==CPU/内存等资讯<br>vmstat [-fs]                      &lt;==内存相关<br>vmstat [-S 单位]                  &lt;==配置显示数据的单位<br>vmstat [-d]                       &lt;==与磁碟有关<br>vmstat [-p 分割槽]                &lt;==与磁碟有关<br>参数 -a活跃度取代缓存大小 -f启动到现在系统复制的程序数 -s内存变化情况说明 -S接单位取代bytes -d列出读写数量统计 -p列出分隔槽的读写统计<br>vmstat 1 3 目前cpu的状态 每秒一次 共三次  </p>
+<p>特殊文件与程序<br>/proc/*  所有程序都以目录形态存在于/proc中 如 cat /proc/1/cmdline 存在启动linux的命令  </p>
+<p>fuser：由文件找出正在使用该文件的程序<br>fuser [-umv] [-k [i] [-signal]] file/dir 参数 -u同时列出拥有者 -m从顶层看是 -v完整信息 -k找出PID并结束 -i删除前询问 -singal默认-9<br>fuser -uv . 列出所有使用者的名称和程序<br>其中ACCESS 表示 c当前目录下 e可处罚委运行状态 f被开启 r顶层目录 F被开启等待回应中 m可分享的动态函式库  </p>
+<p>lsof 列出程序开启的文件名<br>lsof [-aUu] [+d] 参数 -a多项参数 -U仅Unix Like系统的socket文件 -u后面跟username +d也找出目录下被打开的文件<br><code>lsof</code>查看已经被开启的文件 <code>lsof -u root -a -U</code>查出root程序开启的socket文件 <code>lsof +d /dev</code>查看/dev目录下所有被启动的周边装置 <code>lsof -u root | grep bash</code> 秀出root的bash所开启的文件<br>pidof找出某只正在运行的pid  pidof [-sx] program_name 参数 -s仅列出一个PID -x可能的ppid</p>
+<h3 id="SELinux用法"><a href="#SELinux用法" class="headerlink" title="SELinux用法"></a>SELinux用法</h3><p>其实他是『 Security Enhanced Linux 』的缩写，字面上的意义就是安全强化的 Linux 之意！美国国家安全局 (NSA) 开发的. 防止内部员工的资源误用.  </p>
+<p>DAC与MAC<br>DAC 这种存取文件系统的方式被称为『自主式存取控制 (Discretionary Access Control, DAC)』，基本上，就是依据程序的拥有者与文件资源的 rwx 权限来决定有无存取的能力。<br>问题:root有最高权限,如果某只程序被窃取,且有root权限,那就over了;可以使用程序变更文件资源的权限,比较危险,如果改成777就任何人可更改了<br>MAC委任式存取控制 (Mandatory Access Control, MAC),即使是root也不一定取得root权限视程序决定  </p>
+<p>SELinux 的运行模式<br>主体 (Subject)：即process<br>目标 (Object)：即文件系统<br>政策 (Policy)：安全策略  targeted：针对网络服务限制较多，针对本机限制较少，是默认的政策; strict：完整的 SELinux 限制，限制方面较为严格<br>安全性本文 (security context)：类似于rwx,配置非常重要  </p>
+<p>流程<br><img src="image/selinux_1.gif" alt="selinux_1.gif">  </p>
+<p>安全性本文 (Security Context)<br>ls -Z 可以查看  写在inode内的<br>-rw-r–r–  root root root:object_r:user_home_t   install.log<br>Identify:role:type<br>身份识别:角色:类型<br>其中<br>身份识别 root system_u系统用户 user_u一般用户 unconfined_u也是root用户<br>角色 object_r资源 system_r程序,用户也是<br>类型 type文件称为type domain程序为domain  </p>
+<p>启动与关闭<br>三种模式 enforcing强制模式 permissive宽容模式 disabled关闭<br>可用getenforce查看<br>setenforce [0|1]设置 0宽容模式 1强制模式  不可改为disabled 可通过修改/etc/setlinux/config进行,将SELINUX=enforcing 或者 /boot/grub/menu.lst 添加kernel一行加入selinux=0<br>sestatus [-vb] 参数-v查看/etc/sestatus.conf 安全本文内容 -b查看布尔值  </p>
+<p>重设SELinux 安全性本文<br>chcon [-R] [-t type] [-u user] [-r role] 文件<br>chcon [-R] –reference=范例档 文件<br>参数 -R连同目录下的文件一起改 -t跟类型 -u身份识别 -r角色 –reference参考<br>restorecon [-Rv] 文件或目录 已默认策略还原 参数-R连同目录 -v显示过程  </p>
+<p>SELinux 所需的服务  </p>
+<p>setroubleshoot 将错误信息写入 /var/log/messages<br>chkconfig –list setroubleshoot  查看是否开启<br>chkconfig setroubleshoot on  设置默认开启<br>centos 6默认未安装 可yum -y install  setroubleshoot-server setroubleshoot 进行安装<br>cat /var/log/messages | grep setroubleshoot 查看错误消息 并查看解决方案  </p>
+<p>auditd 服务<br>chkconfig –list auditd<br>chkconfig auditd on<br>audit2why &lt; /var/log/audit/audit.log  查看原因  </p>
+<p>政策与守则管理<br>seinfo [-Atrub] 参数 -A初始所有 -t列出类别  -r角色 -u身份识别 -b所有守则<br>sesearch [-A] [-s 主体类别] [-t 目标类别] [-b 布林值] 查看详细的守则 参数-A所有  </p>
+<p>查询控制守则bool值<br>getsebool [-a] [布林值条款] 参数 -a列出所有<br>setsebool [-P] 布林值=[0|1]  参数 -P写入永久生效  </p>
+<p>默认目录的安全性文本<br>semanage {login|user|port|interface|fcontext|translation} -l<br>semanage fcontext -{a|d|m} [-frst] file_spec<br>参数 fcontext 安全文本方面 -l查询 -a添加 -m修改 -d删除<br>yum install policycoreutils-python 安装semanage<br>mkdir /srv/samba  创建目录<br>semanage fcontext -l | grep ‘/srv’ 查看所有/srv的默认安全本文数据<br>semanage fcontext -a -t public_content_t “/srv/samba(/.<em>)?”  添加一条数据<br>cat /etc/selinux/targeted/contexts/files/file_contexts.local 写入此文件中<br>restorecon -Rv /srv/samba</em>  修改为默认值<br>ll -Zd /srv/samba</p>
+<h2 id="系统服务"><a href="#系统服务" class="headerlink" title="系统服务"></a>系统服务</h2><p>系统服务常住系统内存,是service 而系统服务一般是daemon程序提供的功能,如httpd/crond,后缀一般为d即daemon</p>
+<p>daemon的主要分类<br>启动方式分类:stand alone daemon 和super daemon<br>stand alone可以单独启动,独立提供服务,如httpd/vsftpd<br>super daemon这种服务通过一个统一的daemon来管理,这个daemon被称为super daemon,早期是inetd,现在是xinet.d,没有客服端的要求各服务都未启动,等到客户端有需求时,才由super daemon唤醒对应的服务.服务结束,关闭服务,释放系统资源. 可提供类似防火墙的防护机制,但响应慢<br>工作形态分类:signal-control信号管理, interval-control周期管理<br>可通过man 3 daemon查看  </p>
+<p>服务与端口对应<br>可通过/etc/servcies中进行查看默认的配置,不建议修改  </p>
+<p>daemon的启动方式<br>主要目录<br>/etc/init.d/<em> ：启动脚本放置处<br>/etc/sysconfig/</em> ：各服务的初始化环境配置文件<br>/etc/xinetd.conf, /etc/xinetd.d/<em> ：super daemon 配置文件<br>/etc/</em> ：各服务各自的配置文件<br>/var/lib/<em> ：各服务产生的数据库<br>/var/run/</em> ：各服务的程序之 PID 记录处  </p>
+<p>stand alone启动<br>在/etc/init.d/* 启动  一般在次目录下放置服务的启动脚本<br>/etc/init.d/syslog status 查看状态<br>/etc/init.d/syslog start 启动 restart重启 stop关闭</p>
+<p>或者使用service命令进行简化 回去读取/etc/init.d/*中的脚本<br>service [service name] (start|stop|restart|…)  对服务进行的操作<br>service –status-all 查看所有服务状态</p>
+<p>service crond restart 等效于 /etc/init.d/crond restart  </p>
+<p>super daemon启动<br>在/etc/xinet.d/<em>中有配置文件<br>可通过grep -i ‘disable’ /etc/xinetd.d/</em> 进行查看 将disable=yes改为no可以默认启动,但需要重启xinet, 可通过/etc/init.d/xinetd restart 或者 service xinetd restart进行  </p>
+<h3 id="详解xinet程序"><a href="#详解xinet程序" class="headerlink" title="详解xinet程序"></a>详解xinet程序</h3><p>xinetd是一个stand alone, xinetd的配置文件在/etc/xinetd.conf中  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/xinetd.conf</span><br><span class="line">defaults</span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务启动成功或失败，以及相关登陆行为的记录文件</span></span><br><span class="line">        log_type        = SYSLOG daemon info  #&lt;==登录文件的记录服务类型</span><br><span class="line">        log_on_failure  = HOST   #&lt;==发生错误时需要记录的信息为主机 (HOST)</span><br><span class="line">        log_on_success  = PID HOST DURATION EXIT #&lt;==成功启动或登陆时的记录信息</span><br><span class="line"><span class="meta">#</span><span class="bash"> 允许或限制联机的默认值</span></span><br><span class="line">        cps         = 50 10 #&lt;==同一秒内的最大联机数为 50 个，若超过则暂停 10 秒</span><br><span class="line">        instances   = 50    #&lt;==同一服务的最大同时联机数</span><br><span class="line">        per_source  = 10    #&lt;==同一来源的客户端的最大联机数</span><br><span class="line"><span class="meta">#</span><span class="bash"> 网络 (network) 相关的默认值</span></span><br><span class="line">        v6only          = no #&lt;==是否仅允许 IPv6 ？可以先暂时不启动 IPv6 支持！</span><br><span class="line"><span class="meta">#</span><span class="bash"> 环境参数的配置</span></span><br><span class="line">        groups          = yes</span><br><span class="line">        umask           = 002</span><br><span class="line">&#125;</span><br><span class="line">includedir /etc/xinetd.d #&lt;==更多的配置值在 /etc/xinetd.d 那个目录内</span><br></pre></td></tr></table></figure>
+<p>如果/etc/xinetd.d目录中没有特定的配置,则使用xinetd.conf中的配置  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">配置文件格式</span></span><br><span class="line">service  &lt;service_name&gt;</span><br><span class="line">&#123;</span><br><span class="line">       &lt;attribute&gt;   &lt;assign_op&gt;   &lt;value&gt;   &lt;value&gt; ...</span><br><span class="line">       .............</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中servcie_name与/etc/servcies中的配置有关, attribute是一些xinetd的管理参数,value是值,assgin_op是参数配置方法,如要有=配置这这样,+=增加,-=减少<br>attribute 主要有disable值为yes|no; id 服务名称唯一名称; server 路径名; server_args相关参数; user 服务所属用户; group 所属群组; socket_type封包类型[stream|dgram|raw]其中stream为TCP,dgram为UDP,raw为直接与ip对谈; protocol封包类型[tcp|udp]; wait联机机制[yes(single)|no(multi)]; instances最大联机数,per_source单一用户来源,每个ip最大连接数; cps新联机限制,两个数字,第一个为一秒内的个数,第二个为超过第一个数字的时侯服务关闭的时间; log_type登录等级,info warn等; log_on_success/log_on_failure登录状态:[PID,HOST,USERID,EXIT,DURATION]成功或失败后需要记录的信息; env配置环境变量; port自定义端口号; redirect服务转接地址[IP port]; includedir包含外部配置; bind绑定服务接口; interface与bind相同; only_from允许:[0.0.0.0, 192.168.1.0/24, hostname, domainname]; no_access阻止:[0.0.0.0, 192.168.1.0/24, hostname, domainname]; access_times时间管控:[00:00-12:00, HH:MM-HH:MM]; umask用户创建目录的属性  </p>
+<p>如rsync配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 先针对对内的较为松散的限制来配置：</span></span><br><span class="line">service rsync</span><br><span class="line">&#123;</span><br><span class="line">        disable = no                        #&lt;==要启动才行啊！</span><br><span class="line">        bind            = 127.0.0.1         #&lt;==服务绑在这个接口上！</span><br><span class="line">        only_from       = 127.0.0.0/8       #&lt;==只开放这个网域的来源登陆</span><br><span class="line">        no_access       = 127.0.0.&#123;100,200&#125; #&lt;==限制这两个不可登陆</span><br><span class="line">        instances       = UNLIMITED         #&lt;==取代 /etc/xinetd.conf 的配置值</span><br><span class="line">        socket_type     = stream            #&lt;==底下的配置则保留</span><br><span class="line">        wait            = no</span><br><span class="line">        user            = root</span><br><span class="line">        server          = /usr/bin/rsync</span><br><span class="line">        server_args     = --daemon</span><br><span class="line">        log_on_failure  += USERID</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 再针对外部的联机来进行限制呢！</span></span><br><span class="line">service rsync</span><br><span class="line">&#123;</span><br><span class="line">        disable = no</span><br><span class="line">        bind            = 192.168.1.100</span><br><span class="line">        only_from       = 140.116.0.0/16</span><br><span class="line">        only_from      += .edu.tw           #&lt;==因为累加，所以利用 += 配置</span><br><span class="line">        access_times    = 01:00-9:00 20:00-23:59 #&lt;==时间有两时段，有空格隔开</span><br><span class="line">        instances       = 10                #&lt;==只有 10 条联机</span><br><span class="line">        socket_type     = stream</span><br><span class="line">        wait            = no</span><br><span class="line">        user            = root</span><br><span class="line">        server          = /usr/bin/rsync</span><br><span class="line">        server_args     = --daemon</span><br><span class="line">        log_on_failure  += USERID</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">xinetd进行防火墙管理  </span><br><span class="line">虽然在only_from和no_access可进行配置,但通过文件配置可集中管控</span><br><span class="line">/etc/hosts.deny, /etc/hosts.allow , 这两个文件也是tcpd的配置文件  </span><br><span class="line"></span><br><span class="line">TCP Wrappers 管控来源IP与整个网域的IP网段, port服务端口  </span><br><span class="line">只要支持TCP Wrappers的功能才可用/etc/hosts.&#123;allow,deny&#125;管控  </span><br><span class="line">可通过ldd $(which sshd httpd)来查看sshd和httpd的模块, ldd (library dependency discovery) , 查看是否支持libwrap.so  </span><br><span class="line"></span><br><span class="line">配置语法  </span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">&lt;service(program_name)&gt; : &lt;IP, domain, hostname&gt; : &lt;action&gt;</span><br><span class="line">&lt;服务   (亦即程序名称)&gt; : &lt;IP 或领域 或主机名&gt; : &lt; 动作 &gt;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 上头的 &lt; &gt; 是不存在于配置文件中的喔！</span></span><br></pre></td></tr></table></figure>
+<p>校验规则<br>写在hosts.allow中文件可以不写第三栏allow, 在hosts.deny中的文件可以不写deny, 以/etc/hosts.allow优先, IP和网段如果没有在/etc/hosts.allow中则以/etc/hosts.deny判断  </p>
+<p>正常应该在允许的写在/etc/hosts.allow中, 不允许的写在/etc/hosts.deny中<br>第一个与第二个字段的特殊参数  </p>
+<ul>
+<li>ALL：代表全部的 program_name 或者是 IP 都接受的意思，例如 ALL: ALL: deny</li>
+<li>LOCAL：代表来自本机的意思，例如： ALL: LOCAL: allow</li>
+<li>UNKNOWN：代表不知道的 IP 或者是 domain 或者是服务时；</li>
+<li>KNOWN：代表为可解析的 IP, domain 等等信息时</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">例子</span></span><br><span class="line"><span class="meta">#</span><span class="bash">只允许 140.116.0.0/255.255.0.0 与 203.71.39.0/255.255.255.0 这两个网域，及 203.71.38.123 这个主机可以进入我们的 rsync 服务器</span></span><br><span class="line">此外，其他的 IP 全部都挡掉！</span><br><span class="line">vim /etc/hosts.allow</span><br><span class="line"></span><br><span class="line">rsync:  140.116.0.0/255.255.0.0</span><br><span class="line">rsync:  203.71.39.0/255.255.255.0</span><br><span class="line">rsync:  203.71.38.123</span><br><span class="line">rsync:  LOCAL</span><br><span class="line"></span><br><span class="line">vim /etc/hosts.deny</span><br><span class="line">rsync: ALL</span><br></pre></td></tr></table></figure>
+<p>TCP Wrappers 特殊功能<br>如果耍要特殊的功能则可以安装tcp_wrappers可用yum安装<br>细部的动作主要有<br>spawn利用后接的shell进行额外的动作,且有变量功能主要为%h,%a,%d;<br>twist立刻执行后面的命令,且运行完后终止此次联机  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts.deny</span><br><span class="line"><span class="meta">#</span><span class="bash">利用safe_finger追踪对方的主机信息,以email的形式告知root, 告知对方他已被记录</span></span><br><span class="line">rsync : ALL: spawn (echo "security notice from host $(/bin/hostname)" ;\</span><br><span class="line">    echo; /usr/sbin/safe_finger @%h ) | \</span><br><span class="line">    /bin/mail -s "%d-%h security" root &amp; \</span><br><span class="line">    : twist ( /bin/echo -e "\n\nWARNING connection not allowed.\n\n" )</span><br></pre></td></tr></table></figure>
+<p>系统开启的服务<br>netstat -tulp  查看当前的网络服务<br>netstat -lnp 找出所有的有监听网络的服务 (包含 socket 状态)<br>service –status-all 查看所有服务状态  </p>
+<p>启动后立即启动服务  </p>
+<ol>
+<li>打开计算机电源，开始读取 BIOS 并进行主机的自我测试</li>
+<li>透过 BIOS 取得第一个可启动装置，读取主要启动区 (MBR) 取得启动管理程序</li>
+<li>透过启动管理程序的配置，取得 kernel 并加载内存且侦测系统硬件</li>
+<li>核心主动呼叫 init 程序</li>
+<li>init 程序开始运行系统初始化 (/etc/rc.d/rc.sysinit)</li>
+<li>依据 init 的配置进行 daemon start (/etc/rc.d/rc[0-6].d/*)</li>
+<li>加载本机配置 (/etc/rc.d/rc.local)</li>
+</ol>
+<p>chkconfig –list [servicename]  查看服务<br>chkconfig [–level [0123456]] [servicename] [on|off] 参数 –list查看所有  –level配置在level下的状态  </p>
+<p>如 chkconfig –level 345 atd on</p>
+<p>ntsysv为图形管理模式  ntsysv –level 35 为redhat特有  </p>
+<p>添加系统服务<br>将写好的shell放入/etc/init.d/中; chkconfig –add servicename 添加; chkconfig –del servicename删除  </p>
+<h2 id="日志文件"><a href="#日志文件" class="headerlink" title="日志文件"></a>日志文件</h2><p>日志文件: 记录系统活动资讯的几个文件， 例如：何时、何地 (来源 IP)、何人 (什么服务名称)、做了什么动作 (信息登录罗)。<br>作用:解决系统错误, 解决网络服务, 过往的记录  </p>
+<p>常见的日志<br>/var/log/cron定时任务日志, /var/log/dmesg硬件咨询, /var/log/lastlog最近一次登录, /var/log/maillog 或 /var/log/mail/<em> 日志, /var/log/messages错误信息, /var/log/secure 输入帐号口令, /var/log/wtmp登录者信息, /var/log/faillog错误登录者信息, /var/log/httpd/</em>, /var/log/news/<em>, /var/log/samba/</em>  </p>
+<p>主要由syslogd/klogd/logrotate负责记录<br>syslogd：主要登录系统与网络等服务的信息<br>klogd：主要登录核心产生的各项资讯<br>logrotate：主要在进行登录文件的轮替功能  </p>
+<p>syslog配置文件 /etc/syslog.conf, 规定了什么服务,什么等级,要记录到哪儿  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">服务名称[.=!]信息等级       信息记录的档名或装置或主机</span><br><span class="line"><span class="meta">#</span><span class="bash"> 底下以 mail 这个服务产生的 info 等级为例：</span></span><br><span class="line">mail.info       /var/log/maillog_info</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这一行说明：mail 服务产生的大於等於 info 等级的信息，都记录到</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> /var/<span class="built_in">log</span>/maillog_info 文件中的意思。</span></span><br></pre></td></tr></table></figure>
+<p>服务名称 auth认证相关, cron定时任务, daemon服务软件信息, kern核心日志, lpr打印相关, mail邮件, news新闻服务器, syslog此服务本身, user, uucp, local0~local7机器本身的日志  </p>
+<p>信息等级<br>info说明 notice资讯 warning警示 err错误 crit严重错误 alert警告 emerg疼痛  </p>
+<p>还有两个特殊的debug错误侦测等级 none 不需要登录<br>.比之后高的都记录, .=仅此等级记录, .!不是此等级记录</p>
+<p>记录的位置<br>文件的绝对路径; 打印机或其他; 使用者名称; 远程主机; *目前上线的所有人  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">大于登录info,记录在/var/<span class="built_in">log</span>/maillog中</span></span><br><span class="line">mail.info　　　/var/log/maillog</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">所有new/cron记录在cronnews,warn等级的news和cron记录在cronnews.warn文件中</span></span><br><span class="line">news.*;cron.*　　　　　/var/log/cronnews</span><br><span class="line">news.=warn;cron.=warn　/var/log/cronnews.warn</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">messages文件中不需要记录news,cron,mail两种写法均可</span></span><br><span class="line">*.*;news,cron,mail.none　　　　　　/var/log/messages</span><br><span class="line">*.*;news.none;cron.none;mail.none　/var/log/messages</span><br></pre></td></tr></table></figure>
+<p>修改syslog.conf完成后, 记得重启syslog服务 service syslog restart 或者 /etc/init.d/syslog restart  </p>
+<p>logrotate进行日志文件的轮替<br>避免日志文件过大, 通过定时任务执行, 脚本在/etc/cron.daily/logrotate中<br>logrotate的配置档在 /etc/logrotate.conf和/etc/logrotate.d/文件中<br>其中/etc/logrorate.conf是主要配置文件,/etc/logrotate.d/文件配置一些细节,没有配置的为/etc/logrorate.conf中的配置  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/logrotate.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 主要配置参数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 底下的配置是 <span class="string">"logrotate 的默认配置值"</span> ，如果个别的文件配置了其他的参数，</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 则将以个别的文件配置为主，若该文件没有配置到的参数则以这个文件的内容为默认值！</span></span><br><span class="line"></span><br><span class="line">weekly    #&lt;==默认每个礼拜对登录文件进行一次 rotate 的工作</span><br><span class="line">rotate 4  #&lt;==保留几个登录文件呢？默认是保留四个！</span><br><span class="line">create    #&lt;==由於登录文件被更名，因此创建一个新的来继续储存之意！</span><br><span class="line"><span class="meta">#</span><span class="bash">compress <span class="comment">#&lt;==被更动的登录文件是否需要压缩？如果登录文件太大则可考虑此参数启动</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> dateext <span class="comment">#&lt;==以日期为后缀</span></span></span><br><span class="line"></span><br><span class="line">include /etc/logrotate.d</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 /etc/logrotate.d/ 这个目录中的所有文件都读进来运行 rotate 的工作！</span></span><br><span class="line"></span><br><span class="line">/var/log/wtmp &#123;       #&lt;==仅针对 /var/log/wtmp 所配置的参数</span><br><span class="line">    monthly           #&lt;==每个月一次，取代每周！</span><br><span class="line">    minsize 1M        #&lt;==文件容量一定要超过 1M 后才进行 rotate (略过时间参数)</span><br><span class="line">    create 0664 root utmp #&lt;==指定新建文件的权限与所属帐号/群组</span><br><span class="line">    rotate 1          #&lt;==仅保留一个，亦即仅有 wtmp.1 保留而已。</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这个 wtmp 可记录登陆者与系统重新启动时的时间与来源主机及登陆期间的时间。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 由於具有 minsize 的参数，因此不见得每个月一定会进行一次喔！要看文件容量。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 由於仅保留一个登录文件而已，不满意的话可以将他改成 rotate 5 吧！</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /etc/logrorate.d/目录下的文件格式  </span></span><br><span class="line">登录文件的绝对路径档名 ... &#123;</span><br><span class="line">    个别的参数配置值，如 monthly, compress 等等</span><br><span class="line">&#125;</span><br><span class="line">vim /etc/logrotate.d/syslog</span><br><span class="line">/var/log/messages /var/log/secure /var/log/maillog /var/log/spooler \</span><br><span class="line">/var/log/boot.log /var/log/cron &#123;</span><br><span class="line">  sharedscripts</span><br><span class="line">  postrotate</span><br><span class="line">    /bin/kill -HUP `cat /var/run/syslogd.pid 2&gt; /dev/null` 2&gt; /dev/null || true</span><br><span class="line">    /bin/kill -HUP `cat /var/run/rsyslogd.pid 2&gt; /dev/null` 2&gt; /dev/null || true</span><br><span class="line">  endscript</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置的意义为 针对/var/<span class="built_in">log</span>内的六个文件有效, 每周轮替一次,保留4个, 不压缩, 轮替完毕后,取得syslog的PID, 用<span class="built_in">kill</span> -HUP重启启动</span></span><br></pre></td></tr></table></figure>
+<p>档名 可多个; 参数用{}包起来; 运行脚本用sharedscripts开始,endscript结束,运行环境为prerotate启动logrotate之前进行命令,postrotate运行logrorate之后启动命令,对于特殊处理相当重要  </p>
+<p>修改  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/logrotate.d/syslog</span><br><span class="line">/var/log/messages /var/log/secure /var/log/maillog /var/log/spooler \</span><br><span class="line">/var/log/boot.log /var/log/cron &#123;</span><br><span class="line">  sharedscripts</span><br><span class="line">  prerotate</span><br><span class="line">    /usr/bin/chattr -a /var/log/messages</span><br><span class="line">  endscript</span><br><span class="line">  sharedscripts</span><br><span class="line">  postrotate</span><br><span class="line">    /bin/kill -HUP `cat /var/run/syslogd.pid 2&gt; /dev/null` 2&gt; /dev/null || true</span><br><span class="line">    /bin/kill -HUP `cat /var/run/rsyslogd.pid 2&gt; /dev/null` 2&gt; /dev/null || true</span><br><span class="line">    /usr/bin/chattr +a /var/log/messages</span><br><span class="line">  endscript</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对/var/<span class="built_in">log</span>/messages文件先取消-a属性, 然后进行轮替, 最后给/var/<span class="built_in">log</span>/messages加上a属性,防止被恶意修改或删除</span></span><br></pre></td></tr></table></figure>
+<p>logrotate [-vf] logfile 其中参数 -v显示过程 -f强制进行rotate动作  </p>
+<p>分析日志文件<br>logwatch, CentOS5默认分析工具, 自动分析给root用户发文件  </p>
+<h2 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h2><p>linux的启动流程  </p>
+<ol>
+<li>加载 BIOS 的硬件资讯与进行自我测试，并依据配置取得第一个可启动的装置</li>
+<li>读取并运行第一个启动装置内 MBR 的 boot Loader (亦即是 grub, spfdisk 等程序)</li>
+<li>依据 boot loader 的配置加载 Kernel ，Kernel 会开始侦测硬件与加载驱动程序</li>
+<li>在硬件驱动成功后，Kernel 会主动呼叫 init 程序，而 init 会取得 run-level 资讯</li>
+<li>init 运行 /etc/rc.d/rc.sysinit 文件来准备软件运行的作业环境 (如网络、时区等)</li>
+<li>init 运行 run-level 的各个服务之启动 (script 方式)</li>
+<li>init 运行 /etc/rc.d/rc.local 文件</li>
+<li>init 运行终端机模拟程序 mingetty 来启动 login 程序，最后就等待使用者登陆啦</li>
+</ol>
+<p>BIOS启动, 启动自我测试与MBR<br>BIOS去加载CMOS中的配置, 取得主机的硬件配置, 如CPU与周边设备的沟通时脉,硬件的启动顺序,硬盘大小,系统时间,PnP设备,设备I/O地址等.<br>然后进行自我测试, 硬件侦测初始化, 配置PnP装置, 定义启动顺序, 启动MBR相关的任务<br>BIOS通过INT13中断功能, 读取MBR中的启动管理程序Boot Loader, 避免不同硬件之间的不兼容  </p>
+<p>Boot Loader功能<br>加载核心到主内存中去, 由于操作系统的文件格式不同, 所以每种操作系统都有自己的boot loader, 为了实现多系统, 可以将boot loader安装在boot sector中<br>boot loader 的主要功能: 提供菜单, 加载核心文件, 转交其他loader<br>所以可以通过菜单功能,转交给其他的loader<br><img src="image/boot_loader.png" alt="boot_loader.png">  </p>
+<p>加载核心侦测硬件和initrd功能<br>boot loader读取核心文件后, 解压到主内存中, 并利用核心功能, 测试与驱动各个周边装置, 包括存储装置 cpu 网卡 声卡等. 此时linux核心重新侦测硬件 不一定会使用BIOS中的配置<br>核心文件一般在/boot中, 并且文件名为/boot/vmlinuz<br>为了加载方便, 核心一般通过动态加载核心模块(类似于驱动程序)的方式, 核心模块在/lib/modules/目录内, 由于/与/lib不可以放在不同的分区中. 启动过程必须挂在根目录,这样才能够取得核心模块提供的驱动程序, 启动过程中根目录以只读方式挂载<br>核心不认识SATA硬盘, 需要加载SATA的驱动程序, 否则无法挂载根目录, 但SATA的驱动程序在/lib/modules中, 这样无法挂载根目录如何取得驱动程序<br>linux通过虚拟文件系统解决此问题, 一般文件名为/boot/initrd, 可以通过boot loader加载到内存中, 在内存中解压模拟成根目录, 提供可运行的程序, 加载启动所需的核心模块, 通常是U盘,RAID,LVM,SCSI等文件系统的驱动程序, 加载完成后呼叫/sbin/init来开始后续的正常启动流程<br><img src="image/boot_loader_initrd.png" alt="boot_loader_initrd.png"><br>可以不需要initrd, 如果硬盘是IDE的接口, 但如果是U盘, SATA, SCSI, LVM, RAID才会需要initrd  </p>
+<p>第一支程序 init 配置/etc/inittab 与runlevel<br>可通过pstree进行查看init为第一支程序, PID为1<br>runlevel等级, 七个<br>0 halt 直接关机; 1 single user mode 单人维护模式; 2 Multi-user without NFS 多人模式无NFS服务; 3 Full multi-user mode 含网络功能的纯文字模式; 4 unused 系统保留功能; 5 X11加载图像; 6 reboot重新启动<br>默认不能将run level配置为0,4,6, 否则影响正常启动  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/inittab</span><br><span class="line">id:5:initdefault:                 #&lt;==默认的 runlevel 配置, 此 runlevel 为 5</span><br><span class="line"></span><br><span class="line">si::sysinit:/etc/rc.d/rc.sysinit  #&lt;==准备系统软件运行的环境的脚本运行档</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 7 个不同 run level 的，需要启动的服务的 scripts 放置路径：</span></span><br><span class="line">l0:0:wait:/etc/rc.d/rc 0    #&lt;==runlevel 0 在 /etc/rc.d/rc0.d/</span><br><span class="line">l1:1:wait:/etc/rc.d/rc 1    #&lt;==runlevel 1 在 /etc/rc.d/rc1.d/</span><br><span class="line">l2:2:wait:/etc/rc.d/rc 2    #&lt;==runlevel 2 在 /etc/rc.d/rc2.d/</span><br><span class="line">l3:3:wait:/etc/rc.d/rc 3    #&lt;==runlevel 3 在 /etc/rc.d/rc3.d/</span><br><span class="line">l4:4:wait:/etc/rc.d/rc 4    #&lt;==runlevel 4 在 /etc/rc.d/rc4.d/</span><br><span class="line">l5:5:wait:/etc/rc.d/rc 5    #&lt;==runlevel 5 在 /etc/rc.d/rc5.d/</span><br><span class="line">l6:6:wait:/etc/rc.d/rc 6    #&lt;==runlevel 6 在 /etc/rc.d/rc6.d/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否允许按下 [ctrl]+[alt]+[del] 就重新启动的配置项目：</span></span><br><span class="line">ca::ctrlaltdel:/sbin/shutdown -t3 -r now</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 底下两个配置则是关於不断电系统的 (UPS)，一个是没电力时的关机，一个是复电的处理</span></span><br><span class="line">pf::powerfail:/sbin/shutdown -f -h +2 "Power Failure; System Shutting Down"</span><br><span class="line">pr:12345:powerokwait:/sbin/shutdown -c "Power Restored; Shutdown Cancelled"</span><br><span class="line"></span><br><span class="line">1:2345:respawn:/sbin/mingetty tty1  #&lt;==其实 tty1~tty6 是由底下这六行决定的。</span><br><span class="line">2:2345:respawn:/sbin/mingetty tty2</span><br><span class="line">3:2345:respawn:/sbin/mingetty tty3</span><br><span class="line">4:2345:respawn:/sbin/mingetty tty4</span><br><span class="line">5:2345:respawn:/sbin/mingetty tty5</span><br><span class="line">6:2345:respawn:/sbin/mingetty tty6</span><br><span class="line"></span><br><span class="line">x:5:respawn:/etc/X11/prefdm -nodaemon #&lt;==X window 则是这行决定的！</span><br></pre></td></tr></table></figure>
+<p><code>[配置项目]:[run level]:[init 的动作行为]:[命令项目]</code><br>配置项目 最多四个字节; runlevel在哪个runlevel启动; init动作项目 initdefault默认的启动level,sysinit系统初始化动作,ctrlaltdel这三个键是否可以重新启动,wait后面的命令运行完才能继续向下,respawn后边的命令可以无限重启; 命令项目 通常是script  </p>
+<p>init处理流程  </p>
+<ol>
+<li>取得默认等级</li>
+<li>使用/etc/rc.d/rc.sysinit进行出初始化</li>
+<li>由于默认level5所以只进行l5:5:wait:/etc/rc.d/rc 5,其他滤过</li>
+<li>配置ctrl alt del功能</li>
+<li>配置不断电系统pf pr机制</li>
+<li>启动mingetty六个终端</li>
+<li>最终以/etc/X11/perfdm -nodaemon启动图形界面</li>
+</ol>
+<p>系统初始化流程  /etc/rc.d/rc.sysinit<br>在inittab中配置, 利用rc.sysinit进行初始化环境配置<br>取得网络环境与主机类型, 测试挂载内存/proc与U盘/sys, 决定是否启动SELinux, 启动系统的随机数, 配置终端机字形, 配置启动过程中的欢迎画面; 配置系统时间; 周边设备的侦测与PnP参数测试, 使用者自定义的模块加载 /etc/sysconfig/modules/*.modules自定义的模块, 加载核心的相关配置/etc/sysctl.conf中的配置, 配置主机名称与初始化电源管理模块, 初始化软件磁盘阵列, 初始化LVM文件系统, 以fsck检验文件系统, 进行磁盘配额quota的转换, 重新以可读写模式挂载系统分区, 启动quota功能, 启动随机数产生器, 清除缓存文件, 将启动的信息存入/var/log/dmesg文件中<br>可以用dmesg进行查看  </p>
+<p>启动系统服务与相关配置文件  (/etc/rc.d/rc N &amp; /etc/sysconfig)  </p>
+<p>可通过查看/etc/rc.d/rc文件看此shell脚本的功能  </p>
+<ul>
+<li>通过第一个参数取得要运行的脚本目录, 如/etc/rc.d/rc 5 可以取得/etc/rc5.d/这个目录来准备处理相关的脚本程序  </li>
+<li>找到/etc/rc5.d/K??<em>开头的文件,并进行/etc/rc5.d/K??</em> stop动作  </li>
+<li>找到/etc/rc5.d/S??<em>开头的文件,并进行/etc/rc5.d/S??</em> start动作</li>
+</ul>
+<p>/etc/rc5.d/中的文件都是以S??和K??开头的,全部是链接文件,链接到/etc/init.d/目录中 如/etc/rc5.d/K91capi stop –&gt; /etc/init.d/capi stop 其中chkconfig就是在负责处理这个连接文件, 之后的数字是运行的顺序, S99local即/etc/rc.d/rc.local这个文件  </p>
+<p>自定义启动程序 /etc/rc.d/rc.local, 将写好的shell script文件放入此文件中, 会自动运行  </p>
+<p>根据/etc/inittab配置 加载终端机或X-window界面  </p>
+<p>启动过程中主要的配置文件<br>/etc/modprobe.conf 自定义文件的地方 指定模块参数等<br>/etc/syscofnig/*服务的相关配置文件在此目录 authconfig身份认证,加密算法; clock系统时间; i18n语系配置; keyboard&amp;mouse键盘鼠标配置; network 网络主机名GATEWAY  配置; network-scripts/主要配置网卡; 启动过程中经常读取  </p>
+<p>Run Level的切换<br>runlevel获取当前level, init 3 切换为level3, 主要就是比对/etc/rc3.d/ 与/etc/rc5.d中K和S文件的不同,多的K文件关闭,多的S文件予以启动  </p>
+<p>核心与核心模块<br>核心:/boot/vmlinuz 或者 /boot/vmlinuz-version<br>核心解压所需RAM Disk 是/boot/initrd(initrd-version)<br>核心模块:/lib/modules/version/kernel 或 /lib/modules/$(uname -r)/kernel<br>核心原始码:/usr/src/linux或/usr/src/kernels/ 默认没有  </p>
+<p>核心顺利的加载后,会在/proc/version记录版本,/proc/sys/kernel记录核心功能  </p>
+<p>新的硬件系统不支持如何办? 可以重新编译核心,加入新的驱动程序. 或者将驱动程序编译成模块,启动时加载该模块  </p>
+<p>核心模块相关性<br>核心模块主要在/lib/mdules/$(uname -r)/kernel中, 主要有几个目录 arch硬件平台相关如cpu,crypto加密技术, drivers硬件驱动程序如显卡网卡PCI硬件等, fs系统支持的filesystems, lib函数库, net网络相关协议还有防火墙, sound音效相关模块  </p>
+<p>系统通过检查/lib/modules/$(uname -r)/modules.dep这个文件,记录了相关性  </p>
+<p>depmod 命令查看  模块依赖关系<br>depmod [-Ane] 参数-A 之后不加参数侦测目前核心模块写入/lib/modules/$(uname -r)/modules.dep中, -A加参数搜寻比modules.dep还新的模块, 找到新模块, 才会升级; -n不写入modules.dep直接输入到荧幕; -e显示出已加载不可运行的模块名称  </p>
+<p>核心模块的观察<br>lsmod<br>会显示模块名称,模块大小,模块是否被其他模块所使用  </p>
+<p>modinfo [-adln] [module_name|filename] 查看模块信息 参数-a仅列出作者名 -d列出说明 -l列出授权 -n列出路径  </p>
+<p>核心模块的加载与移除<br>insmod [/full/path/module_name] [parameters] 加载<br>如 insmod /lib/modules/$(uname -r)/kernel/fs/cifs/cifs.ko 可通过lsmod | grep cifs进行查看  </p>
+<p>rmmod [-fw] module_name 移除 参数 -f强制移除 -w若被使用,等待使用完毕后移除  </p>
+<p>modprobe [-lcfr] module_name 可侦测依赖关系 参数 -c列出所有模块 -l列出完整文件名 -f强制加载 -r移除  </p>
+<p>核心模块的额外配置参数 /etc/modprobe.conf 配置模块与选项  </p>
+<p>boot laoder grub<br>由于MBR仅有446bytes而已, grub分为两个阶段: stage1 运行bootloader主程序, 没有配置文件; stage2加载配置文件,主要配置文件menu.lst, 一般来说都在/boot底下  </p>
+<p>/boot/grub文件加下的文件  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ls -l /boot/grub</span><br><span class="line">-rw-r--r--  device.map              #&lt;==grub 的装置对应档(底下会谈到)</span><br><span class="line">-rw-r--r--  e2fs_stage1_5           #&lt;==ext2/ext3 文件系统之定义档</span><br><span class="line">-rw-r--r--  fat_stage1_5            #&lt;==FAT 文件系统之定义档</span><br><span class="line">-rw-r--r--  ffs_stage1_5            #&lt;==FFS 文件系统之定义档</span><br><span class="line">-rw-------  grub.conf               #&lt;==grub 在 Red Hat 的配置档</span><br><span class="line">-rw-r--r--  iso9660_stage1_5        #&lt;==光驱文件系统定义档</span><br><span class="line">-rw-r--r--  jfs_stage1_5            #&lt;==jfs 文件系统定义档</span><br><span class="line">lrwxrwxrwx  menu.lst -&gt; ./grub.conf #&lt;==其实 menu.lst 才是配置档！</span><br><span class="line">-rw-r--r--  minix_stage1_5          #&lt;==minix 文件系统定义档</span><br><span class="line">-rw-r--r--  reiserfs_stage1_5       #&lt;==reiserfs 文件系统定义档</span><br><span class="line">-rw-r--r--  splash.xpm.gz           #&lt;==启动时在 grub 底下的背景图示</span><br><span class="line">-rw-r--r--  stage1                  #&lt;==stage 1 的相关说明</span><br><span class="line">-rw-r--r--  stage2                  #&lt;==stage 2 的相关说明</span><br><span class="line">-rw-r--r--  ufs2_stage1_5           #&lt;==UFS 的文件系统定义档</span><br><span class="line">-rw-r--r--  vstafs_stage1_5         #&lt;==vstafs 文件系统定义档</span><br><span class="line">-rw-r--r--  xfs_stage1_5            #&lt;==xfs 文件系统定义档</span><br></pre></td></tr></table></figure>
+<p>grub优点认识与支持加多的文件系统, 并且可以使用grub的主程序直接在文件系统中搜寻核心文件; 启动时候自行编辑修改配置项目; 动态搜寻配置文件,不需要修改后重新安装grub<br>硬盘与分区在grub中的代号(hd0,0),以()包起来,hd为硬盘,第一个数字以搜索顺序作为硬盘编号,第二个数字为分区顺序 如第一个硬盘为(hd0), 第二颗硬盘的第二个分区为(hd1,1),其中侦测顺序在bios中指定  </p>
+<p>/boot/grub/menu.lst与菜单类型  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /boot/grub/menu.lst</span><br><span class="line">default=0     #&lt;==默认启动选项，使用第 1 个启动菜单 (title)</span><br><span class="line">timeout=5     #&lt;==若 5 秒内未动键盘，使用默认菜单启动</span><br><span class="line">splashimage=(hd0,0)/grub/splash.xpm.gz #&lt;==背景图示所在的文件</span><br><span class="line">hiddenmenu    #&lt;==读秒期间是否显示出完整的菜单画面(默认隐藏)</span><br><span class="line">title CentOS (2.6.18-92.el5)    #&lt;==第一个菜单的内容</span><br><span class="line">        root (hd0,0)</span><br><span class="line">        kernel /vmlinuz-2.6.18-92.el5 ro root=LABEL=/1 rhgb quiet</span><br><span class="line">        initrd /initrd-2.6.18-92.el5.img</span><br></pre></td></tr></table></figure>
+<p>title后的配置<br>root (hd0,0)代表核心文件放在哪个partition中,不是根目录<br>kernel后面跟的是kernel的核心文件名 root=LABEL=/1 linux目录在那个partition中, 相当于挂载, rhgb彩色模式, quiet安静模式不会输出核心侦测信息<br>initrd initrd制作出的RAM Disk文件名  </p>
+<p>/boot独立分割  /dev/sda1 (/boot), /dev/sda5 (/) 写法 kernel (hd0,0)/vmlinuz root=/dev/sda5 …<br>/boot无独立分割 dev/hda1 (/), /dev/hda2 (swap) 写法 kernel (hd0,0)/boot/vmlinuz root=/dev/hda1 …  </p>
+<p>利用chain loader转交控制权   chainloader +1</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /boot/grub/menu.lst</span><br><span class="line"><span class="meta">#</span><span class="bash">....前略....</span></span><br><span class="line">title Windows partition</span><br><span class="line">    hide (hd0,4)           #&lt;==隐藏 (hd0,4) 这个分割槽, 不想让windows识别</span><br><span class="line">    rootnoverify (hd0,0)   #&lt;==不检验此分割槽</span><br><span class="line">    chainloader +1         #&lt;== +1 可以想成第一个磁区，亦即是 boot sector</span><br><span class="line">    makeactive             #&lt;==配置此分割槽为启动碟(active)</span><br></pre></td></tr></table></figure>
+<p>initrd的重要性<br>需要initrd的时刻  根目录硬盘为SATA/U盘/SCSI接口, 根目录为LVM或RAID等特殊格式, 根目录为非linux认识的文件系统, 必须要在核心加载时提供的模块<br>如果要重制initrd文件,可以使用mkinitrd处理<br>mkinitrd [-v] [–with=模块名称] initrd文件名 核心版本 参数 -v显示过程 –with=模块名称,不需要写完整文件名 initrd文件名 核心版本<br>mkinitrd -v initrd_$(uname -r) $(uname -r) 创建一个initrd虚拟文件<br>mkinitrd -v –with=8139too initrd_vbirdtest $(uname -r) 将8139too模块加入initrd文件  </p>
+<p>测试与安装grub<br>如果默认是grub就不需要安装, 如果原来不是grub就需要安装<br>grub-install [–root-directory=DIR] INSTALL_DEVICE 参数 –root-directory=DIR 默认将grub文件复制到/boot/grub/*中,这样可以指定  INSTALL_DEVICE安装的装置代号<br>grub-install /dev/hda<br>grub-install –root-directory=/home /dev/hda3 将grub安装到/home所在的/dev/hda3中  /home/boot/grub文件夹中会有相应的内容  </p>
+<p>grub-install只处理配置文件,如果想安装grub到MBR与boot sector中,使用grub shell<br>grub进入grub shell<br>root(hdx,y) 选择进入含有grub目录的那个partition<br>find /boot/grub/stage1 看看能否找到安装资讯文件<br>find /boot/vmlinuz看看能否找到kernel file<br>setup (hdx,y)或者setup (hdx)将grub安装在boot sector或MBR中<br>quit退出grub shell  </p>
+<p>如果是从其他boot loader转成grub时, 先使用grub-install安装grub配置文件, 编辑menu.lst配置文件, 通过grub将主程序安装到系统中, 如MBR(hd0), boot sector(hd0,0)等等  </p>
+<p>启动过程中的功能修改<br>e是编辑, o新增一行, d删除行 仅当前页有效<br>e编辑完后,enter确认,boot启动, 如果menu.lst配置错误,可以进入grub shell进行配置, 如果grub都无法启动, 利用具有grub的CD来启动  </p>
+<p>menu.lst配置vga参数是分辨率的意思<br>BIOS无法读取大硬盘问题, 把核心文件放在前1024磁柱内, 可以通过创建/boot单独分区解决<br>个别菜单加口令  通过grub-md5-crypt进行获取口令  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim /boot/grub/menu.lst</span><br><span class="line">....(前面省略)....</span><br><span class="line">title CentOS (2.6.18-92.el5)</span><br><span class="line">        password --md5 $1$kvlI0/$byrbNgkt/.REKPQdfg287.</span><br><span class="line">        root (hd0,0)</span><br><span class="line">        kernel /vmlinuz-2.6.18-92.el5 ro root=LABEL=/1 rhgb quiet vga=790</span><br><span class="line">        initrd /initrd-2.6.18-92.el5.img</span><br><span class="line">....(中间省略)....</span><br><span class="line">title single user mode</span><br><span class="line">        password --md5 $1$GFnI0/$UuiZc/7snugLtVN4J/WyM/</span><br><span class="line">        root (hd0,0)</span><br><span class="line">        kernel /vmlinuz-2.6.18-92.el5 ro root=LABEL=/1 rhgb quiet single</span><br><span class="line">        initrd /initrd-2.6.18-92.el5.img</span><br></pre></td></tr></table></figure>
+<p>输入口令才可进入, 但这样可以通过e编辑,进行修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim /boot/grub/menu.lst</span><br><span class="line">default=0</span><br><span class="line">timeout=30</span><br><span class="line">password --md5 $1$kvlI0/$byrbNgkt/.REKPQdfg287.  &lt;==放在整体配置处</span><br><span class="line">splashimage=(hd0,0)/grub/splash.xpm.gz</span><br><span class="line"><span class="meta">#</span><span class="bash">hiddenmenu</span></span><br><span class="line">title CentOS (2.6.18-92.el5)</span><br><span class="line">        lock  &lt;==多了锁死的功能</span><br><span class="line">        root (hd0,0)</span><br><span class="line">        kernel /vmlinuz-2.6.18-92.el5 ro root=LABEL=/1 rhgb quiet vga=790</span><br><span class="line">        initrd /initrd-2.6.18-92.el5.img</span><br></pre></td></tr></table></figure>
+<p>这样整体加口令,lock之后修改也需要口令  </p>
+<p>启动过程中的问题解决<br>忘记root密码 在grub中编辑, 最后加入single, 进入单人维护模式, 进行修改root密码<br>init配置错误<br>即使进入single模式也会读取inittab,如果inittab配置错误,也无法进入, 可通过修改 init=/bin/bash 进入bash 仅会加载根目录,且为只读模式, mount -o remount,rw / 重新挂载/目录,mount -a,挂载/etc/fstab配置的文件系统, 修改/etc/inittab 然后重启<br>硬盘对应的device.map, 通过在/boot/grub/device.map中指定,避免BIOS中的配置导致的问题<br>利用chroot切换到另一颗硬盘工作  </p>
+<h2 id="系统配置工具"><a href="#系统配置工具" class="headerlink" title="系统配置工具"></a>系统配置工具</h2><p>CentOS配置工具setup<br>可以配置Authentication configuration身份认证, Firewall configuration防火墙, Keyboard configuration键盘, Network configuration网络配置, System services系统服务,Timezone configuration市区服务, X configuration配置Xwindow  </p>
+<h2 id="软件源码安装"><a href="#软件源码安装" class="headerlink" title="软件源码安装"></a>软件源码安装</h2><p>Linux上的软件几乎都是经过GPL授权的, 所以每个软件几乎都会提供程序的原始码.<br>Linux系统真正认识的可运行程序其实是二进制文件,如/usr/bin/passwd,/bin/touch. 像shell scripts其实是利用shell程序进行一些功能判断, 最终运行的仍是二进制程序. 可以通过file命令查看可运行程序的类型, 如果是shell脚本是通过最上方的#!/bin/bash指定的, 否则会显示ASCII文字文件.<br>函式库：就类似副程序的角色，可以被呼叫来运行的一段功能函数<br>make命令搜索目录下的makefile/Makefile文件, 通过其配置, 自动升级安装运行文件. 通常软件开发商会写一直侦测程序来侦测使用者的环境, 测试完成后会创建Makefile文件, 通常测试文件为configure/config<br>侦测文件一般会侦测是否有时候的编译器, 是否存在本软件所需要的函数库, 操作系统平台是否适合本软件, 核心表头定义文件是否存在.<br>一般需要configure, 创建makefile, 然后运行make命令安装<br>一般软件会打包成tarball, 而且会以gzip或者bzip2格式, 后缀为<em>.tar.gz或者</em>.tar.bz2, 里边通常有原始程序, 侦测文件, 简易安装说明 install或者readme<br>软件升级原因 需要新功能, 就软件有安全漏洞, 就软件性能不足<br>软件升级方法 直接原始码编译安装升级, 以编译好的binary program安装升级  </p>
+<p>tarball软件安装流程 下载,解压,gcc编译,gcc链接形成binary file, 将binaryfile安装在主机上. 其中编译过程可以通过make命令简化. 所以系统上需要安装gcc和make  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim hello.c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello World!\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>gcc hello.c进行编译产生a.out运行文件<br>gcc -c hello.c 产生hello.o链接文件<br>gcc -o hello hello.o 产生hello运行文件<br>./hello运行<br>gcc -O hello.c -c产生hello.o文件,并进行优化<br>gcc sin.c -lm -L/usr/lib -I/usr/include  -lm指的是libm.so或者libm.a函数库文件, -L上面的函数库的搜索目录, -I后面的原始码include文件所在目录<br>gcc -o hello hello.c -Wall 加入-Wall后程序编译的会严谨, 同时显示警告信息  </p>
+<p>make命令<br>vim makefile<br>main: main.o haha.o sin_value.o cos_value.o<br>    gcc -o main main.o haha.o sin_value.o cos_value.o -lm<br>make<br>make命令和shell scripts 不一样, make会判断每个目标文件的原始文件, 然后直接予以编辑, 最后进行连接, 同时可以判断哪一个文件的原始码与相关的目标文件是否升级过, 并仅升级新文件. 省去大量的编译时间  </p>
+<p>make语法<br>标的(target): 目标档1 目标档2<br>\&lt;tab>   gcc -o 欲创建的运行档 目标档1 目标档2<br>其中注释为#, target与目标文件用:隔开</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi makefile</span><br><span class="line">main: main.o haha.o sin_value.o cos_value.o</span><br><span class="line">    gcc -o main main.o haha.o sin_value.o cos_value.o -lm</span><br><span class="line">clean:</span><br><span class="line">    rm -f main main.o haha.o sin_value.o cos_value.o</span><br></pre></td></tr></table></figure>
+<p>这样可以运行 make clean命令 或 make clean main命令<br>同时可以用变量简化makefile  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LIBS = -lm</span><br><span class="line">OBJS = main.o haha.o sin_value.o cos_value.o</span><br><span class="line">main: $&#123;OBJS&#125;</span><br><span class="line">        gcc -o main $&#123;OBJS&#125; $&#123;LIBS&#125;</span><br><span class="line">clean:</span><br><span class="line">        rm -f main $&#123;OBJS&#125;</span><br></pre></td></tr></table></figure>
+<p>与shell script语法不同, 变量与内容以=分隔, 两遍可同时有空格, 变量左边不可以是tab, 不可以有:, 变量以大写字母为主, 取值$(变量)或${变量}, 可以与shell变量套用,如CFLAGES, 命令列模式可以直接给予变量<br>CFLAGS=”-Wall” make clean main 进行编译时会取用CFLAGS的变量内容<br>以make命令行后边加上的环境变量为主, makefile指定的环境变量第二, shell原本的环境变量第三<br>$@代表标的target  </p>
+<p>tarball的安装是跨平台的, 可以用C语言写程序<br>gcc编译器, amke及auoconfig软件, kernel提供的library  </p>
+<p>tarball安装步骤<br>下载原始文件, 在/usr/local/src目录解压; 查看install readme文件; 依据install/readme文件中的提示, 安装依赖软件; 运行configure创建makefile 文件; 运行make命令编译; 安装, 运行make命令, 取得配置文件安装.<br>make最常见的target是install 与 clean<br>命令步骤 ./configure ; make clean; make; make install  </p>
+<p>自行安装的软件建议安装在/usr/local/文件夹中. 默认情况下man回去寻找/usr/local/man文件夹里的说明文件.<br>例子, 安装ntp  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src</span><br><span class="line">tar -zxvf /root/ntp-4.2.4p7.tar.gz #解压到此目录</span><br><span class="line">cd ntp-4.2.4p7/</span><br><span class="line">vi INSTALL #查看安装方法</span><br><span class="line">./configure --help | more #查询可用的参数</span><br><span class="line">./configure --prefix=/usr/local/ntp --enable-all-clocks --enable-parse-clocks #开始创建makefile  </span><br><span class="line">make clean; make</span><br><span class="line">make check</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>patch -p数字 &lt; patch_file 进行升级</p>
+<p>函数库管理<br>静态函数库扩展名.a, 编译行为整合到运行文件中, 独立运行程序, 升级比较麻烦<br>动态函数库扩展名.so, 编译行为是指针, 未整合到运行文件, 不能独立运行, 升级简单<br>目前比较倾向于动态函数库, 升级方便, 而且文件小  </p>
+<p>动态函数库 增加读写速度, 将函数库加载到内存中的缓存中, 下次使用就不用再次读取了  ldconfig /etc/ld.so.conf的协助<br>ldconfig [-f conf] [ -C cache]<br>ldconfig [-p] 参数 -f指定conf路径, -C使用cache为缓存函数库数据 -p列出目前所有的函数库数据内容<br>vim /etc/ld.so.conf 增加/usr/lib/mysql一行<br>ldconfig<br>ldconfig -p列出不浅函数库的内容<br>利用ldd查看二进制文件需要的函数库<br>ldd [-vdr] [filename] 参数-v列出内容 -d遗失的link显示出来, -r将ELF错误内容显示出来<br>如ldd /usr/bin/passwd<br>检验软件正确性<br>md5sum/sha1sum [-bct] filename 参数-b使用binary读档方式 -c检验文件指纹 -t文字形态读档方式<br>md5sum/sha1sum [–status|–warn] –check filename  </p>
+<h2 id="软件RPM安装"><a href="#软件RPM安装" class="headerlink" title="软件RPM安装"></a>软件RPM安装</h2><p>tarball安装方式很麻烦, 所以厂商为了方便安装, 提供了两种简便的安装方式<br>rpm与dpkg  会有软件依赖性问题, 为了解决此问题, 通过线上安装方式解决 dpkg的apt-get机制, rpm的yum机制,you,urpmi等等  </p>
+<p>rpm RedHat Package Manager之前是redhat开发出来的, 以数据库记录方式将所需的软件安装到linux系统. 预先编译过, 先查询是否满足依赖性, 满足则安装并记录数据库中, 不满足则不安装<br>SRPM source rpm里边含有原始码, 并没有编译过, 但其中记录的依赖信息, 命名方式*.src.rpm 安装方式:编译成rpm,然后安装. srpm与tarball不同的是记录可依赖信息, 可编译为rpm包<br>XXXXXX.rpm rpm包名 XXXX.src.rpm srpm包名<br>rp-pppoe-3.1-5.i386.rpm 其中 rp-pppoe为软件名 3.1为软件版本 5为释出次数 i386 硬件平台 rpm扩展名<br>平台有 i386 i586 i686 x86_64 noarch与平台没有关系,一般是shell script<br>rpm优点 已编译; 检查硬盘容量系统版本等信息, 避免安装错误; 方便了解软件; 便于查询升级移除验证等  </p>
+<p>rpm默认安装路径<br>/etc/ 放置配置文档 ; /usr/bin运行文件 ; /usr/lib动态函数库; /usr/share/doc软件使用手册; /usr/share/man存放man page<br>rpm -ivh package_name 参数 -i install -v查看信息 -h显示安装进度<br>其他参数 –nodeps不检查依赖关系 –replacefiles覆盖文件 –replacepkgs 批量安装时使用; –force 是–replacefiles和–replacepkgs的综合体; –test 测试是否可安装; –justdb 升级数据库; –nosignature略过签名检查 –prefix新安装路径 –noscripts 不想安装过程中运行系统命令,如初始化动作<br>rpm升级 -Uvh没安装直接安装,安装过直接升级 -Fvh安装过的才会升级<br>rpm -qa 查询所有 模糊查询可通过 grep 过滤<br>rpm -q[licdR] 已安装的软件名称<br>rpm -qf 存在於系统上面的某个档名<br>rpm -qp[licdR] 未安装的某个文件名称<br>参数 -q仅查询 -qa查询所有 -qi查询信息 -ql列出完整文件名 -qc查找配置文件 -qd查看说明文件 -qR所有依赖文件 -qf该文件属于那一个软件 -qp查询某个rpm文件内的信息  </p>
+<p>rpm验证与签名<br>rpm -Va<br>rpm -V  已安装的软件名称<br>rpm -Vp 某个 RPM 文件的档名<br>rpm -Vf 在系统上面的某个文件<br>参数 -V软件变动过才列出来 -Va所有可能被变动过的文件 -Vp列出软件内被变动过的文件  -Vf某个文件是否改变过<br>rpm -V logrotate 结果是..5….T  c /etc/logrotate.conf<br>其中参数意思是S容量大小是否改变; M文件属性是否改变; 5指纹是否改变; D主次版本; L link路径; U所属人; G所属群组; T创建时间<br>文件类型 c配置文件; d文件数据; g鬼文件,不应该被软件包含; l授权文件; r读我文件<br>数字签名 digital signature, 只能验证/var/lib/rpm中的数据库, 如果本身有问题,那就验证不了<br>先安装原厂公钥,安装原厂的rpm,会读取rpm的数字签名, 相同则安装, 找不到则警告<br>rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5 ,导入公钥  </p>
+<p>rpm卸载<br>通过 -e命令即可, 要从上往下移除 rpm –rebuilddb重建数据库  </p>
+<p>srpm使用<br>rpmbuild编译源码, 并安装<br>–rebuild 编译打包<br>–recompile 编译打包并安装<br>SRPM 路径<br>/usr/src/redhat/SPECS 配置文件,参数<br>/usr/src/redhat/SOURCES 原始文件<br>/usr/src/redhat/BUILD 编译缓存文件<br>/usr/src/redhat/RPMS 成功编译好的文件<br>/usr/src/redhat/SRPMS SRPM封装的文件  </p>
+<p>YUM线上升级机制<br>yum [option] [查询工作项目] [相关参数] 参数 -y自动输入yes –installroot=/some/path指定安装目录 search查询名称和描述中的关键字 list查询所有 info查询信息 provides 查询文件名  install 安装 remove 卸载<br>配置文件<br>/etc/yum.repos.d/CentOS-Base.repo 文件  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[base]</span><br><span class="line">name=CentOS-$releasever - Base</span><br><span class="line">mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os</span><br><span class="line"><span class="meta">#</span><span class="bash">baseurl=http://mirror.centos.org/centos/<span class="variable">$releasever</span>/os/<span class="variable">$basearch</span>/</span></span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5</span><br></pre></td></tr></table></figure>
+<p>[base]容器, name说明, mirrorlist镜像地址, baseurl实际网址, mirrorlist是自行捕捉url地址, enable=1 被启动,不启动enable=0 , gpgcheck=1 是否查询签名, gpgkey 签名所在位置  </p>
+<p>yum repolist all 查询所有yum源<br>yum clean [packages|headers|all] 参数 packages删除已下载软件 headers删除文件头 all所有数据删除<br>yum [群组功能] [软件群组] 参数grouplist groupinfo groupinstall groupremove  </p>
+<h2 id="X-window配置"><a href="#X-window配置" class="headerlink" title="X window配置"></a>X window配置</h2><p>GUI 图形界面 graphical user interface<br>CLI 命令行界面 command line interface  </p>
+<ul>
+<li>在 Unix Like 上面的图形使用者介面 (GUI) 被称为 X 或 X11</li>
+<li>X11 是一个『软件』而不是一个操作系统</li>
+<li>X11 是利用网络架构来进行图形介面的运行与绘制</li>
+<li>较著名的 X 版本为 X11R6 这一版，目前大部分的 X 都是这一版演化出来的 (包括 X11R7)</li>
+<li>现在大部分的 distribution 使用的 X 都是由 Xorg 基金会所提供的 X11 软件</li>
+<li>X11 使用的是 MIT 授权，为类似 GPL 的自由软件授权方式</li>
+</ul>
+<p>主要组件<br>X Server/X Client/Window Manager/Display Manager<br>X Server管理用户端的硬件, 包括接受键盘/鼠标等设备的输入, 将图形绘制在萤幕上, 同时提供字体功能<br>X Client 针对输入装置的行为进行处理,通过远程服务告知X Server显示什么<br>举例 移动鼠标. Xserver侦测鼠标的移动, 然后告知Xclient, Xclient运算, 得到结果移动几个像素, 然后告知Xserver绘制<br>X Window Manager特殊的X Client 负责处理所有的X Client软件, 解决XClient不知道彼此之间产生的问题, 同时提供控制元素,管理壁纸,控制窗口大小<br>Display Manager 提供登录需求, 负责加载Window Manager提供语言环境等<br>X Window启动流程<br>在文字界面启动 通过startx启动, 其实startx 是一个shell script会主动帮助使用者建立起X所需要的配置文件, 找出默认的Xserver 与 Xclient的配置文件, 格式如下 startx [X client 参数] – [X server 参数] 参数通过–分割 如 startx – -depth 16让xserver以16bit色彩深度启动X<br>startx Xserver的参数顺序 优先使用startx命令参数, 如果没有则使用~./xserverrc文件参数,如果没有则使用/etc/X11/xinit/xserverrc文件, 如果也没有则单纯运行/usr/bin/X程序其配置文件是/etc/X11/xorg.conf<br>Xclient参数顺序 使用startx参数, 没有则使用~/.xinitrc, 没有则使用/etc/X11/xinit/xinitrc文件, 如果没有则运行xterm程序  </p>
+<p>startx是通过xinit启动才X Window<br>xinit [client option] – [server or display option] 如果家目录没有配置,输入startx 相当于 xinit /etc/X11/xinit/xinitrc – /etc/X11/xinit/xserverrc 如果xserverrc不存在, 相当于xinit /etc/X11/xinit/xinitrc – /usr/bin/X<br>xinit默认参数是xinit xterm -geometry +1+1 -n login -display :0 – X :0<br>xterm是X窗口下的默认虚拟终端机,</p>
+<p>单独启动<br>X :1&amp; 在1号启动Xserver, 默认1号是tty8<br>xterm -display :1 &amp; 启动Xclient并在1号显示<br>xclock -display :1  &amp;<br>xeyes -display :1  &amp;<br>twm -display :1 &amp; 启动twm窗口管理程序  </p>
+<p>若有多个登录环境 可修改/etc/sysconfig/desktop中文件修改默认登录环境  </p>
+<h2 id="Linux备份策略"><a href="#Linux备份策略" class="headerlink" title="Linux备份策略"></a>Linux备份策略</h2><p>推荐备份的数据</p>
+<ul>
+<li>/boot</li>
+<li>/etc</li>
+<li>/home</li>
+<li>/root</li>
+<li>/usr/local(或者是 /opt 及 /srv 等)</li>
+<li>/var(注：这个目录当中有些缓存目录则可以不备份！)</li>
+</ul>
+<p>不需要配置的数据  </p>
+<ul>
+<li>/dev ：这个随便你要不要备份  </li>
+<li>/proc：这个真的不需要备份啦！  </li>
+<li>/mnt 与 /media：如果你没有在这个目录内放置你自己系统的东西，也不需要备份  </li>
+<li>/tmp ：干嘛存缓存档！不需要备份！  </li>
+</ul>
+<h2 id="核心编译与管理"><a href="#核心编译与管理" class="headerlink" title="核心编译与管理"></a>核心编译与管理</h2><h2 id="CentOS7区别"><a href="#CentOS7区别" class="headerlink" title="CentOS7区别"></a>CentOS7区别</h2><p>默认的文件系统进行了修改, 改为了XFS格式, 不再是EXT4格式.<br>近代硬盘的分区模式也进行了修改, 不在使用MBR, 而是使用GPT模式, 但小硬盘分区依然是MBR模式, 可通过安装时进行修改, 安装时按tab键, 修改核心参数, 最后加入inst.gpt进行修改<br>引导程序进行了修改, 改为了grub2, 不再是grub<br>系统初始化技术行不行了修改, 不再用之前的sysvinit, 进行管理, 而统一用systemd进行管理<br>主要区别<br>内核进行了修改由2.6升级到3.10<br>防火墙由iptables改为firewalld<br>默认数据库由mysql改为mariadb<br>文件结构 /bin, /sbin, /lib, /lib64 移动到了/usr下<br>主机名/etc/sysconfig/network 改为了/etc/hostname<br>时间同步由ntp/ntpq -p 改为了 chrony/chronyc sources  </p>
+<p>sysvinit技术特点是:系统第一个进程为init, init不可kill, 大多数linux的init系统是和systemv兼容的, 被称为sysvinit. 优点是运行良好,概念清晰,主要依赖于shell脚本. 缺点是按照顺序执行, 启动慢, 容易hang住, 如fstab与nfs挂载问题<br>upstart技术 upstart在rc.sysinit脚本上做了大量的优化, 缩短了系统的启动时间<br>systemtd技术 克服了sysvinit缺点提高了启动速度, 与sysvinit兼容, 降低迁移成本, 并行启动<br>yum源进行了优化, 之前默认是从官方下载rpm包, 国内太慢, 下载是里地理位置最近的yum源进行下载<br>最小安装时未安装vim/inconfig/route/setup/nestat命令, 可通过以下yum命令安装 <code>yum install lrzsz tree net-tools nmap vim bash-completion lsof dos2unix nc telnet ntp wget rng-tools psmisc screen -y</code><br>字符集修改 修改/etc/locale.conf文件, localectrl set-local LANG=zh_CN.UTF-8 , 通过localectl status 进行查看<br>开机启动管理<br>/etc/rc.local还是存在可加运行权限执行, systemd 管理方式 systemctl [command] [servicename] 如systemctl status cron.service查看任务状态  start/stop/list-unit-files/disable/is-enable<br>/etc/inittab是无效的被system target替代<br>永久生效下次登录生效<br>systemctl get-default graphical.target 切换到5<br>systemctl get-default multi-user.target 切换到3<br>临时生效 init 3<br><code>ls -lh /usr/lib/systemd/system/runlevel*.target</code>可查看运行级别  </p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>tcpdump命令查询的ack会有偏移, 以第一次的为准, 可加-S取消  </p>
+<p>局域网(local area network LAN) 同一个单位内<br>广域网(wide area network WAN) 远距离传输  </p>
+<p>OSI七层模型<br>应用层 Application<br>表示层 Presentation<br>会话层 Session<br>传输层 Transport<br>网络层 Network<br>数据链路层 Data link<br>物理层 Physical  </p>
+<p>物理层 将数据以特定的形式发送出去, 如转变为电信号(电压高低)或光信号(光的闪灭)  设备有中继器(延长物理层, 放大信号, 集线器即是一种多口中继器) 协议?线路 无线电 光纤<br>数据链路层 无力层面的上的互联, 通过mac地址, 进行数据传送  设备网桥(即2层交换机, 连接链路层的两个网络设备, 能够识别数据帧, 储存处理重新生成转发, 交换集线器是一种网桥)  协议PPP SBTV SLIP 以太网 令牌环<br>网络层 通过ip地址进行传送  设备路由器(3层交换机, 处理ip地址, 可以连接不同数据链路)  协议IP ICMP<br>传输层 可靠传输, 只在双方节点上处理, 不在路由器处理  协议TCP UDP<br>会话层 负责简历断开通信连接, 数据分割的传送管理  Sockets<br>表示层 将引用层的内容转化为适合网络传输的格式  协议 SSL MIME<br>应用层 为应用程序服务并规定应用程序的通信细节  协议HTTP FTP TELNET SSH SMTP POP3 NFS  </p>
+<p>TCP/IP模型<br>应用层 application<br>传输层 transport<br>网络互联层 internet<br>网络接口层 link  </p>
+<p>TCP/IP运作流程, 以打开google为例  </p>
+<ol>
+<li>应用程序阶段 打开浏览器, 输入地址, 按下enter, 网址和相关数据会被包装成数据, 传给应用层  </li>
+<li>应用层 有应用层提供的http通信协议, 将浏览器数据包起来, 形成应用层表头, 传送给传输层  </li>
+<li>传输层  由于http为可靠联机, 将数据丢入TCP封包, 给予TCP表头, 丢向网络层  </li>
+<li>网络层 将TCP封包进IP封包内, 给予IP表头, 丢向链路层  </li>
+<li>链路层 包裹MAC frame中, 基于mac表头 生成校验码, 利用物理层传输到主机  </li>
+<li>google将数据一步步反向解开  </li>
+</ol>
+<p>IP地址组成与分级<br>classA ip开头是0 net8位 范围0-127<br>classB ip开头是10 net 16位 范围128-191<br>classC ip开头110 net 24位 范围192-223<br>classD ip开头1110 范围224-239 群播使用<br>classE ip开头1111 范围240-255 暂未启用  </p>
+<p>privateIP 在局域网内使用的ip地址  私有地址不能对外散播, 不能透过internet传送, 只限于内部使用<br>classA 10.0.0.0-10.255.255.255<br>classB 172.16.0.0-172.31.255.255<br>classC 192.168.0.0-192.168.255.255  </p>
+<p>loopback IP地址 127.0.0.0/8 默认localhost是127.0.0.1  </p>
+<p>ip取得可以通过手动设置, 拨号获得, 或者 DHCP获得  </p>
+<p>子网掩码 为了自由的对网络进行划分, 便于路由转发<br>192.168.0.0/26 等同于 192.168.0.0/255.255.255.192<br>表示192.168.0.0-192.168.0.63这一段网络, 其中192.168.0.0代表整段网络, 192.168.0.63代表广播地址<br>如果192.168.0.0-192.168.0.255子网掩码为26  即代表四段网络<br>192.168.0.0/26, 192.168.0.64/26, 192.168.0.128/26, 192.168.0.192/26  </p>
+<p>通过route 或者netstat -r查看路由状态  </p>
+<p>mac地址与ip的关系可以通过arp查看或者rarp反向查看 arp(address resolution protocol 网络地址解析协议) rarp(revers arp, 反向网络地址解析协议)<br>arp 参数 -n 数字形态 -d 删除 -s保存  </p>
+<p>ICMP (internet control message protocol 因特网信息控制协议), 主要是错误侦测与汇报, ping和traceroute命令即是使用此协议, 类别0是一个相应信息, 8是请求一个相应信息  </p>
+<p>tcp三次握手  同时防止网络延迟的问题, 因为网络是双向的, 各方都要保证自己的发送对方能够收到, 对方的自己能够收到, 第二次进行了发送与确认的合并, 所以只有三次<br>第一次 client 发送SYN包, 随机产生seq=x, 进入SYN-SENT状态, 等待server确认<br>第二次 server 将ACK与SYN都置为1, ack=x+1, 随机产生seq=y, 发送给client, 进入SYN-RCVD状态, 等待client确认, 系统分配TCP缓存和变量<br>第三次 client发送ACK置为1, ack=y+1, 都进入ESTABLISHED, 系统分配TCP缓存和变量  </p>
+<p>SYN攻击  服务器端的资源分配是在二次握手时分配的，而客户端的资源是在完成三次握手时分配的, server回复确认包, 等待client确认, server不断重发, 资源浪费. 解决方式降低主机等待时间, 短时间内收到某个ip的频繁请求, 主动丢弃  </p>
+<p>tcp四次挥手  因为数据有可能没有传完, 所以两次发送不能合并<br>第一次 client发送FIN包, 假设seq=u, 并停止发送数据, 进入FIN-WAIT-1状态, 等待server确认<br>第二次 server发送ACK包, 确认序号ack=u+1, seq=v包, server进入CLOSE-WAIT状态, client收到后进入FIN-WAIT-2状态<br>第三次 server没有要发送数据的时候, 发出FIN,ACK,seq=w,ack=u+1包, 进入LAST-ACK状态, 等待client确认<br>第四次 收到后发出ACK,seq=u+1,ack=w+1包进入TIME-WAIT状态, 此时TCP未释放, 等待2MSL进入CLOSED状态, 而server收到后进入CLOSED状态, 等待2MSL原因, 防止最后一个ACK丢失, B一直出于确认阶段, 重传的报文能够收到, 并重新发送  </p>
+<p><img src="image/TCP.png" alt="tcp.png"></p>
+<h2 id="网络常用命令"><a href="#网络常用命令" class="headerlink" title="网络常用命令"></a>网络常用命令</h2><p>ifconfig<br>ifconfig {interface} {up|down}<br>ifconfig interface {options}<br>参数 interface接口代号如eth0, eth1, ppp0 options选项有up,down mtu 设置mtu值 netmask子网掩码 broadcast广播地址  </p>
+<p>ifup ifdown 开启/关闭设备 相当于ifconfig eth0 up, 是一个脚本  </p>
+<p>route 路由查看与修改<br>route [-nee]<br>route add [-net|-host] [网域或主机] netmask [mask] [gw|dev]<br>route del [-net|-host] [网域或主机] netmask [mask] [gw|dev]<br>参数 -n使用数字 -ee更详细信息  add增加del删除<br>ip<br>ip [option] [动作] [指令]<br>参数 -s 显示统计数据 link关于装置的设定 ,addr/address额外的ip协议 , route路由相关设定<br>ip [-s] link show<br>ip link set [device] [动作与参数]<br>接口设定 show显示 set参数 up|down打开关闭, address 更改mac地址, name修改装置的名字, mtu修改mtu值<br>ip address show<br>ip address [add|del] [IP参数] [dev 装置名] [相关参数]<br>参数 show显示 add|del添加删除 相关参数有broadcast广播地址,label别名, scope主要有global,site,link,host<br>ip route show<br>ip route [add|del] [IP或网域] [via gateway] [dev 装置]<br>参数show显示 add|del添加删除 ip或网域 via通过的网关 dev装置 mtu设定mtu  </p>
+<p>iwlist iwconfig 无线查看与设定  </p>
+<p>dhclinet<br>自动获取ip地址, 后接装置名 如eth0  </p>
+<p>ping 网络是否正常<br>ping [选项与参数] IP<br>参数-c次数 -n数字显示 -s封包大小 -t生存时间TTL -W等待对方的秒数 -M探测MTU大小</p>
+<p>traceroute 分析经过的节点<br>traceroute [选项与参数] IP<br>参数 -n数字显示 -U使用UDP的方式 -I使用ICMP方式 -T使用TCP方式 -w时间 -p端口号 -i装置 -g路由  </p>
+<p>netstat 查看网络状态<br>netstat -[rn]<br>netstat -[antulpc]<br>参数 -r路由相关 -n数字显示  -a所有联机状态 -t仅TCP -u仅UDP -l仅listen的端口 -p显示PID -c几秒更新一次  </p>
+<p>host 探测主机名与ip对应关系<br>host [-a] hostname [server]<br>参数 -a显示详细设定 server可以使用非/etc/resolv.conf中预设的DNS服务器  </p>
+<p>nslookup 与host基本相同<br>nslookup [-query=[type]] [hostname|IP]<br>参数-query=type 处理ip与主机名对应, 还有mx, cname等</p>
+<p>telnet [host|IP [port]]<br>ftp [host|IP] [port]<br>lftp<br>lftp [-p port] [-u user[,pass]] [host|IP]<br>lftp -f filename<br>lftp -c “commands”<br>参数 -p远程ftp端口 -u帐号密码 -f自动化文件 -c命令<br>links [options] [URL]<br>参数 -anonymous [0|1]：是否匿名 -dump [0|1]输出到standard out -dump_charset 设置编码<br>wget 文字下载器<br>tcpdump 获取tcp包数据<br>tcpdump [-AennqX] [-i 接口] [-w 储存档名] [-c 次数] [-r 档案] [所欲撷取的封包数据格式]<br>参数-A数据以ascii显示 -e以mac封包数据显示 -nn数字显示 -q简短封包 -X十六禁止对应ascii -i设备名 -w封包数据储存 -r存储的封包数据读入 -c封包次数  </p>
+<p>wireshark 图形化版的tcpdump, yum install wireshark wireshark-gnome 进行安装  </p>
+<h2 id="maven仓库镜像"><a href="#maven仓库镜像" class="headerlink" title="maven仓库镜像"></a>maven仓库镜像</h2><blockquote>
+<p>下载工具  </p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lftp http://maven.aliyun.com/nexus/content/repositories/central/ -e 'mirror .'</span><br></pre></td></tr></table></figure>
+<h2 id="常用缩写"><a href="#常用缩写" class="headerlink" title="常用缩写"></a>常用缩写</h2><h3 id="1-目录缩写"><a href="#1-目录缩写" class="headerlink" title="1. 目录缩写"></a>1. 目录缩写</h3><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/bin</td>
+<td>BINaries</td>
+<td>二进制可执行命令</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>DEVices</td>
+<td>特殊设备文件</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>ETCetera</td>
+<td>系统管理和配置文件</td>
+</tr>
+<tr>
+<td>/etc/fstab</td>
+<td>FileSystem TABle</td>
+<td>文件/etc/fstab包含了静态文件系统信息,定义了存储设备和分区整合到整个系统的方式。mount 命令会读取这个文件,确定设备和分区的挂载选项。</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>LIBraries</td>
+<td>库文件</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>MouNT</td>
+<td>系统提供这个目录是让用户临时挂载其他的文件系统。</td>
+</tr>
+<tr>
+<td>/opt</td>
+<td>OPTion</td>
+<td>第三方软件放置的目录。如果你想自行安装额外的软件(非原本的 distribution 提供的),那么也能够将你的软件安装到这里来。</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>PROCesses</td>
+<td>虚拟的目录,是系统内存的映射。可直接访问这个目录来获取系统信息。</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>Super BINaries, Superuser BINaries</td>
+<td>系统管理命令,这里存放的是系统管理员使用的管理程序</td>
+</tr>
+<tr>
+<td>/srv</td>
+<td>SeRVices</td>
+<td>是一些网络服务启动后,这些服务所需要取用的数据目录。常见的服务例如 WWW,FTP 等。</td>
+</tr>
+<tr>
+<td>/sys</td>
+<td>SYStem</td>
+<td>虚拟文件系统,主要记录与内核相关的信息,包括目前已加载的内核模块与内核检测到的硬件设备信息,同样不占硬盘容量。</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>TeMPorary</td>
+<td>公用的临时文件存储点</td>
+</tr>
+<tr>
+<td>tty</td>
+<td>teletypewriter</td>
+<td>“电传打字机”,在类Unix里,键盘显示器,都是虚拟的teletypewriter</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>Unix System/Software/Shared Resources</td>
+<td>“Unix 操作系统软件资源” 所放置的目录,不是用户数据。 FHS 建议所有的软件开发者应该将他们的数据合理的放置到这个目录下的子目录,而不是自行新建该软件自己独立的目录。</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>VARiable</td>
+<td>某些大文件的溢出区,比方说各种服务的日志文件</td>
+</tr>
+</tbody>
+</table>
+<p>注：具体到各个目录的功能以及作用,可以参考下面两篇文章：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/49073893" target="_blank" rel="noopener">Linux中常用的命令都是哪些单词的缩写？</a></li>
+<li><a href="http://www.cnblogs.com/zhyryxz/archive/2012/05/03/2480242.html" target="_blank" rel="noopener">(转)linux 目录结构及其含义</a>(这篇比较详细)</li>
+</ul>
+<h3 id="2-命令缩写"><a href="#2-命令缩写" class="headerlink" title="2. 命令缩写"></a>2. 命令缩写</h3><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apt</td>
+<td>Advanced Packaging Tool</td>
+<td>是Debian Linux发行版中的APT软件包管理工具。一般配合apt-get或者apt-update</td>
+</tr>
+<tr>
+<td>awk</td>
+<td>Aho Weiberger and Kernighan</td>
+<td>Alfred Aho,Peter Weinberger, 和 Brian Kernighan 的Family Name的首字符。一种编程语言,用于在linux/unix下对文本和数据进行处理。</td>
+</tr>
+<tr>
+<td>bash</td>
+<td>Bourne Again SHell</td>
+<td>一种shell</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>BackGround</td>
+<td>用于将作业放到后台运行,使前台可以执行其他任务。该命令的运行效果与在指令后面添加符号&amp;的效果是相同的,都是将其放到系统后台执行。</td>
+</tr>
+<tr>
+<td>cal</td>
+<td>CALendar</td>
+<td>用于显示当前日历,或者指定日期的日历。</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>CATenate</td>
+<td>“连接”,连接文件并打印到标准输出设备上,cat经常用来显示文件的内容,类似于下的type命令。</td>
+</tr>
+<tr>
+<td>chgrp</td>
+<td>CHange GRouP</td>
+<td>用来改变文件或目录所属的用户组。</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td>CHange MODe</td>
+<td>用来变更文件或目录的权限。</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>CHange OWNer</td>
+<td>改变某个文件或目录的所有者和所属的组,该命令可以向某个用户授权,使该用户变成指定文件的所有者或者改变文件所属的组。</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>Change Directory</td>
+<td>切换工作目录</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>CoPy</td>
+<td>将一个或多个源文件或者目录复制到指定的目的文件或目录</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>Data Description</td>
+<td>用于复制文件并对原文件的内容进行转换和格式化处理。</td>
+</tr>
+<tr>
+<td>df</td>
+<td>Disk Free</td>
+<td>用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。</td>
+</tr>
+<tr>
+<td>du</td>
+<td>Disk Usage</td>
+<td>查看使用空间的,但是与df命令不同的是Linux du命令是对文件和目录磁盘使用的空间的查看,还是和df命令有一些区别的。</td>
+</tr>
+<tr>
+<td>diff</td>
+<td>DIFFerence</td>
+<td>在最简单的情况下,比较给定的两个文件的不同。</td>
+</tr>
+<tr>
+<td>dpkg</td>
+<td>Debian PacKaGe</td>
+<td>Debian Linux系统用来安装、创建和管理软件包的实用工具。</td>
+</tr>
+<tr>
+<td>ed</td>
+<td>EDitor</td>
+<td>单行纯文本编辑器,它有命令模式（command mode）和输入模式（input mode）两种工作模式。</td>
+</tr>
+<tr>
+<td>emacs</td>
+<td>Editor MACroS</td>
+<td>是由GNU组织的创始人Richard Stallman开发的一个功能强大的全屏文本编辑器,它支持多种编程语言,具有很多优良的特性。(备注：vim大法好!!!)</td>
+</tr>
+<tr>
+<td>env</td>
+<td>ENVironment</td>
+<td>用于显示系统中已存在的环境变量,以及在定义的环境中执行指令。</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>EXECute</td>
+<td>用于调用并执行指令的命令。</td>
+</tr>
+<tr>
+<td>fsck</td>
+<td>File System Consistency checK, or fuck</td>
+<td>用于检查并且试图修复文件系统中的错误。</td>
+</tr>
+<tr>
+<td>gawk</td>
+<td>Gnu Aho Weiberger and Kernighan</td>
+<td></td>
+</tr>
+<tr>
+<td>grep</td>
+<td>Gnu Regular Expression Print</td>
+<td>（global search regular expression(RE) and print out the line,全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具,它能使用正则表达式搜索文本,并把匹配的行打印出来。</td>
+</tr>
+<tr>
+<td>grub</td>
+<td>GRand Unified Bootloader</td>
+<td>多重引导程序grub的命令行shell工具。</td>
+</tr>
+<tr>
+<td>ifconfig</td>
+<td>InterFace CONFIGuration</td>
+<td>被用于配置和显示Linux内核中网络接口的网络参数。</td>
+</tr>
+<tr>
+<td>init</td>
+<td>INITialization</td>
+<td>Linux下的进程初始化工具</td>
+</tr>
+<tr>
+<td>insmod</td>
+<td>INStall Module</td>
+<td>用于将给定的模块加载到内核中。</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>LiNk</td>
+<td>用来为文件创件连接,连接类型分为硬连接和符号连接两种,默认的连接类型是硬连接。如果要创建符号连接必须使用”-s”选项。</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>LiSt</td>
+<td>显示目标列表</td>
+</tr>
+<tr>
+<td>lsmod</td>
+<td>LiSt Module</td>
+<td>用于显示已经加载到内核中的模块的状态信息。</td>
+</tr>
+<tr>
+<td>man</td>
+<td>MANual</td>
+<td>Linux下的帮助指令,通过man指令可以查看Linux中的指令帮助、配置文件帮助和编程帮助等信息。一般戏称有问题找男人。。。</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>MaKe DIRectory</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>mkfs</td>
+<td>MaKe FileSystem</td>
+<td>用于在设备上（通常为硬盘）创建Linux文件系统。</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>MoVe</td>
+<td>对文件或目录重新命名,或者将文件从一个目录移到另一个目录中。</td>
+</tr>
+<tr>
+<td>nano</td>
+<td>Nano’s ANOther editor</td>
+<td>是一个字符终端的文本编辑器,有点像DOS下的editor程序。</td>
+</tr>
+<tr>
+<td>parted</td>
+<td>PARTition EDitor</td>
+<td>是由GNU组织开发的一款功能强大的磁盘分区和分区大小调整工具,与fdisk不同,它支持调整分区的大小。</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>PASSWorD</td>
+<td>用于设置用户的认证信息,包括用户密码、密码过期时间等。</td>
+</tr>
+<tr>
+<td>ping</td>
+<td>Packet InterNet Grouper</td>
+<td>用来测试主机之间网络的连通性。执行ping指令会使用ICMP传输协议,发出要求回应的信息,若远端主机的网络功能没有问题,就会回应该信息,因而得知该主机运作正常。</td>
+</tr>
+<tr>
+<td>popd</td>
+<td>POP from Directory</td>
+<td>删除目录栈中的记录；</td>
+</tr>
+<tr>
+<td>pushd</td>
+<td>PUSH to Directory</td>
+<td>是将目录加入命令堆叠中。</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>Processes Status</td>
+<td>报告当前系统的进程状态。可以搭配kill指令随时中断、删除不必要的程序。</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Print Working Directory</td>
+<td>以绝对路径的方式显示用户当前工作目录</td>
+</tr>
+<tr>
+<td>rcconf</td>
+<td>Run Command CONFiguration</td>
+<td>Debian Linux下的运行等级服务配置工具,用以设置在特定的运行等级下系统服务的启动配置。</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>ReMove</td>
+<td>可以删除一个目录中的一个或多个文件或目录,也可以将某个目录及其下属的所有文件及其子目录均删除掉。对于链接文件,只是删除整个链接文件,而原有文件保持不变。</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>ReMove DIRectory</td>
+<td>用来删除空目录。</td>
+</tr>
+<tr>
+<td>rmmod</td>
+<td>ReMove MODule</td>
+<td>用于从当前运行的内核中移除指定的内核模块。</td>
+</tr>
+<tr>
+<td>rpm</td>
+<td>RPM/Redhat Package Manager</td>
+<td>RPM软件包的管理工具。</td>
+</tr>
+<tr>
+<td>sed</td>
+<td>Stream EDitor</td>
+<td>一种流编辑器,它是文本处理中非常中的工具,能够完美的配合正则表达式使用,功能不同凡响。</td>
+</tr>
+<tr>
+<td>ssh</td>
+<td>Secure SHell</td>
+<td>openssh套件中的客户端连接工具,可以给予ssh加密协议实现安全的远程登录服务器。</td>
+</tr>
+<tr>
+<td>su</td>
+<td>Substitute User</td>
+<td>“替代用户”,切换当前用户身份到其他用户身份,变更时须输入所要变更的用户帐号与密码。</td>
+</tr>
+<tr>
+<td>sudo</td>
+<td>SuperUser DO</td>
+<td>用来以其他身份来执行命令,预设的身份为root。</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>SYNChronize</td>
+<td>用于强制被改变的内容立刻写入磁盘,更新超块信息。</td>
+</tr>
+<tr>
+<td>vim</td>
+<td>vi Improved</td>
+<td>是UNIX操作系统和类UNIX操作系统中最通用的全屏幕纯文本编辑器。Linux中的vi编辑器叫vim,它是vi的增强版（vi Improved）,与vi编辑器完全兼容,而且实现了很多增强功能。(备注：神一样的编辑器!!!)</td>
+</tr>
+<tr>
+<td>yum</td>
+<td>Yellow dog Updater, Modified</td>
+<td>在Fedora和RedHat以及SUSE中基于rpm的软件包管理器</td>
+</tr>
+</tbody>
+</table>
+<p>注：命令的具体解释可以参考这个网站：<a href="http://man.linuxde.net/" target="_blank" rel="noopener">Linux命令大全</a>_Linux常用命令行实例详解_Linux命令学习手册)</p>
+<h3 id="3-编程相关缩写"><a href="#3-编程相关缩写" class="headerlink" title="3. 编程相关缩写"></a>3. 编程相关缩写</h3><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cc</td>
+<td>C Compiler</td>
+<td></td>
+</tr>
+<tr>
+<td>gcc</td>
+<td>Gnu Compiler Collection</td>
+<td>作为一个软件集被你下载下来编译安装的时候</td>
+</tr>
+<tr>
+<td>gcc</td>
+<td>Gnu C Compiler</td>
+<td>作为一个软件被你调用来编译C程序的时候</td>
+</tr>
+<tr>
+<td>g++</td>
+<td>Gnu c++ compiler</td>
+<td>其实g++只是调用gcc,然后连接c++的库,并且作相应的一些编译设置而已</td>
+</tr>
+<tr>
+<td>gcj</td>
+<td>Gnu Compiler for Java</td>
+<td></td>
+</tr>
+<tr>
+<td>gdb</td>
+<td>Gnu DeBug</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-递归缩写"><a href="#4-递归缩写" class="headerlink" title="4. 递归缩写"></a>4. 递归缩写</h3><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GNU</td>
+<td>Gnu is Not Unix</td>
+<td></td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>PHP: Hypertext Preprocessor</td>
+<td></td>
+</tr>
+<tr>
+<td>RPM</td>
+<td>RPM Package Manager</td>
+<td></td>
+</tr>
+<tr>
+<td>WINE</td>
+<td>WINE Is Not an Emulator</td>
+<td>Wine 是类UNIX系统下运行微软Windows程序的”兼容层”。在Wine中运行的Windows程序,就如同运行原生Linux程序一样,不会有模拟器那样的性能问题。</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>PNG’s Not GIF</td>
+<td></td>
+</tr>
+<tr>
+<td>nano</td>
+<td>Nano’s ANOther editor</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-其他缩写"><a href="#5-其他缩写" class="headerlink" title="5. 其他缩写"></a>5. 其他缩写</h3><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tar</td>
+<td>Tape Archive</td>
+<td>“磁带档案卷”</td>
+</tr>
+<tr>
+<td>tcl</td>
+<td>Tool Command Language</td>
+<td>Tcl（发音 tickle）是一种脚本语言。</td>
+</tr>
+<tr>
+<td>tty</td>
+<td>teletypewriter</td>
+<td>“电传打字机”,在类Unix里,键盘显示器,都是虚拟的teletypewriter</td>
+</tr>
+<tr>
+<td>tzselect</td>
+<td>Time Zone SELECT</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-参考资料"><a href="#6-参考资料" class="headerlink" title="6. 参考资料"></a>6. 参考资料</h3><ul>
+<li><a href="https://www.zhihu.com/question/49073893" target="_blank" rel="noopener">Linux中常用的命令都是哪些单词的缩写？</a></li>
+<li><a href="http://www.cnblogs.com/zhyryxz/archive/2012/05/03/2480242.html" target="_blank" rel="noopener">(转)linux 目录结构及其含义</a></li>
+<li><a href="http://man.linuxde.net/" target="_blank" rel="noopener">Linux命令大全</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Wine_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">Wine(简体中文)</a>)</li>
+<li><a href="https://wiki.archlinux.org/index.php/Fstab_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">fstab(简体中文)</a>)</li>
+<li><a href="http://coolshell.cn/articles/9070.html" target="_blank" rel="noopener">AWK 简明教程</a></li>
+<li><a href="http://i.linuxtoy.org/docs/guide/ch02s02.html" target="_blank" rel="noopener">缩写习惯</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Tcl?oldformat=true" target="_blank" rel="noopener">Tcl</a></li>
+<li><a href="http://www.abbreviations.com/acronyms/UNIX" target="_blank" rel="noopener">Unix Command Acronyms</a></li>
+<li><a href="http://blog.wangmingkuo.com/abbreviation-in-linux/" target="_blank" rel="noopener">Linux常用缩写</a></li>
+</ul>
+<h2 id="linux操作"><a href="#linux操作" class="headerlink" title="linux操作"></a>linux操作</h2><h3 id="shell获取ip地址"><a href="#shell获取ip地址" class="headerlink" title="shell获取ip地址"></a>shell获取ip地址</h3><p>方法一</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arg=ifconfig eth0 |grep "inet addr"| cut -f 2 -d ":"|cut -f 1 -d " "  </span><br><span class="line">ipaddr=$arg</span><br></pre></td></tr></table></figure>
+<p>方法二  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6 | awk '&#123;print $2&#125;' | tr -d "addr:"</span><br></pre></td></tr></table></figure>
+<h3 id="批量修改目录权限"><a href="#批量修改目录权限" class="headerlink" title="批量修改目录权限"></a>批量修改目录权限</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> To change all the directories to 755 (drwxr-xr-x):</span></span><br><span class="line">find /opt/lampp/htdocs -type d -exec chmod 755 &#123;&#125; \;</span><br><span class="line"><span class="meta">#</span><span class="bash"> To change all the files to 644 (-rw-r--r--):</span></span><br><span class="line">find /opt/lampp/htdocs -type f -exec chmod 644 &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tag1/" rel="tag"># tag1</a>
+          
+            <a href="/tags/tag2/" rel="tag"># tag2</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/08/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/08/liucan2/" rel="prev" title="liucan">
+                liucan <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-学习"><span class="nav-number">1.</span> <span class="nav-text">linux 学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬盘"><span class="nav-number">1.1.</span> <span class="nav-text">硬盘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux中的档名"><span class="nav-number">1.1.1.</span> <span class="nav-text">Linux中的档名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">1.2.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">1.3.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Determining-IP-information-for-eth0…failed-错误解决"><span class="nav-number">1.3.1.</span> <span class="nav-text">Determining IP information for eth0…failed 错误解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-安装"><span class="nav-number">1.4.</span> <span class="nav-text">linux 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-文件"><span class="nav-number">1.5.</span> <span class="nav-text">linux 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限-rwxr-xr-x"><span class="nav-number">1.5.1.</span> <span class="nav-text">文件权限 -rwxr-xr-x</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换文件用户和用户组"><span class="nav-number">1.5.2.</span> <span class="nav-text">切换文件用户和用户组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root-www-tmp"><span class="nav-number">1.5.3.</span> <span class="nav-text">[root@www tmp]#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filesystem-Hierarchy-Standard-FHS-标准"><span class="nav-number">1.5.4.</span> <span class="nav-text">Filesystem Hierarchy Standard(FHS)标准</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.6.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理"><span class="nav-number">1.6.1.</span> <span class="nav-text">文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件内容查阅"><span class="nav-number">1.6.2.</span> <span class="nav-text">文件内容查阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏属性"><span class="nav-number">1.6.3.</span> <span class="nav-text">隐藏属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊权限"><span class="nav-number">1.6.4.</span> <span class="nav-text">特殊权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索"><span class="nav-number">1.6.5.</span> <span class="nav-text">搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬盘与文件系统"><span class="nav-number">1.7.</span> <span class="nav-text">硬盘与文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#硬连接与软连接"><span class="nav-number">1.7.1.</span> <span class="nav-text">硬连接与软连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬盘分区相关命令"><span class="nav-number">1.7.2.</span> <span class="nav-text">硬盘分区相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘检验"><span class="nav-number">1.7.3.</span> <span class="nav-text">磁盘检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载"><span class="nav-number">1.7.4.</span> <span class="nav-text">挂载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩"><span class="nav-number">1.8.</span> <span class="nav-text">压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dump完整备份"><span class="nav-number">1.8.1.</span> <span class="nav-text">dump完整备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#restore-还原备份"><span class="nav-number">1.8.2.</span> <span class="nav-text">restore 还原备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim编辑器"><span class="nav-number">1.9.</span> <span class="nav-text">vim编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指令图片"><span class="nav-number">1.9.1.</span> <span class="nav-text">指令图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊"><span class="nav-number">1.9.2.</span> <span class="nav-text">特殊</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell脚本"><span class="nav-number">1.10.</span> <span class="nav-text">shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bash优点"><span class="nav-number">1.10.1.</span> <span class="nav-text">bash优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内建命令"><span class="nav-number">1.10.2.</span> <span class="nav-text">内建命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">1.10.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量内容修改"><span class="nav-number">1.10.4.</span> <span class="nav-text">变量内容修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是否当前有值-然后赋值"><span class="nav-number">1.10.5.</span> <span class="nav-text">判断是否当前有值,然后赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#别名"><span class="nav-number">1.10.6.</span> <span class="nav-text">别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#历史命令-history"><span class="nav-number">1.10.7.</span> <span class="nav-text">历史命令 history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令搜索顺序"><span class="nav-number">1.10.8.</span> <span class="nav-text">命令搜索顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进站信息"><span class="nav-number">1.10.9.</span> <span class="nav-text">进站信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境配置文件"><span class="nav-number">1.10.10.</span> <span class="nav-text">环境配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他配置文件"><span class="nav-number">1.10.11.</span> <span class="nav-text">其他配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell常用快捷键"><span class="nav-number">1.10.12.</span> <span class="nav-text">shell常用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符"><span class="nav-number">1.10.13.</span> <span class="nav-text">通配符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.11.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grep过滤字符串-以行为单位"><span class="nav-number">1.11.1.</span> <span class="nav-text">grep过滤字符串 以行为单位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sed-比grep增加替换功能-stream-editor"><span class="nav-number">1.11.2.</span> <span class="nav-text">sed 比grep增加替换功能 stream editor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#egrep-或-grep-E"><span class="nav-number">1.11.3.</span> <span class="nav-text">egrep 或 grep -E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件格式化与数据处理"><span class="nav-number">1.11.4.</span> <span class="nav-text">文件格式化与数据处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-脚本"><span class="nav-number">1.12.</span> <span class="nav-text">shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World程序"><span class="nav-number">1.12.1.</span> <span class="nav-text">Hello World程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#务必加注释"><span class="nav-number">1.12.2.</span> <span class="nav-text">务必加注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对谈式脚本"><span class="nav-number">1.12.3.</span> <span class="nav-text">对谈式脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值加减"><span class="nav-number">1.12.4.</span> <span class="nav-text">数值加减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行方式差异"><span class="nav-number">1.12.5.</span> <span class="nav-text">运行方式差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-条件判断"><span class="nav-number">1.12.6.</span> <span class="nav-text">test 条件判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断符号-常常用在if判断中"><span class="nav-number">1.12.7.</span> <span class="nav-text">判断符号[] 常常用在if判断中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if语句"><span class="nav-number">1.12.8.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case语句"><span class="nav-number">1.12.9.</span> <span class="nav-text">case语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function函数"><span class="nav-number">1.12.10.</span> <span class="nav-text">function函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while循环-条件不成立终止-unitl条件成立终止"><span class="nav-number">1.12.11.</span> <span class="nav-text">while循环 条件不成立终止 unitl条件成立终止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for循环"><span class="nav-number">1.12.12.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bug调试"><span class="nav-number">1.12.13.</span> <span class="nav-text">bug调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#账号管理"><span class="nav-number">1.13.</span> <span class="nav-text">账号管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#帐号管理"><span class="nav-number">1.13.1.</span> <span class="nav-text">帐号管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统管理"><span class="nav-number">1.14.</span> <span class="nav-text">文件系统管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">1.15.</span> <span class="nav-text">定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序管理与SElinux"><span class="nav-number">1.16.</span> <span class="nav-text">程序管理与SElinux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#process程序"><span class="nav-number">1.16.1.</span> <span class="nav-text">process程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子程序与父程序"><span class="nav-number">1.16.2.</span> <span class="nav-text">子程序与父程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序呼叫流程"><span class="nav-number">1.16.3.</span> <span class="nav-text">程序呼叫流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELinux用法"><span class="nav-number">1.16.4.</span> <span class="nav-text">SELinux用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统服务"><span class="nav-number">1.17.</span> <span class="nav-text">系统服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#详解xinet程序"><span class="nav-number">1.17.1.</span> <span class="nav-text">详解xinet程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志文件"><span class="nav-number">1.18.</span> <span class="nav-text">日志文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程"><span class="nav-number">1.19.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统配置工具"><span class="nav-number">1.20.</span> <span class="nav-text">系统配置工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件源码安装"><span class="nav-number">1.21.</span> <span class="nav-text">软件源码安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件RPM安装"><span class="nav-number">1.22.</span> <span class="nav-text">软件RPM安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-window配置"><span class="nav-number">1.23.</span> <span class="nav-text">X window配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux备份策略"><span class="nav-number">1.24.</span> <span class="nav-text">Linux备份策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心编译与管理"><span class="nav-number">1.25.</span> <span class="nav-text">核心编译与管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7区别"><span class="nav-number">1.26.</span> <span class="nav-text">CentOS7区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">1.27.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络常用命令"><span class="nav-number">1.28.</span> <span class="nav-text">网络常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven仓库镜像"><span class="nav-number">1.29.</span> <span class="nav-text">maven仓库镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用缩写"><span class="nav-number">1.30.</span> <span class="nav-text">常用缩写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-目录缩写"><span class="nav-number">1.30.1.</span> <span class="nav-text">1. 目录缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-命令缩写"><span class="nav-number">1.30.2.</span> <span class="nav-text">2. 命令缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-编程相关缩写"><span class="nav-number">1.30.3.</span> <span class="nav-text">3. 编程相关缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-递归缩写"><span class="nav-number">1.30.4.</span> <span class="nav-text">4. 递归缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-其他缩写"><span class="nav-number">1.30.5.</span> <span class="nav-text">5. 其他缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-参考资料"><span class="nav-number">1.30.6.</span> <span class="nav-text">6. 参考资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux操作"><span class="nav-number">1.31.</span> <span class="nav-text">linux操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell获取ip地址"><span class="nav-number">1.31.1.</span> <span class="nav-text">shell获取ip地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量修改目录权限"><span class="nav-number">1.31.2.</span> <span class="nav-text">批量修改目录权限</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
